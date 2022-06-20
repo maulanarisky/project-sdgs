@@ -1,0 +1,14 @@
+<td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->indikator->kode_indikator}}</td>  
+<td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->name_program}}</td>  
+<td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->name_kegiatan }}</td>  
+<td style="vertical-align: middle">{{ $output_kegiatan->name_outputkegiatan }}</td> 
+<td style="vertical-align: middle">{{ $output_kegiatan->satuan }}</td>
+<td style="vertical-align: middle">{{ $output_kegiatan->target_tahun }}</td>
+<td style="vertical-align: middle">{{ $output_kegiatan->realisasi_target_sem_1 }}</td>
+<td style="vertical-align: middle">{{ $output_kegiatan->realisasi_target_sem_2 }}</td>
+<td style="vertical-align: middle">{{ $output_kegiatan->alokasi_anggaran }}</td>
+<td style="vertical-align: middle">{{ $output_kegiatan->realisasi_anggaran_sem_1 }}</td>
+<td style="vertical-align: middle">{{ $output_kegiatan->realisasi_anggaran_sem_2 }}</td>    
+<td style="vertical-align: middle">{{ $output_kegiatan->lokasi_pelaksanaan_kegiatan }}</td> 
+<td style="vertical-align: middle">{{ $output_kegiatan->sumber_pendanaan }}</td>
+<td style="vertical-align: middle">{{ $output_kegiatan->user->name }}</td>

@@ -1,0 +1,82 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Indikator;
+use App\Models\Program;
+use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Return_;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Validated;
+use Illuminate\Contracts\Support\ValidatedData;
+use Illuminate\Support\Facades\Redirect;
+
+class ProgramController extends Controller
+{
+    
+    public function index()
+    {
+        return view('menu.program.index',[
+            'programs' => Program::with('user')->get()
+        ]);
+    }
+
+    
+    public function create()
+    {
+         return view('menu.program.create',[
+            'programs' => Program::with('user')->get(),
+            'indikators' => Indikator::all()
+        ]);
+    }
+
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'user_id' => 'required',
+            'indikator_id' => 'required',
+            'name_program' => 'required|string'
+        ]);
+
+        Program::create($validatedData);
+        return Redirect::back()->with('success', ' Progra m Berhasil di <b>Tambahkan</b>');
+
+        // return redirect()-->with('success', ' Progra m Berhasil di <b>Tambahkan</b>');
+    }
+
+  
+    public function show($id)
+    {
+        //
+    }
+
+   
+    public function edit($id)
+    {
+          return view('menu.program.edit',[
+            'program' => Program::where('id','=', $id)->first()
+
+        ]);
+    }
+
+   
+    public function update(Request $request, Program $program)
+    {
+        $validatedData = $request->validate([
+            'user_id' => 'required',
+            'name_program' => 'required|string'
+        ]);
+
+        Program::where('id', $program->id)->update($validatedData);
+
+        return redirect('/menu/program')->with('success', ' Program Berhasil di <b>Ubah</b>');
+    }
+
+   
+    public function destroy(Program $program)
+    {
+        Program::destroy($program->id);
+        return redirect('/menu/program')->with('success', ' Program Berhasil di <b>Hapus</b>');
+    }
+}
