@@ -49,7 +49,7 @@
         </a>
         <a class="dropdown-item" href="/menu/setting">
           <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-          Ubah Kata Sandi
+          Kata Sandi
         </a>
         <div class="dropdown-divider"></div>
         <a

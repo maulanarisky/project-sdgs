@@ -19,7 +19,6 @@ class SettingController extends Controller
     public function update(Request $request, User $setting){
         request()->validate([
             'current-password' => 'required',
-            'role_id' => 'required',
             'password' => ['required', 'confirmed','min:8' ,Rules\Password::defaults()]  
         ]);
 
@@ -33,8 +32,9 @@ class SettingController extends Controller
             User::where('id', $setting->id)->update([
              'password' => Hash::make(request('password'))
             ]);;
-            return redirect('/menu/setting')->with('success', 'Password successfully changed!'); 
-       
+            return redirect()->back()->with('success', ' Kata sandi Berhasil di <b>Ubah</b>'); 
+        } else {
+            return back()->withErrors(['current-password' => 'Masukkan password saat ini dengan benar']);
         }
     }
 }

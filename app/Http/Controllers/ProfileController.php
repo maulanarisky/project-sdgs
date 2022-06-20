@@ -17,19 +17,14 @@ class ProfileController extends Controller
 
    
     public function update(Request $request,User $profile)
-    {
-       
+    {  
         $validatedData = $request->validate([
-            'name' => 'string',
-            'email' => 'string',
-            'role_id' => 'string',
-            'no_wa' => 'number'
+            'name' => 'required|max:255',
+            'email' => 'required|email:dns',
+            'no_wa' => 'required'
         ]);
-
-       
-
+        
         User::where('id', $profile->id)->update($validatedData);
-
-        return redirect('/menu/profile');
+        return redirect()->back()->with('success', ' Profile Berhasil di <b>Ubah</b>');
     }
 }
