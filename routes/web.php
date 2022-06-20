@@ -20,6 +20,8 @@ use App\Http\Controllers\UserController;
 use App\Models\Target;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,6 +114,11 @@ Route::get('getTarget/{id}', function ($id) {
     $target = Target::where('tujuan_id',$id)->get();
     return response()->json($target);
 });
+
+Route::get('/menu/profile', [ProfileController::class, 'edit']);
+Route::patch('/menu/profile/{profile}', [ProfileController::class, 'update']);
+Route::get('/menu/setting', [SettingController::class, 'edit']);
+Route::patch('/menu/setting/{setting}', [SettingController::class, 'update']);
 
 
 require __DIR__.'/auth.php';
