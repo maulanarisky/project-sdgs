@@ -17,10 +17,10 @@
                 <select class="float-right btn btn-success dropdown-toggle" name="tahun_id" onchange="location = this.value;">
                     <option value="">-- Pilih Tahun --</option>
                     @foreach ($tahuns as $tahun)
-                    <option value="/menu/capaian/{{ $tahun->id }}">{{ $tahun->tahun }}</option>
+                    <option value="/menu/capaian/{{ $tahun->id }}">{{ $tahun->name }}</option>
                     @endforeach
                 </select>                
-                <a class="mr-3 float-right btn btn-warning">{{ $tahunSinggle->tahun }}</a>
+                <a class="mr-3 float-right btn btn-warning">{{ $tahunSinggle->name }}</a>
             </div>
 
             <div class="card-body">

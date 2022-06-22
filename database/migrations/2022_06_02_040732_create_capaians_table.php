@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('capaians', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade')->nullable();
-            $table->foreignId('tujuan_id')->constrained('tujuans')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('target_id')->constrained('targets')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('indikator_id')->constrained('indikators')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('tahun_id')->constrained('tahuns')->onUpdate('cascade')->onDelete('cascade'); 
             $table->float('baseline')->nullable();

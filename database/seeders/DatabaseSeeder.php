@@ -2287,49 +2287,49 @@ class DatabaseSeeder extends Seeder
 
 
         Tahun::create([
-            'tahun' => 2016
+            'name' => 2016
         ]);
         Tahun::create([
-            'tahun' => 2017
+            'name' => 2017
         ]);
         Tahun::create([
-            'tahun' => 2018
+            'name' => 2018
         ]);
         Tahun::create([
-            'tahun' => 2019
+            'name' => 2019
         ]);
         Tahun::create([
-            'tahun' => 2020
+            'name' => 2020
         ]);
         Tahun::create([
-            'tahun' => 2021
+            'name' => 2021
         ]);
         Tahun::create([
-            'tahun' => 2022
+            'name' => 2022
         ]);
         Tahun::create([
-            'tahun' => 2023
+            'name' => 2023
         ]);
         Tahun::create([
-            'tahun' => 2024
+            'name' => 2024
         ]);
         Tahun::create([
-            'tahun' => 2025
+            'name' => 2025
         ]);
         Tahun::create([
-            'tahun' => 2026
+            'name' => 2026
         ]);
         Tahun::create([
-            'tahun' => 2027
+            'name' => 2027
         ]);
         Tahun::create([
-            'tahun' => 2028
+            'name' => 2028
         ]);
         Tahun::create([
-            'tahun' => 2029
+            'name' => 2029
         ]);
         Tahun::create([
-            'tahun' => 2030
+            'name' => 2030
         ]);
 
         // Capaian::create([

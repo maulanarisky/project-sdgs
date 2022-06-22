@@ -1,4 +1,4 @@
-<table class="table table-bordered" id="dataTable"   cellspacing="0">
+<table class="table table-bordered" id="dataTable"  width="100%" cellspacing="0">
     <thead>
         <tr align="center" valign="middle">
             <td >Kode Tujuan</td>
@@ -22,14 +22,14 @@
             @if ($capaian->tahun_id == $tahunSinggle->id)
                 @if ($capaian->user->id == Auth::user()->id)
                     <tr align="center" >
-                        <td>{{ $capaian->tujuan->kode_tujuan }}</td>
-                        <td>{{ $capaian->target->kode_target }}</td>
+                        <td>{{ $capaian->indikator->target->tujuan->kode_tujuan }}</td>
+                        <td>{{ $capaian->indikator->target->kode_target }}</td>
                         <td>{{ $capaian->indikator->kode_indikator}}</td>
                         <td align="left">{{ $capaian->indikator->deskripsi }}</td>
                         <td>{{ $capaian->user->name }}</td>
                         <td>{{ $capaian->indikator->satuan }}</td>
                         <td>{{ $capaian->baseline }}</td>
-                        <td>{{ $capaian->tahun->tahun }}</td>
+                        <td>{{ $capaian->tahun->name }}</td>
                         <td>{{ $capaian->target_awal }}</td>
                         <td>{{ $capaian->capaian }}</td>
                         
@@ -58,14 +58,14 @@
                 {{-- jika yg login superadmin --}}
                 @elseif (Auth::user()->role_id == 1 )
                     <tr align="center" >
-                        <td>{{ $capaian->tujuan->kode_tujuan }}</td>
-                        <td>{{ $capaian->target->kode_target }}</td>
+                        <td>{{ $capaian->indikator->target->tujuan->kode_tujuan }}</td>
+                        <td>{{ $capaian->indikator->target->kode_target }}</td>
                         <td>{{ $capaian->indikator->kode_indikator}}</td>
                         <td align="left">{{ $capaian->indikator->deskripsi }}</td>
                         <td>{{ $capaian->user->name }}</td>
                         <td>{{ $capaian->indikator->satuan }}</td>
                         <td>{{ $capaian->baseline }}</td>
-                        <td>{{ $capaian->tahun->tahun }}</td>
+                        <td>{{ $capaian->tahun->name }}</td>
                         <td>{{ $capaian->target_awal }}</td>
                         <td>{{ $capaian->capaian }}</td>
                         

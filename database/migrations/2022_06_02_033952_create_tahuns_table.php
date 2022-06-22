@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tahuns', function (Blueprint $table) {
             $table->id();
-            $table->year('tahun');
+            $table->year('name');
             $table->timestamps();
         });
     }
