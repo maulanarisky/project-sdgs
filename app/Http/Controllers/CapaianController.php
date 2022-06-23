@@ -23,7 +23,7 @@ class CapaianController extends Controller
     public function index($tahunID)
     {
         return view('menu.capaian.index', [
-            'capaians' => Capaian::with('indikator.target.tujuan')->get(),
+            'capaians' => Capaian::with('indikator.target.tujuan', 'tahun', 'user')->get(),
             'tahuns' => Tahun::all(),
             'tahunSinggle' => Tahun::findOrFail($tahunID),
             

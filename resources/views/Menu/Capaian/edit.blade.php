@@ -67,7 +67,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="baseline">nilai baseline</label>
-                                        <input name="baseline" id="baseline" value="{{ $capaian->baseline }}" type="text" class="@error('baseline') is-invalid @enderror form-control"/>
+                                        <input name="baseline" id="baseline" value="{{ $capaian->baseline }}" type="text" class="@error('baseline') is-invalid @enderror form-control" autofocus/>
                                         <x-validation-message name="baseline" />
                                     </div>
                                 </div>

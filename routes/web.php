@@ -51,6 +51,7 @@ use App\Http\Controllers\SettingController;
 // });\
 
 Route::get('/form1-export/{tahunID}', [CapaianController::class, 'form1Export']);
+Route::get('/form5-export', [RencanaTindakLanjutController::class, 'form5Export']);
 
 Route::get('/', [MainController::class, 'index']);
 Route::get('/tujuan/{tujuanId}/{tahunID}', [MainController::class, 'detail']);
