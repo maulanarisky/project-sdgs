@@ -83,7 +83,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="waktu">Diisi dengan jangka waktu (durasi) pelaksanaan usaha sampai mencapai target yang ditetapkan dalam waktu tahun</label>
-                    <input type="text" value="{{ $umkm->waktu }}" class="form-control pt-1 @error('waktu') is-invalid @enderror" name="waktu" placeholder="ex: 1 tahun"/>
+                    <input type="number" value="{{ $umkm->waktu }}" class="form-control pt-1 @error('waktu') is-invalid @enderror" name="waktu" placeholder="ex: 1 tahun"/>
                     <x-validation-message name="waktu" />
                   </div>
                 </div>
