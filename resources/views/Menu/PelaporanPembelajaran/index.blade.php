@@ -3,7 +3,7 @@
 
     <div class="container-fluid">
 
-        <h1 class="h3 mb-2 text-gray-800 text-center">Pelaporan Pembelajaran</h1>
+        <h1 class="h3 mb-3 text-gray-800 text-center">Pelaporan Pembelajaran</h1>
 
         <div class="card shadow mb-4">
             @if (Auth::user()->role_id != 1)
@@ -18,7 +18,7 @@
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
-                            <tr>
+                            <tr align="center">
                                 <th>No</th>
                                 <th>Nama File</th>
                                 <th>File</th>

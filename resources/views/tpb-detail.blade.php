@@ -72,7 +72,7 @@
                 </button>
                 <ul class="dropdown-menu">
                   @foreach ($tahunsAll as $thn)
-                    <li><a class="dropdown-item" href="/tujuan/{{ $tujuan->id }}/{{ $thn->tahun }}">{{ $thn->tahun }}</a></li>
+                    <li><a class="dropdown-item" href="/tujuan/{{ $tujuan->id }}/{{ $thn->name }}">{{ $thn->name }}</a></li>
                   @endforeach
                 </ul>
               </div>
@@ -111,7 +111,7 @@
                                     <td rowspan="2">Deskripsi Indikator</td>
                                     <td rowspan="2">Satuan</td>
                                     <td rowspan="2">Baseline</td>
-                                    <td colspan="3" align="center"> {{ $tahun->tahun }}</td>
+                                    <td colspan="3" align="center"> {{ $tahun->name }}</td>
                                     <td rowspan="2" align="center">Sumber Data</td>
                                   </tr>
                                   <tr>
@@ -128,18 +128,20 @@
                                           <td>{{ $indikator->kode_indikator }}</td>
                                           <td align="left">{{ $indikator->deskripsi }}</td>
                                           @foreach ($capaians as $capaian)
-                                            @if ($indikator->id == $capaian->indikator_id && $target->id == $capaian->target_id && $capaian->tahun_id == $tahun->id)
-                                              <td>{{ $capaian->satuan }}</td>
+                                            @if ($indikator->id == $capaian->indikator_id  && $capaian->tahun_id == $tahun->id)
+                                              <td>{{ $indikator->satuan }}</td>
                                               <td>{{ $capaian->baseline }}</td>
                                               <td>{{ $capaian->target_awal }}</td>
                                               <td>{{ $capaian->capaian }}</td>
                                               @if ($capaian->status == 'tercapai')
-                                                  <td valign="middle"> <i class="bi bi-circle-fill text-success"></i> </td>  
-                                                @elseif($capaian->status == 'akan_tercapai')
-                                                  <td valign="middle"> <i class="bi bi-play-fill text-warning"></i> </td>
-                                                @elseif($capaian->status == 'perlu_perhatian_kusus')
-                                                  <td valign="middle"> <i class="bi bi-caret-down-fill text-danger"></i> </td>
-                                                @endif 
+                                                <td valign="middle"> <i class="bi bi-circle-fill text-success"></i> </td>  
+                                              @elseif($capaian->status == 'akan_tercapai')
+                                                <td valign="middle"> <i class="bi bi-play-fill text-warning"></i> </td>
+                                              @elseif($capaian->status == 'perlu_perhatian_kusus')
+                                                <td valign="middle"> <i class="bi bi-caret-down-fill text-danger"></i> </td>
+                                              @else
+                                                <td></td>
+                                              @endif 
                                                 <td>{{ $capaian->user->name }}</td>
                                             @endif
                                           @endforeach

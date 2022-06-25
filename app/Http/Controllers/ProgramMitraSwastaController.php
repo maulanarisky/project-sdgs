@@ -9,7 +9,6 @@ use App\Models\ProgramMitraSwasta;
 use App\Models\Tahun;
 use App\Models\Tujuan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ProgramMitraSwastaController extends Controller
 {
@@ -17,10 +16,9 @@ class ProgramMitraSwastaController extends Controller
     public function index($tahunID)
     {
          return view('Menu.ProgramMitraSwasta.index',[
-            // 'getIndikatorDistinct' => DB::table('program_mitra_swastas')->select('indikator_id')->distinct()->get(),
             'tahunSinggle' => Tahun::findOrFail($tahunID),
-            'kegiatans' =>Kegiatan::with('user')->get(),
-            'output_kegiatans' => ProgramMitraSwasta::all()
+            // 'kegiatans' =>Kegiatan::with('user')->get(),
+            'output_kegiatans' => ProgramMitraSwasta::with('kegiatan', 'user')->get(),
         ]);
     }
 

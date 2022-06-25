@@ -8,6 +8,7 @@
 
     <div class="card shadow mb-4 border-left-success" >
 
+{{-- PROGRAM --}}
       <div class="card-header py-3">
         <span >Tambah Program Baru</span>
       </div>
@@ -22,7 +23,7 @@
   
                 <div class="col-md-5">
                   <label for="indikator_id">Pilih Indikator</label>
-                  <select class="form-control" name="indikator_id">
+                  <select class="form-control @error('indikator_id') is-invalid @enderror" name="indikator_id">
                       <option value="">Pilih Indikator</option>
                       @foreach ($indikators as $indikator)
                           <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }} {{ $indikator->deskripsi }}</option>                                           
@@ -54,8 +55,7 @@
     </div>
 
 
-
-
+{{-- KEGIATAN --}}
     <div class="card shadow mb-4 border-left-success" >
       <div class="card-header py-3">
           <span>Tambah Kegiatan Baru</span>
@@ -71,7 +71,7 @@
                   <div class="form-group">
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <label for="program_id">Pilih Program </label>
-                    <select class="form-control" name="program_id" id="program_id">
+                    <select class="form-control @error('program_id') is-invalid @enderror" name="program_id" id="program_id">
                       @foreach ($programs as $program)
                         @if ($program->user->id == Auth::user()->id)
                           <option value="{{ $program->id }}">{{ $program->name_program }}</option>   
@@ -103,10 +103,7 @@
     </div>
 
 
-
-
-
-
+{{-- Output Kegiatan --}}
     <div class="card shadow mb-4 border-left-success" >
       <div class="card-header py-3">
         <span>Tambah Output Kegiatan</span>
@@ -123,10 +120,10 @@
                   <div class="form-group">
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                       <label for="tahun_id">Pilih Tahun</label>
-                      <select class="form-control" name="tahun_id" id="tahun_id">
+                      <select class="form-control @error('tahun_id') is-invalid @enderror" name="tahun_id" id="tahun_id">
                           <option value="">Pilih Tahun</option>
                           @foreach ($tahuns as $tahun)
-                              <option value="{{ $tahun->id }}">{{ $tahun->tahun }}</option>
+                              <option value="{{ $tahun->id }}">{{ $tahun->name }}</option>
                           @endforeach
                       </select>
                       <x-validation-message name="tahun_id" />
@@ -136,7 +133,7 @@
                 <div class="col-md-3">     
                   <div class="form-group">
                       <label for="kegiatan_id">Pilih Kegiatan</label>
-                      <select class="form-control" name="kegiatan_id" id="kegiatan_id">
+                      <select class="form-control @error('kegiatan_id') is-invalid @enderror" name="kegiatan_id" id="kegiatan_id">
                           @foreach ($kegiatans as $kegiatan)
                             @if ($kegiatan->user->id == Auth::user()->id)
                                 <option value="{{ $kegiatan->id }}">{{ $kegiatan->kode_kegiatan }} {{ $kegiatan->name_kegiatan }}</option>   

@@ -11,10 +11,10 @@
         <select class="float-right btn btn-success dropdown-toggle" name="tahun_id" onchange="location = this.value;">
           <option value="">-- Pilih Tahun --</option>
           @foreach ($tahuns as $tahun)
-          <option value="/menu/mitraswasta/{{ $tahun->id }}">{{ $tahun->tahun }}</option>
+          <option value="/menu/mitraswasta/{{ $tahun->id }}">{{ $tahun->name }}</option>
           @endforeach
         </select>  
-        <a class="mr-3 float-right btn btn-warning">{{ $tahunSinggle->tahun }}</a>
+        <a class="mr-3 float-right btn btn-warning">{{ $tahunSinggle->name }}</a>
 
         @if (Auth::user()->role_id == 1) 
           <a href="#" class="btn btn-success">Excel</a>
