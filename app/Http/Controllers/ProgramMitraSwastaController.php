@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Form3Export;
 use App\Models\Indikator;
 use App\Models\Kegiatan;
 use App\Models\Program;
@@ -9,16 +10,19 @@ use App\Models\ProgramMitraSwasta;
 use App\Models\Tahun;
 use App\Models\Tujuan;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProgramMitraSwastaController extends Controller
 {
-    
+    public function form3Export($tahunID){
+        return Excel::download(new Form3Export($tahunID), 'form 3.xlsx');
+    }
+
     public function index($tahunID)
     {
          return view('Menu.ProgramMitraSwasta.index',[
             'tahunSinggle' => Tahun::findOrFail($tahunID),
-            // 'kegiatans' =>Kegiatan::with('user')->get(),
-            'output_kegiatans' => ProgramMitraSwasta::with('kegiatan', 'user')->get(),
+            'output_kegiatans' => ProgramMitraSwasta::with('kegiatan.program.indikator', 'user')->get(),
         ]);
     }
 
