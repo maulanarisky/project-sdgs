@@ -22,15 +22,16 @@
                   <div class="form-group">
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <label for="tahun_id">Pilih Tahun</label>
-                    <select class="form-control" name="tahun_id" id="tahun_id">
+                    <select class="form-control @error('tahun_id') is-invalid @enderror" name="tahun_id" id="tahun_id">
                         @foreach ($tahuns as $tahun)
                           @if(old('tahun_id', $mitraswastum->tahun_id) == $tahun->id)    
-                              <option value="{{ $tahun->id }}" selected>{{ $tahun->tahun }}</option>  
+                              <option value="{{ $tahun->id }}" selected>{{ $tahun->name }}</option>  
                           @else
-                              <option value="{{$tahun->id }}">{{ $tahun->tahun }}</option>  
+                              <option value="{{$tahun->id }}">{{ $tahun->name }}</option>  
                           @endif
                         @endforeach
                     </select>
+                    <x-validation-message name="tahun_id" />
                     </div>
                   </div>
                   

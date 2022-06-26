@@ -25,11 +25,11 @@ class MainController extends Controller
         // ddd($tahunID);
         return view('tpb-detail', [
             'tujuan' => Tujuan::where('id','=', $id)->first(),
-            'tahun' => Tahun::where('tahun', '=', $tahunID)->firstOrFail(),
+            'tahun' => Tahun::where('name', '=', $tahunID)->firstOrFail(),
             'tahunsAll' => Tahun::all(),
             'targets' => Target::all(),
             'indikators' => Indikator::all(),
-            'capaians' => Capaian::all(),
+            'capaians' => Capaian::with('user')->get(),
         ]);
     }
 }

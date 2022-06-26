@@ -2,7 +2,7 @@
 @section('container')
   <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800" style="text-transform: uppercase">Program Pelaku Usaha</h1>
+    <h1 class="h3 mb-3 text-gray-800 text-center" style="text-transform: uppercase">Program Pelaku Usaha</h1>
 
     <div class="card shadow mb-4 border-left-success" >
       <div class="card-header py-3">
@@ -74,12 +74,12 @@
                     <x-validation-message name="satuan" />
                   </div>
                 </div>
-
+                
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="waktu">Diisi dengan jangka waktu (durasi) pelaksanaan usaha sampai mencapai target yang ditetapkan dalam waktu tahun</label>
-                    <input type="text" class="form-control pt-1 @error('waktu') is-invalid @enderror" name="waktu" placeholder="ex: 1 tahun"/>
-                    <x-validation-message name="waktu" />
+                      <label for="waktu">Diisi dengan jangka waktu (durasi) pelaksanaan usaha sampai mencapai target yang ditetapkan dalam waktu tahun</label>
+                      <input type="number" class="form-control pt-1 @error('waktu') is-invalid @enderror" name="waktu" placeholder="ex: 1 tahun"/>
+                      <x-validation-message name="waktu" />
                   </div>
                 </div>
 

@@ -22,7 +22,7 @@
 
         <li class="nav-item {{ Request::is('menu/capaian*') ? 'active' : '' }}">
             @foreach ($tahuns as $tahun)
-                @if (now()->year == $tahun->tahun)
+                @if (now()->year == $tahun->name)
                     <a class="nav-link" href="/menu/capaian/{{ $tahun->id }}">
                         <i class="fas fa-fw fa-book"></i>
                         <span>FORM 1</span>
@@ -33,7 +33,7 @@
 
         <li class="nav-item  {{ Request::is('menu/pemda*') ? 'active' : '' }}">
             @foreach ($tahuns as $tahun)
-                    @if (now()->year == $tahun->tahun)
+                    @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/pemda/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-th-large"></i>
                             <span>Form 2B</span>
@@ -44,7 +44,7 @@
 
         <li class="nav-item {{ Request::is('menu/mitraswasta*') ? 'active' : '' }}">
             @foreach ($tahuns as $tahun)
-                    @if (now()->year == $tahun->tahun)
+                    @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/mitraswasta/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-th-large"></i>
                             <span>FORM 3</span>
@@ -114,7 +114,7 @@
         </h6>
         <li class="nav-item {{ Request::is('menu/capaian*') ? 'active' : '' }}">
             @foreach ($tahuns as $tahun)
-                    @if (now()->year == $tahun->tahun)
+                    @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/capaian/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-archway"></i>
                             <span>Form 1</span>
@@ -143,7 +143,7 @@
         <!-- Nav Item - Sub Kegiatan -->
         <li class="nav-item  {{ Request::is('menu/pemda*') ? 'active' : '' }}">
             @foreach ($tahuns as $tahun)
-                    @if (now()->year == $tahun->tahun)
+                    @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/pemda/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-th-large"></i>
                             <span>Form 2B</span>
@@ -235,7 +235,7 @@
         
         <li class="nav-item {{ Request::is('menu/mitraswasta*') ? 'active' : '' }}">
             @foreach ($tahuns as $tahun)
-                    @if (now()->year == $tahun->tahun)
+                    @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/mitraswasta/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-th-large"></i>
                             <span>FORM 3</span>
@@ -284,25 +284,25 @@
 
         <hr class="mt-2 sidebar-divider d-none d-md-block">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted">
-            <span>Form 5</span>
+            <span>Rencana Tindak Lanjut</span>
         </h6>
 
         <li class="nav-item {{ Request::is('menu/rtl*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/rtl">
                 <i class="fas fa-fw fa-th-large"></i>
-                <span>Rencana Tindak Lanjut</span>
+                <span>Form 5</span>
             </a>
         </li>
 
         <hr class="mt-2 sidebar-divider d-none d-md-block">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted">
-            <span>Form 6</span>
+            <span>Pelaporan Pembelajaran</span>
         </h6>
 
         <li class="nav-item {{ Request::is('menu/pp*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/pp">
                 <i class="fas fa-fw fa-book"></i>
-                <span>Pelaporan Pembelajaran</span>
+                <span>Form 6</span>
             </a>
         </li>
     @endcan

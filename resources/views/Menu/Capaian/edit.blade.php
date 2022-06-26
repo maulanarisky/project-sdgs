@@ -25,21 +25,21 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="tahun">Tahun Berjalan</label>
-                                        <input name="tahun" id="tahun" value="{{ $capaian->tahun->tahun }}" readonly type="text" class="form-control"/>
+                                        <input name="tahun" id="tahun" value="{{ $capaian->tahun->name }}" readonly type="text" class="form-control"/>
                                     </div>  
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="tujuan">Tujuan TPB/SDGs</label>
-                                        <input name="tujuan" id="tujuan" value="{{ $capaian->tujuan->name }}" readonly type="text" class="form-control"/>
+                                        <input name="tujuan" id="tujuan" value="{{ $capaian->indikator->target->tujuan->name }}" readonly type="text" class="form-control"/>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="target">Target TPB/SDGs</label>
-                                        <input name="target" id="target" value="{{ $capaian->target->kode_target }} {{ $capaian->target->deskripsi }}" readonly type="text" class="form-control"/>
+                                        <input name="target" id="target" value="{{ $capaian->indikator->target->kode_target }} {{ $capaian->indikator->target->deskripsi }}" readonly type="text" class="form-control"/>
                                     </div>
                                 </div>
                                 
@@ -67,14 +67,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="baseline">nilai baseline</label>
-                                        <input name="baseline" id="baseline" value="{{ $capaian->baseline }}" type="text" class="@error('baseline') is-invalid @enderror form-control"/>
+                                        <input name="baseline" id="baseline" value="{{ $capaian->baseline }}" type="text" class="@error('baseline') is-invalid @enderror form-control" autofocus/>
                                         <x-validation-message name="baseline" />
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="target_awal">Target Tahun {{ $capaian->tahun->tahun }}</label>
+                                        <label for="target_awal">Target Tahun {{ $capaian->tahun->name }}</label>
                                         <input name="target_awal" id="target_awal" value="{{ $capaian->target_awal }}" type="text" class="@error('target_awal') is-invalid @enderror form-control"/>
                                         <x-validation-message name="target_awal" />
                                     </div>
@@ -82,7 +82,7 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="capaian"">capaian tahun {{ $capaian->tahun->tahun }}</label>
+                                        <label for="capaian"">capaian tahun {{ $capaian->tahun->name }}</label>
                                         <input name="capaian" id="capaian" value="{{ $capaian->capaian }}" type="text" class="@error('capaian') is-invalid @enderror form-control"/>
                                         <x-validation-message name="capaian" />
                                     </div>
@@ -104,11 +104,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="sumber_data">Sumber Data</label>
-                                        @if (Auth::user()->role_id == 2)
-                                            <input name="sumber_data" id="sumber_data" type="text" value="{{ $capaian->user->name }}" class="form-control"/>
-                                        @else
                                             <input name="sumber_data" id="sumber_data" type="text" readonly value="{{ Auth::user()->name }}" class="form-control"/>   
-                                        @endif
                                         <x-validation-message name="sumber_data" />
                                     </div>
                                 </div>

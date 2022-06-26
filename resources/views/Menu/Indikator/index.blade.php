@@ -31,7 +31,7 @@
                         <tbody>
                             @foreach ($indikators as $indikator)
                                 <tr>
-                                    <td>{{ $indikator->tujuan->kode_tujuan }}</td>
+                                    <td>{{ $indikator->target->tujuan->kode_tujuan }}</td>
                                     <td>{{ $indikator->target->kode_target }}</td>
                                     <td>{{ $indikator->kode_indikator }}</td>
                                     <td>{{ $indikator->deskripsi }}</td>

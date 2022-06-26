@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Form5Export;
 use App\Models\RencanaTindakLanjut;
 use App\Models\Tujuan;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RencanaTindakLanjutController extends Controller
 {
+    public function form5Export(){
+        return Excel::download(new Form5Export, 'form 5.xlsx');
+    }
   
     public function index()
     {
          return view('Menu.RencanaTindakLanjut.index',[
-            'rencana_tindak_lanjuts' => RencanaTindakLanjut::all()
+            'rencana_tindak_lanjuts' => RencanaTindakLanjut::with('user', 'tujuan')->get()
         ]);
     }
 

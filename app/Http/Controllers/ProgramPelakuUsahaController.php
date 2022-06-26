@@ -2,30 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Form4Export;
 use App\Models\ProgramPelakuUsaha;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateProgramPelakuUsahaRequest;
 use App\Models\Indikator;
 use App\Models\Kegiatan;
 use App\Models\Tahun;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProgramPelakuUsahaController extends Controller
 {
+    public function form4Export(){
+        return Excel::download(new Form4Export, 'form 4.xlsx');
+    }
     
     public function index()
     {
         return view('Menu.ProgramPelakuUsaha.index',[
-            'program_pelaku_usahas' => ProgramPelakuUsaha::with('user')->get()
+            'program_pelaku_usahas' => ProgramPelakuUsaha::with('user', 'indikator')->get()
         ]);
     }
   
     public function create()
     {
          return view('Menu.ProgramPelakuUsaha.create',[
-            'program_pelaku_usahas' => ProgramPelakuUsaha::all(),
-            'tahuns' => Tahun::all(),
             'indikators'=> Indikator::all(),
-            'kegiatans' =>Kegiatan::with('user')->get()
         ]);
     }
 
@@ -40,7 +42,7 @@ class ProgramPelakuUsahaController extends Controller
             'kegiatan' => 'required|string',
             'indikator_capaian' => 'required|string',
             'satuan' => 'required|string',
-            'waktu' => 'required|string',
+            'waktu' => 'required|int    ',
             'target' => 'required|string',
             'capaian' => 'required|string',
         ]);

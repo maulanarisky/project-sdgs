@@ -15,7 +15,7 @@ class IndikatorController extends Controller
     public function index()
     {
         return view('menu.indikator.index', [
-            'indikators' => Indikator::all(),
+            'indikators' => Indikator::with('target.tujuan')->get(),
         ]);
     }
 
@@ -59,31 +59,43 @@ class IndikatorController extends Controller
 
     public function update(Request $request, Indikator $indikator)
     {
-        $rules = [
+        $rules = $request->validate([
             'tujuan_id' => 'required',
             'target_id' => 'required',
             'kode_indikator' => 'required',
             'deskripsi' => 'required|string',
-            'user_id' => 'required'
-        ];
-
-        $validatedDataIndikator = $request->validate($rules);
-
-        $tahun = Tahun::all();
-        $validatedDataCapaian = $request->validate([
-            'tujuan_id' => 'required',
-            'target_id' => 'required',
-            'indikator_id' => 'required',
             'user_id' => 'required',
+            'satuan' => ''
         ]);
-        foreach($tahun as $th){
-            $validatedDataCapaian['tahun_id'] = $th->id;
-            $th = Capaian::create($validatedDataCapaian);
-        }
+        Indikator::where('id', $indikator->id)->update($rules);
 
-        Indikator::where('id', $indikator->id)->update($validatedDataIndikator);
-        
+        $cekCapaian = Capaian::where([
+            ['indikator_id', '=', $indikator->id]
+        ])->first();
+       
 
+        if ($cekCapaian) {
+
+            $rulesCapaian = $request->validate([
+                'indikator_id' => 'required',
+                'user_id' => 'required',
+            ]);
+            Capaian::where('indikator_id', $indikator->id)->update($rulesCapaian);   
+
+        } else {
+
+            $tahuns = Tahun::all();
+
+            foreach($tahuns as $tahun){
+                $validatedCreateCapaian = $request->validate([
+                    'indikator_id' => 'required',
+                    'user_id' => 'required',
+                ]);
+
+                $validatedCreateCapaian['tahun_id'] = $tahun->id;
+                Capaian::create($validatedCreateCapaian);
+            }
+        } 
         return redirect('/menu/indikator')->with('success', ' Berhasil di <b>Ubah</b>');
     }
 

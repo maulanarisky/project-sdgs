@@ -40,7 +40,7 @@ class ProgramController extends Controller
         ]);
 
         Program::create($validatedData);
-        return Redirect::back()->with('success', ' Progra m Berhasil di <b>Tambahkan</b>');
+        return Redirect::back()->with('success', ' <b>Program</b> Berhasil di <b>Tambahkan</b>');
 
         // return redirect()-->with('success', ' Progra m Berhasil di <b>Tambahkan</b>');
     }

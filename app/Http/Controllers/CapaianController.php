@@ -19,10 +19,11 @@ class CapaianController extends Controller
     public function form1Export($tahunID){
         return Excel::download(new Form1Export($tahunID), 'form 1.xlsx');
     }
+    
     public function index($tahunID)
     {
         return view('menu.capaian.index', [
-            'capaians' => Capaian::all(),
+            'capaians' => Capaian::with('indikator.target.tujuan', 'tahun', 'user')->get(),
             'tahuns' => Tahun::all(),
             'tahunSinggle' => Tahun::findOrFail($tahunID),
             
@@ -31,40 +32,12 @@ class CapaianController extends Controller
 
     public function create()
     {
-        return view('menu.capaian.create', [
-            // 'capaians' => Capaian::all(),
-            'tahuns' => Tahun::all(),
-            'tujuans' => Tujuan::all(),
-            'targets' => Target::all(),
-            'indikators' => Indikator::all(),
-            'users' => User::all()
 
-        ]);
     }
 
     public function store(Request $request)
     {
         
-        $tahun = Tahun::all();
-        $validatedData = $request->validate([
-            // 'tahun_id' => 'required',
-            'tujuan_id' => 'required',
-            'target_id' => 'required',
-            'indikator_id' => 'required',
-            // 'deskripsi' => 'required|string',
-            // 'satuan' => 'string',
-            // 'baseline' => 'float',
-            // 'target_awal' => 'float',
-            // 'capaian' => 'float',
-            // 'status' => 'string',
-            'user_id' => 'required',
-        ]);
-        foreach($tahun as $th){
-            $validatedData['tahun_id'] = $th->id;
-            $th = Capaian::create($validatedData);
-        }
-
-        return redirect('/menu/capaian');
     }
 
     /**
