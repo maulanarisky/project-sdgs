@@ -33,7 +33,7 @@
                         <td>{{ $capaian->target_awal }}</td>
                         <td>{{ $capaian->capaian }}</td>
                         
-                        @if ($capaian->status == 'tercapai')
+                        {{-- @if ($capaian->status == 'tercapai')
                             <td valign="middle"><i class="fa fa-circle text-success" aria-hidden="true"></i></td> 
                         @elseif($capaian->status == 'akan_tercapai')
                             <td valign="middle"><i class="fa fa-play text-warning" aria-hidden="true"></i></td>
@@ -41,9 +41,18 @@
                             <td valign="middle"><i class="fa fa-caret-down text-danger" aria-hidden="true"></i> </td>
                         @else
                             <td></td>
+                        @endif --}}
+                        @if ($capaian->status == 'tercapai')
+                            <td valign="middle"><span class="badge badge-pill badge-success">Tercapai</span></td> 
+                        @elseif($capaian->status == 'akan_tercapai')
+                            <td valign="middle"><span class="badge badge-pill badge-warning">Akan Tercapai</span></i></td>
+                        @elseif($capaian->status == 'perlu_perhatian_kusus')
+                            <td valign="middle"><span class="badge badge-pill badge-danger">Perlu Perhatian <br> Khusus</span></i> </td>
+                        @else
+                            <td></td>
                         @endif
 
-                        <td align="center"">
+                        <td align="center">
                             <a href="/menu/capaian/{{ $capaian->id }}/edit" class="btn btn-warning mb-2"><i class="fas fa-fw fa-pen-square"></i></a>
                             <form action="/menu/capaian/{{ $capaian->id }}" method="post" class="d-inline">
                                 @method('delete')
@@ -69,12 +78,12 @@
                         <td>{{ $capaian->target_awal }}</td>
                         <td>{{ $capaian->capaian }}</td>
                         
-                        @if ($capaian->status == 'tercapai')
-                            <td valign="middle"><i class="fa fa-circle text-success" aria-hidden="true"></i></td> 
+                          @if ($capaian->status == 'tercapai')
+                            <td valign="middle"><span class="badge badge-pill badge-success">Tercapai</span></td> 
                         @elseif($capaian->status == 'akan_tercapai')
-                            <td valign="middle"><i class="fa fa-play text-warning" aria-hidden="true"></i></td>
+                            <td valign="middle"><span class="badge badge-pill badge-warning">Akan Tercapai</span></i></td>
                         @elseif($capaian->status == 'perlu_perhatian_kusus')
-                            <td valign="middle"><i class="fa fa-caret-down text-danger" aria-hidden="true"></i> </td>
+                             <td valign="middle"><span class="badge badge-pill badge-danger">Perlu Perhatian <br> Khusus</span></i> </td>
                         @else
                             <td></td>
                         @endif
