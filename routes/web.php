@@ -51,6 +51,9 @@ use App\Http\Controllers\SettingController;
 // });\
 
 Route::get('/form1-export/{tahunID}', [CapaianController::class, 'form1Export']);
+Route::get('/form2a-export/{tahunID}', [ProgramPemerintahPusatController::class, 'form2aExport']);
+Route::get('/form2b-export/{tahunID}', [ProgramPemerintahDaerahController::class, 'form2bExport']);
+Route::get('/form3-export/{tahunID}', [ProgramMitraSwastaController::class, 'form3Export']);
 Route::get('/form3-export/{tahunID}', [ProgramMitraSwastaController::class, 'form3Export']);
 Route::get('/form4-export', [ProgramPelakuUsahaController::class, 'form4Export']);
 Route::get('/form5-export', [RencanaTindakLanjutController::class, 'form5Export']);
@@ -64,6 +67,8 @@ Route::get('/menu/capaian/{tahunID}', [CapaianController::class, 'index']);
 
 Route::resource('/menu/pemda', ProgramPemerintahDaerahController::class)->except(['show', 'index']);
 Route::get('/menu/pemda/{tahunID}', [ProgramPemerintahDaerahController::class, 'index']);
+Route::resource('/menu/pusat', ProgramPemerintahPusatController::class)->except(['show', 'index']);
+Route::get('/menu/pusat/{tahunID}', [ProgramPemerintahPusatController::class, 'index']);
 
 Route::resource('/menu/mitraswasta', ProgramMitraSwastaController::class)->except(['show', 'index']);
 Route::get('menu/mitraswasta/{tahunID}', [ProgramMitraSwastaController::class,'index']);

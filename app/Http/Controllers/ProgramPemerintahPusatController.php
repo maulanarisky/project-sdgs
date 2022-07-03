@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Form2aExport;
 use App\Models\Indikator;
 use App\Models\Kegiatan;
 use App\Models\Program;
@@ -9,13 +10,18 @@ use App\Models\ProgramPemerintahPusat;
 use App\Models\Tahun;
 use App\Models\Tujuan;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProgramPemerintahPusatController extends Controller
 {
-    
-    public function index()
+    public function form2aExport($tahunID){
+        return Excel::download(new Form2aExport($tahunID), 'form 2a.xlsx');
+    }
+
+    public function index($tahunID)
     {
         return view('Menu.ProgramPemerintahPusat.index',[
+            'tahunSinggle' => Tahun::findOrFail($tahunID),
             'program_pemerintah_pusats' => ProgramPemerintahPusat::all()
         ]);
     }
