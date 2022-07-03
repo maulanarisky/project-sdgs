@@ -31,6 +31,17 @@
             @endforeach
         </li>
 
+          <li class="nav-item  {{ Request::is('menu/pusat*') ? 'active' : '' }}">
+            @foreach ($tahuns as $tahun)
+                    @if (now()->year == $tahun->name)
+                        <a class="nav-link" href="/menu/pusat/{{ $tahun->id }}">
+                            <i class="fas fa-fw fa-th-large"></i>
+                            <span>Form 2A</span>
+                        </a>
+                    @endif
+            @endforeach
+        </li>
+
         <li class="nav-item  {{ Request::is('menu/pemda*') ? 'active' : '' }}">
             @foreach ($tahuns as $tahun)
                     @if (now()->year == $tahun->name)

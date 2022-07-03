@@ -11,7 +11,7 @@
                 {{-- hanya tampil di super admin --}}
                 @if (Auth::user()->role_id == 1) 
                     <a href="/form1-export/{{  $tahunSinggle->id }}" class="btn btn-success">Excel</a>
-                    <a href="#" class="btn btn-danger">PDF</a>
+                    {{-- <a href="#" class="btn btn-danger">PDF</a> --}}
                 @endif
                                 
                 <select class="float-right btn btn-success dropdown-toggle" name="tahun_id" onchange="location = this.value;">
