@@ -210,9 +210,14 @@
 
         <!-- Nav Item - Rincian Output -->
         <li class="nav-item {{ Request::is('menu/pusat*') ? 'active' : '' }}">
-            <a class="nav-link" href="/menu/pusat/7">
-                <i class="fas fa-fw fa-th-large"></i>
-                <span>FORM 2A</span></a>
+              @foreach ($tahuns as $tahun)
+                    @if (now()->year == $tahun->name)
+                        <a class="nav-link" href="/menu/pusat/{{ $tahun->id }}">
+                            <i class="fas fa-fw fa-th-large"></i>
+                            <span>Form 2A</span>
+                        </a>
+                    @endif
+            @endforeach
         </li>
 
         <hr class="sidebar-divider d-none d-md-block">
