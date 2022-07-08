@@ -17,7 +17,8 @@
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
-
+{{-- @if (Auth::user()->status== "active") --}}
+    
 <body id="page-top">
         <!-- Page Wrapper -->
     <div id="wrapper">
@@ -115,6 +116,11 @@
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
 
+    {{-- @else
+        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+          <h2><strong>Mohon Menunggu Konfirmasi Akun Anda</strong> </h2>
+        </div>
+    @endif --}}
 </body>
 
 </html>

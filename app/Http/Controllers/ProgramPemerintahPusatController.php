@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Form2aExport;
 use App\Models\Indikator;
 use App\Models\Kegiatan;
 use App\Models\Program;
@@ -9,13 +10,20 @@ use App\Models\ProgramPemerintahPusat;
 use App\Models\Tahun;
 use App\Models\Tujuan;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProgramPemerintahPusatController extends Controller
 {
-    
-    public function index()
+    public function form2aExport($tahunID){
+        return Excel::download(new Form2aExport($tahunID), 'form 2a.xlsx');
+    }
+
+    public function index($tahunID)
     {
         return view('Menu.ProgramPemerintahPusat.index',[
+            'tahunSinggle' => Tahun::findOrFail($tahunID),
+            'tahuns' => Tahun::all(),
+            'programs' => Program::all(),
             'program_pemerintah_pusats' => ProgramPemerintahPusat::all()
         ]);
     }
@@ -49,7 +57,7 @@ class ProgramPemerintahPusatController extends Controller
 
         ProgramPemerintahPusat::create($validatedData);
 
-        return redirect('/menu/pusat')->with('success', ' Berhasil di <b>Tambahkan</b>');
+        return redirect('/menu/pusat/7')->with('success', ' Berhasil di <b>Tambahkan</b>');
     }
 
    
@@ -97,13 +105,13 @@ class ProgramPemerintahPusatController extends Controller
 
         ProgramPemerintahPusat::where('id', $pusat->id)->update($validatedData);
 
-        return redirect('/menu/pusat')->with('success', ' Berhasil di <b>Ubah</b>');
+        return redirect('/menu/pusat/7')->with('success', ' Berhasil di <b>Ubah</b>');
     }
 
     
     public function destroy(ProgramPemerintahPusat $pusat)
     {
         ProgramPemerintahPusat::destroy($pusat->id);
-        return redirect('/menu/pusat')->with('success', ' Berhasil di <b>Hapus</b>');
+        return redirect('/menu/pusat/7')->with('success', ' Berhasil di <b>Hapus</b>');
     }
 }

@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('tahun_id')->constrained('tahuns')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('tujuan_id')->constrained('tujuans')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('indikator_id')->constrained('indikators')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('program_id')->constrained('indikators')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('kegiatan_id')->constrained('kegiatans')->onUpdate('cascade')->onDelete('cascade');
             $table->string('kode_rincianoutput')->unique()->nullable();
             $table->string('name_rincianoutput')->nullable();
@@ -28,6 +31,7 @@ return new class extends Migration
             $table->string('realisasi_anggaran_sem_1')->nullable();
             $table->string('realisasi_anggaran_sem_2')->nullable();
             $table->string('lokasi_pelaksanaan_kegiatan')->nullable();
+            $table->string('instansi_pelaksana')->nullable();
             $table->timestamps();
         });
     }

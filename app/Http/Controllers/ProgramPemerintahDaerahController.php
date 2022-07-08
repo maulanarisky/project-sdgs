@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Form2bExport;
 use App\Models\Indikator;
 use App\Models\Kegiatan;
 use App\Models\ProgramPemerintahDaerah;
@@ -9,11 +10,14 @@ use App\Models\Tahun;
 use App\Models\Tujuan;
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class ProgramPemerintahDaerahController extends Controller
 {
-    
+    public function form2bExport($tahunID){
+        return Excel::download(new Form2bExport($tahunID), 'form 2b.xlsx');
+    }
     public function index($tahunID)
     {
          return view('Menu.ProgramPemerintahDaerah.index',[

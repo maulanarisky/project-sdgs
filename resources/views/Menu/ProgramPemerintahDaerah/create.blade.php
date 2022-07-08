@@ -118,7 +118,7 @@
                 <label for="tahun_id">Pilih Tahun</label>
                 <select class="form-control" name="tahun_id" id="tahun_id">
                   @foreach ($tahuns as $tahun)
-                    <option value="{{ $tahun->id }}">{{ $tahun->tahun }}</option>
+                    <option value="{{ $tahun->id }}">{{ $tahun->name }}</option>
                   @endforeach
                 </select>
               </div>

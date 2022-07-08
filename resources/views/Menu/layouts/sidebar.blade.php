@@ -31,6 +31,17 @@
             @endforeach
         </li>
 
+          <li class="nav-item  {{ Request::is('menu/pusat*') ? 'active' : '' }}">
+            @foreach ($tahuns as $tahun)
+                    @if (now()->year == $tahun->name)
+                        <a class="nav-link" href="/menu/pusat/{{ $tahun->id }}">
+                            <i class="fas fa-fw fa-th-large"></i>
+                            <span>Form 2A</span>
+                        </a>
+                    @endif
+            @endforeach
+        </li>
+
         <li class="nav-item  {{ Request::is('menu/pemda*') ? 'active' : '' }}">
             @foreach ($tahuns as $tahun)
                     @if (now()->year == $tahun->name)
@@ -204,26 +215,31 @@
                 <span>FORM 2A</span></a>
         </li>
 
-        <hr class="mt-2 sidebar-divider d-none d-md-block">
+        <hr class="sidebar-divider d-none d-md-block">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted">
+            <span>Rencana Tindak Lanjut/span>
+        </h6>
 
-         {{-- nav item - Rencana Tindak Lanjut --}}
-         <li class="nav-item {{ Request::is('menu/rtl*') ? 'active' : '' }}">
+        {{-- nav item - Rencana Tindak Lanjut --}}
+        <li class="nav-item {{ Request::is('menu/rtl*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/rtl">
                 <i class="fas fa-fw fa-th-large"></i>
-                <span>Rencana Tindak Lanjut</span>
+                <span>FORM 5</span>
             </a>
         </li>
 
-        <hr class="mt-2 sidebar-divider d-none d-md-block">
+        <hr class="sidebar-divider d-none d-md-block">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted">
+            <span>Pelaporan Pembelajaran</span>
+        </h6>
 
         <!-- Nav Item - pelaporan pembelajaran -->
         <li class="nav-item {{ Request::is('menu/pp*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/pp">
                 <i class="fas fa-fw fa-book"></i>
-                <span>Pelaporan Pembelajaran</span>
+                <span>FORM 6</span>
             </a>
         </li>
-
 
     @endcan
 

@@ -23,9 +23,9 @@
                 <select class="form-control" name="tahun_id" id="tahun_id">
                     @foreach ($tahuns as $tahun)
                       @if(old('tahun_id', $pemda->tahun_id) == $tahun->id)    
-                          <option value="{{ $tahun->id }}" selected>{{ $tahun->tahun }}</option>  
+                          <option value="{{ $tahun->id }}" selected>{{ $tahun->name }}</option>  
                       @else
-                          <option value="{{$tahun->id }}">{{ $tahun->tahun }}</option>  
+                          <option value="{{$tahun->id }}">{{ $tahun->name }}</option>  
                       @endif
                     @endforeach
                 </select>
