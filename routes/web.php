@@ -67,6 +67,8 @@ Route::get('/menu/capaian/{tahunID}', [CapaianController::class, 'index']);
 
 Route::resource('/menu/pemda', ProgramPemerintahDaerahController::class)->except(['show', 'index']);
 Route::get('/menu/pemda/{tahunID}', [ProgramPemerintahDaerahController::class, 'index']);
+Route::resource('/menu/pusat', ProgramPemerintahPusatController::class)->except(['show', 'index']);
+Route::get('/menu/pusat/{tahunID}', [ProgramPemerintahPusatController::class, 'index']);
 
 Route::resource('/menu/pusat', ProgramPemerintahPusatController::class)->except(['show']);
 Route::get('/menu/pusat/{tahunID}', [ProgramPemerintahPusatController::class, 'index']);

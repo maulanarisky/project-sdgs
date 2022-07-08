@@ -24,6 +24,7 @@ class ProgramPemerintahPusatController extends Controller
             'tahunSinggle' => Tahun::findOrFail($tahunID),
             'tahuns' => Tahun::all(),
             'programs' => Program::all(),
+
             'program_pemerintah_pusats' => ProgramPemerintahPusat::all()
         ]);
     }

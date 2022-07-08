@@ -210,7 +210,7 @@
 
         <!-- Nav Item - Rincian Output -->
         <li class="nav-item {{ Request::is('menu/pusat*') ? 'active' : '' }}">
-            <a class="nav-link" href="/menu/pusat">
+            <a class="nav-link" href="/menu/pusat/7">
                 <i class="fas fa-fw fa-th-large"></i>
                 <span>FORM 2A</span></a>
         </li>

@@ -1,7 +1,7 @@
        <table class="table table-bordered" id="dataTable"  width="100%" cellspacing="0">
                     <thead>
                       <tr class="text-center">
-                        <th rowspan="2" style="vertical-align: middle"> Tahun </th>
+                        <th rowspan="2" style="vertical-align: middle">  Tahun </th>
                         <th rowspan="2" style="vertical-align: middle"> Tujuan </th>
                         <th rowspan="2" style="vertical-align: middle">Kode Indikator</th>
                         <th rowspan="2" style="vertical-align: middle"> Kode Program</th>
@@ -29,14 +29,13 @@
                     </thead>
                     <tbody id="myTable">
                        @foreach ($program_pemerintah_pusats as $pusat)
-                         @if ($pusat->user->id == Auth::user()->id && $pusat->tahun_id ==  $tahunSinggle->id ) 
-                         {{-- && $pusat->tahun_id ==  $tahunSinggle->id --}}
+                         @if ($pusat->user->id == Auth::user()->id  && $pusat->tahun_id ==  $tahunSinggle->id)
                         <tr>                       
-                          <td>{{ $pusat->tahun->name }}</td>
+                          <td>{{ $pusat->tahun->tahun }}</td>
                           <td>{{ $pusat->tujuan->name }}</td>
                           <td>{{ $pusat->indikator->kode_indikator }}</td>
-                          <td>{{ $pusat->program->id }}</td>
-                          <td>{{ $pusat->kegiatan->id }}</td>
+                          <td>{{ $pusat->program->kode_program }}</td>
+                          <td>{{ $pusat->kegiatan->kode_kegiatan }}</td>
                           <td>{{ $pusat->kegiatan->name_kegiatan }}</td>
                           <td>{{ $pusat->kode_rincianoutput }}</td>
                           <td>{{ $pusat->name_rincianoutput }}</td>
@@ -60,9 +59,9 @@
                             </form>
                           </td>
                         </tr>
-                           @elseif(Auth::user()->role_id == 1 && $pemda->tahun_id ==  $tahunSinggle->id)
+                           @elseif(Auth::user()->role_id == 1 && $pusat->tahun_id ==  $tahunSinggle->id)
                              <tr>                       
-                          <td>{{ $pusat->tahun->name }}</td>
+                          <td>{{ $pusat->tahun->tahun }}</td>
                           <td>{{ $pusat->tujuan->name }}</td>
                           <td>{{ $pusat->indikator->kode_indikator }}</td>
                           <td>{{ $pusat->program->kode_program }}</td>
