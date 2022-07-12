@@ -17,18 +17,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('tahun_id')->constrained('tahuns')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('kegiatan_id')->constrained('kegiatans')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('kode_subkegiatan')->unique()->nullable();
-            $table->string('name_subkegiatan')->nullable();
-            $table->string('satuan')->nullable();
+            $table->foreignId('sub_kegiatan_id')->constrained('sub_kegiatans')->onUpdate('cascade')->onDelete('cascade');
             $table->string('target_tahun')->nullable();
             $table->string('realisasi_target_sem_1')->nullable();
             $table->string('realisasi_target_sem_2')->nullable();
             $table->string('alokasi_anggaran')->nullable();
             $table->string('realisasi_anggaran_sem_1')->nullable();
             $table->string('realisasi_anggaran_sem_2')->nullable();
-            $table->string('sumber_pendanaan')->nullable();
             $table->string('lokasi_pelaksanaan_kegiatan')->nullable();
+            $table->string('sumber_pendanaan')->nullable();
             $table->timestamps();
         });
     }

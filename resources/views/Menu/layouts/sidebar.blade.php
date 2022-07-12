@@ -115,6 +115,12 @@
                 <i class="fas fa-fw fa-th-large"></i>
                 <span>Indikator</span></a>
         </li>
+        <!-- Nav Item - Indikator Provinsi -->
+        <li class="nav-item {{ Request::is('menu/subkegiatan*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/subkegiatan">
+                <i class="fas fa-fw fa-th-large"></i>
+                <span>Indikator Provinsi</span></a>
+        </li>
     @endcan
 
 
@@ -140,17 +146,17 @@
         </h6>
 
         <!-- Nav Item - Program -->
-        <li class="nav-item {{ Request::is('menu/program*') ? 'active' : '' }}">
+        {{-- <li class="nav-item {{ Request::is('menu/program*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/program">
                 <i class="fas fa-fw fa-th-large"></i>
                 <span>Program</span></a>
-        </li>
+        </li> --}}
        <!-- Nav Item - Kegiatan -->
-        <li class="nav-item {{ Request::is('menu/kegiatan*') ? 'active' : '' }}">
+        {{-- <li class="nav-item {{ Request::is('menu/kegiatan*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/kegiatan">
                 <i class="fas fa-fw fa-th-large"></i>
                 <span>Kegiatan</span></a>
-        </li>
+        </li> --}}
         <!-- Nav Item - Sub Kegiatan -->
         <li class="nav-item  {{ Request::is('menu/pemda*') ? 'active' : '' }}">
             @foreach ($tahuns as $tahun)

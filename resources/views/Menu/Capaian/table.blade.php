@@ -54,13 +54,13 @@
 
                         <td align="center">
                             <a href="/menu/capaian/{{ $capaian->id }}/edit" class="btn btn-warning mb-2"><i class="fas fa-fw fa-pen-square"></i></a>
-                            <form action="/menu/capaian/{{ $capaian->id }}" method="post" class="d-inline">
+                            {{-- <form action="/menu/capaian/{{ $capaian->id }}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin menghapur indikator : {{ $capaian->name }} ?')">
                                     <i class="fas fa-fw fa-trash"></i>
                                 </button>
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
 

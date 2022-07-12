@@ -15,29 +15,16 @@ class ProgramPemerintahDaerah extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+     public function SubKegiatan()
+    {
+        
+        return $this->belongsTo(SubKegiatan::class, 'sub_kegiatan_id');
+    }
 
     public function Tahun()
     {
         return $this->belongsTo(Tahun::class, 'tahun_id');
     }
 
-    public function Tujuan()
-    {
-        return $this->belongsTo(Tujuan::class, 'tujuan_id');
-    }
-
-    public function Indikator()
-    {
-        return $this->belongsTo(Indikator::class, 'indikator_id');
-    }
-
-    public function Program()
-    {
-        return $this->belongsTo(Program::class, 'program_id');
-    }
-
-    public function Kegiatan()
-    {
-        return $this->belongsTo(Kegiatan::class, 'kegiatan_id');
-    }
+ 
 }

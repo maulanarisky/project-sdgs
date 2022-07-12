@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tahun extends Model
 {
     use HasFactory;
+    
 
-    protected $guarded = ['id'];
+   protected $guarded = ['id'];
 }

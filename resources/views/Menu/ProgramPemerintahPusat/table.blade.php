@@ -54,7 +54,7 @@
                            <form action="/menu/pusat/{{ $pusat->id }}" method="post" class="d-inline">
                             @method('delete')
                             @csrf
-                            <button class="btn btn-danger p-2 mt-2" onclick="return confirm('Apakah Anda Yakin menghapus Program : {{ $pusat->name_rincianoutput }} ?')">
+                            <button class="btn btn-danger p-2 mt-2" onclick="return confirm('Apakah Anda Yakin menghapus  : {{ $pusat->name_rincianoutput }} ?')">
                             <i class="fas fa-fw fa-trash"></i>
                             </button>
                             </form>
