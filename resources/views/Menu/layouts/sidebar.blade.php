@@ -47,7 +47,17 @@
                     @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/pemda/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-th-large"></i>
-                            <span>Form 2B</span>
+                            <span>Form 2B Provinsi</span>
+                        </a>
+                    @endif
+            @endforeach
+        </li>
+        <li class="nav-item  {{ Request::is('menu/pkabkota*') ? 'active' : '' }}">
+            @foreach ($tahuns as $tahun)
+                    @if (now()->year == $tahun->name)
+                        <a class="nav-link" href="/menu/pkabkota/{{ $tahun->id }}">
+                            <i class="fas fa-fw fa-th-large"></i>
+                            <span>Form 2B Kab/kota</span>
                         </a>
                     @endif
             @endforeach
@@ -85,6 +95,14 @@
             </a>
         </li>
 
+        <!-- Nav Item - Laporan Pencapaian TPB  -->
+        <li class="nav-item {{ Request::is('menu/lp*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/lp">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Laporan Pencapaian TPB </span>
+            </a>
+        </li>
+
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
             <span>Meta Data</span>
         </h6>
@@ -119,11 +137,15 @@
         <li class="nav-item {{ Request::is('menu/subkegiatan*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/subkegiatan">
                 <i class="fas fa-fw fa-th-large"></i>
-                <span>Indikator Provinsi</span></a>
+                <span>Subkegitaan Provinsi</span></a>
+        </li>
+        <!-- Nav Item - Indikator Kabkota -->
+        <li class="nav-item {{ Request::is('menu/kabkota*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/kabkota">
+                <i class="fas fa-fw fa-th-large"></i>
+                <span>Subkegiatan Kab/Kota</span></a>
         </li>
     @endcan
-
-
 
     @can('skpd')
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
@@ -194,6 +216,67 @@
                 <span>FORM 6</span>
             </a>
         </li>
+
+         <!-- Nav Item - Laporan Pencapaian TPB  -->
+        <li class="nav-item {{ Request::is('menu/lp*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/lp">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Laporan Pencapaian TPB </span>
+            </a>
+        </li>
+    @endcan
+
+    @can('kabkota')
+        <hr class="sidebar-divider d-none d-md-block">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted">
+            <span>Formulir Realisasi Program</span>
+        </h6>
+
+        <!-- Nav Item - Sub Kegiatan -->
+        <li class="nav-item  {{ Request::is('menu/pkabkota*') ? 'active' : '' }}">
+            @foreach ($tahuns as $tahun)
+                    @if (now()->year == $tahun->name)
+                        <a class="nav-link" href="/menu/pkabkota/{{ $tahun->id }}">
+                            <i class="fas fa-fw fa-th-large"></i>
+                            <span>Form 2B Kab/Kota</span>
+                        </a>
+                    @endif
+            @endforeach
+        </li>
+
+        <hr class="sidebar-divider d-none d-md-block">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted">
+            <span>Rencana Tindak Lanjut/span>
+        </h6>
+
+        {{-- nav item - Rencana Tindak Lanjut --}}
+        <li class="nav-item {{ Request::is('menu/rtl*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/rtl">
+                <i class="fas fa-fw fa-th-large"></i>
+                <span>FORM 5</span>
+            </a>
+        </li>
+
+        <hr class="sidebar-divider d-none d-md-block">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted">
+            <span>Pelaporan Pembelajaran</span>
+        </h6>
+
+        <!-- Nav Item - pelaporan pembelajaran -->
+        <li class="nav-item {{ Request::is('menu/pp*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/pp">
+                <i class="fas fa-fw fa-book"></i>
+                <span>FORM 6</span>
+            </a>
+        </li>
+
+         <!-- Nav Item - Laporan Pencapaian TPB  -->
+        <li class="nav-item {{ Request::is('menu/lp*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/lp">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Laporan Pencapaian TPB </span>
+            </a>
+        </li>
     @endcan
 
     @can('pusat')
@@ -252,6 +335,14 @@
             </a>
         </li>
 
+         <!-- Nav Item - Laporan Pencapaian TPB  -->
+        <li class="nav-item {{ Request::is('menu/lp*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/lp">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Laporan Pencapaian TPB </span>
+            </a>
+        </li>
+
     @endcan
 
     @can('mitraswasta')
@@ -294,6 +385,13 @@
                 <span>FORM 6</span>
             </a>
         </li>
+         <!-- Nav Item - Laporan Pencapaian TPB  -->
+        <li class="nav-item {{ Request::is('menu/lp*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/lp">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Laporan Pencapaian TPB </span>
+            </a>
+        </li>
     @endcan
 
     @can('umkm')
@@ -330,6 +428,13 @@
             <a class="nav-link" href="/menu/pp">
                 <i class="fas fa-fw fa-book"></i>
                 <span>Form 6</span>
+            </a>
+        </li>
+         <!-- Nav Item - Laporan Pencapaian TPB  -->
+        <li class="nav-item {{ Request::is('menu/lp*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/lp">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Laporan Pencapaian TPB </span>
             </a>
         </li>
     @endcan

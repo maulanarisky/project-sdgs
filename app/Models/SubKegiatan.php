@@ -18,6 +18,10 @@ class SubKegiatan extends Model
     {
         return $this->hasMany(ProgramPemerintahDaerah::class);
     }
+     public function Indikator()
+    {
+        return $this->belongsTo(Indikator::class, 'indikator_id');
+    }
     public function available_ProgramPemerintahDaerah() {
         return $this->ProgramPemerintahDaerah()->where('available','=', 1);
     }

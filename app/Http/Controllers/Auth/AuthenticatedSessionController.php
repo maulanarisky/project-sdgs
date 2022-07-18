@@ -50,6 +50,9 @@ class AuthenticatedSessionController extends Controller
         } elseif (Auth::user()->role_id == 5 & Auth::user()->status=="active") {
 
             return redirect('/menu/umkm');
+        }elseif (Auth::user()->role_id == 6 & Auth::user()->status=="active") {
+
+            return redirect('/menu/pkabkota/7');
         }else{
 
             $request->session()->invalidate();

@@ -30,6 +30,7 @@ class PelaporanPembelajaranController extends Controller
         $validatedData = $request->validate([
             'user_id' => 'required',
             'name_file' => 'required|string',
+            'deskripsi' => 'required|string',
             'file' => 'required|mimes:doc,docx,csv,txt,xlx,xls,pdf|max:2048',
            
         ]);
@@ -65,6 +66,7 @@ class PelaporanPembelajaranController extends Controller
         $rules = [
             'user_id' => 'required',
             'name_file' => 'required|string',
+            'deskripsi' => 'required|string',
             'file' => 'required|mimes:doc,docx,csv,txt,xlx,xls,pdf|max:2048',
         ];
         

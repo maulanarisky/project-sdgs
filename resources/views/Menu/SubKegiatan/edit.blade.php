@@ -45,9 +45,25 @@
                                 <input name="kode_sub_kegiatan" id="kode_sub_kegiatan" value="{{ $subkegiatan->kode_sub_kegiatan }}" type="hidden" class="@error('kode_sub_kegiatan') is-invalid @enderror form-control" aria-describedby="kode_sub_subkegiatan"/>
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="indikator">Indikator</label>
-                                        <input name="indikator" id="indikator" value="{{ $subkegiatan->indikator }}" type="text" class="@error('indikator') is-invalid @enderror form-control" aria-describedby="indikator"/>
+                                        <label for="indikator">Indikator Sub Kegiatan</label>
+                                        <input name="indikator_sub" id="indikator" value="{{ $subkegiatan->indikator_sub }}" type="text" class="@error('indikator') is-invalid @enderror form-control" aria-describedby="indikator"/>
                                         <x-validation-message name="indikator" />
+                                    </div>
+                                </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="indikator_id">Indikator TPB</label>
+                                        <select class="@error('indikator_id') is-invalid @enderror form-control" name="indikator_id" id="indikator_id" required>
+                                             <option value=""> pilih Indikator TPB</option> 
+                                            @foreach ($indikators as $indikator)
+                                                    @if (old('indikator_id', $subkegiatan->indikator_id == $indikator->id))
+                                                        <option value="{{ $indikator->id }}" selected>{{ $indikator->kode_indikator }}. {{ $indikator->deskripsi }}</option> 
+                                                    @else
+                                                        <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }}.{{ $indikator->deskripsi }}</option>   
+                                                    @endif
+                                            @endforeach
+                                        </select>
+                                        <x-validation-message name="indikator_id" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -62,8 +78,9 @@
                                     <div class="form-group">
                                         <label for="user_id">Pilih Sumber Data</label>
                                         <select class="@error('user_id') is-invalid @enderror form-control" name="user_id" id="user_id" required>
+                                             <option value=""> Pilih Sumber Data</option> 
                                             @foreach ($users as $user)
-                                                @if ($user->role_id == 2 )
+                                                @if ($user->role_id == 2 || $user->role_id == 3)
                                                     @if (old('user_id', $subkegiatan->user_id == $user->id))
                                                         <option value="{{ $user->id }}" selected> {{ $user->name }}</option> 
                                                     @else

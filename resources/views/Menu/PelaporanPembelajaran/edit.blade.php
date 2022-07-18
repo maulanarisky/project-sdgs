@@ -14,28 +14,27 @@
                             @method('put')
                             @csrf
                             <div class="row">
+                                 <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
+                                <label for="deskripsi">Deskripsi File</label>
+                                <input type="text" name="deskripsi"class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" autofocus placeholder=" ex: Deskripsi File {{ Auth::user()->name }}" value="{{ $pp->deskripsi }}"/>
+                                <x-validation-message name="deskripsi" />
+                            </div>
+                        </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                                         <label for="name_file">Nama File</label>
                                         <input type="text" name="name_file"class="form-control @error('name_file') is-invalid @enderror" id="name_file" aria-describedby="name_file" value="{{ $pp->name_file }}"/>
-                                        @error('name_file')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
+                                        <x-validation-message name="nama_file" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                            <input type="hidden" name="oldFile" value="{{ $pp->file }}">
+                                            {{-- <input type="hidden" name="oldFile" value="{{ $pp->file }}"> --}}
                                             <label for="file">File</label>
                                             <input type="file" name="file" id="file"value="{{asset('storage/' . $pp->file) }}" class="form-control @error('file') is-invalid @enderror"  aria-describedby=""/>
-                                            @error('file')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
+                                            <x-validation-message name="file" />
                                     </div>
                                 </div>
                              </div>
@@ -53,19 +52,4 @@
             </div>
         </div>
     </div>
-    <script>
-        function previewFile(){
-            const file = document.querySelector('#file');
-            const filePreview = document.querySelector('.file-preview');
-
-            filePreview.style.display = 'block';
-
-            const oFReader = new FileReader();
-            oFReader.readAsDataURL(file.files[0]);
-
-            oFReader.onload = function(oFREvent){
-                filePreview.src = oFREvent.target.result;
-            }
-        }
-    </script>
 @endsection

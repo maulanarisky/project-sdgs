@@ -2,7 +2,7 @@
     <thead>
         <tr align="center" valign="middle">
             <td >Kode Tujuan</td>
-            <td >Kode Target</td>
+            <td >Target</td>
             <td >Kode Indikator</td>
             <td >Nama Indikator</td>
             <td>Sumber Data</td>
@@ -23,7 +23,7 @@
                 @if ($capaian->user->id == Auth::user()->id)
                     <tr align="center" >
                         <td>{{ $capaian->indikator->target->tujuan->kode_tujuan }}</td>
-                        <td>{{ $capaian->indikator->target->kode_target }}</td>
+                        <td>{{ $capaian->indikator->target->kode_target }}.{{ $capaian->indikator->target->deskripsi }}</td>
                         <td>{{ $capaian->indikator->kode_indikator}}</td>
                         <td align="left">{{ $capaian->indikator->deskripsi }}</td>
                         <td>{{ $capaian->user->name }}</td>
@@ -68,7 +68,7 @@
                 @elseif (Auth::user()->role_id == 1 )
                     <tr align="center" >
                         <td>{{ $capaian->indikator->target->tujuan->kode_tujuan }}</td>
-                        <td>{{ $capaian->indikator->target->kode_target }}</td>
+                        <td>{{ $capaian->indikator->target->kode_target }}.{{ $capaian->indikator->target->deskripsi }}</td>
                         <td>{{ $capaian->indikator->kode_indikator}}</td>
                         <td align="left">{{ $capaian->indikator->deskripsi }}</td>
                         <td>{{ $capaian->user->name }}</td>
@@ -78,7 +78,7 @@
                         <td>{{ $capaian->target_awal }}</td>
                         <td>{{ $capaian->capaian }}</td>
                         
-                          @if ($capaian->status == 'tercapai')
+                        @if ($capaian->status == 'tercapai')
                             <td valign="middle"><span class="badge badge-pill badge-success">Tercapai</span></td> 
                         @elseif($capaian->status == 'akan_tercapai')
                             <td valign="middle"><span class="badge badge-pill badge-warning">Akan Tercapai</span></i></td>

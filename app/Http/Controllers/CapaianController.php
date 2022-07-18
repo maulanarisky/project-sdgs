@@ -77,13 +77,14 @@ class CapaianController extends Controller
 
         Capaian::where('id', $capaian->id)->update($validatedDataCapaian);
 
-        return Redirect::back()->with('success', ' Berhasil di <b>Ubah</b>');
+        // return Redirect::back()->with('success', ' Berhasil di <b>Ubah</b>');
+        return redirect('/menu/capaian/7')->with('success', ' Berhasil di <b>Ubah</b>');
     }
 
     public function destroy(Capaian $capaian)
     {
         Capaian::destroy($capaian->id);
-        return redirect('/menu/capaian/7');
+        return redirect('/menu/capaian/7')->with('success', ' Berhasil di <b>Hapus</b>');
     }
 
     public function getTargets($id)

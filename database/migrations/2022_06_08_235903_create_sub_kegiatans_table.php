@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('sub_kegiatans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('indikator_id')->nullable()->constrained('indikators')->onUpdate('cascade')->onDelete('cascade');
             $table->string('program');
             $table->string('kegiatan');
             $table->string('kode_sub_kegiatan');
             $table->string('name_sub_kegiatan');
-            $table->string('indikator');
+            $table->string('indikator_sub');
             $table->string('satuan');
             $table->timestamps();
         });

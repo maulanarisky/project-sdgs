@@ -13,16 +13,18 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\KegiatanController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndikatorController;
+use App\Http\Controllers\KabkotaController;
 use App\Http\Controllers\SubKegiatanController;
-use App\Http\Controllers\TentukanSkpdController;
+use App\Http\Controllers\LaporanPencapaianController;
 use App\Http\Controllers\ProgramMitraSwastaController;
 use App\Http\Controllers\ProgramPelakuUsahaController;
 use App\Http\Controllers\RencanaTindakLanjutController;
 use App\Http\Controllers\PelaporanPembelajaranController;
+use App\Http\Controllers\ProgramKabKotaController;
 use App\Http\Controllers\ProgramPemerintahPusatController;
 use App\Http\Controllers\ProgramPemerintahDaerahController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +56,7 @@ use App\Http\Controllers\ProgramPemerintahDaerahController;
 Route::get('/form1-export/{tahunID}', [CapaianController::class, 'form1Export']);
 Route::get('/form2a-export/{tahunID}', [ProgramPemerintahPusatController::class, 'form2aExport']);
 Route::get('/form2b-export/{tahunID}', [ProgramPemerintahDaerahController::class, 'form2bExport']);
+Route::get('/form2bkabkota-export/{tahunID}', [ProgramKabKotaController::class, 'form2bkabkotaExport']);
 Route::get('/form3-export/{tahunID}', [ProgramMitraSwastaController::class, 'form3Export']);
 Route::get('/form3-export/{tahunID}', [ProgramMitraSwastaController::class, 'form3Export']);
 Route::get('/form4-export', [ProgramPelakuUsahaController::class, 'form4Export']);
@@ -68,6 +71,9 @@ Route::get('/menu/capaian/{tahunID}', [CapaianController::class, 'index']);
 
 Route::resource('/menu/pemda', ProgramPemerintahDaerahController::class)->except(['show', 'index','store','create']);
 Route::get('/menu/pemda/{tahunID}', [ProgramPemerintahDaerahController::class, 'index']);
+
+Route::resource('/menu/pkabkota', ProgramKabKotaController::class)->except(['show', 'index','store','create']);
+Route::get('/menu/pkabkota/{tahunID}', [ProgramKabKotaController::class, 'index']);
 
 Route::resource('/menu/pusat', ProgramPemerintahPusatController::class)->except(['show', 'index']);
 Route::get('/menu/pusat/{tahunID}', [ProgramPemerintahPusatController::class, 'index']);
@@ -91,35 +97,24 @@ Route::middleware(['superadmin'])->group(function (){
     Route::resource('/menu/indikator', IndikatorController::class)->except(['show']);
 
     Route::resource('/menu/subkegiatan', SubKegiatanController::class)->except(['show']);
+
+    Route::resource('/menu/kabkota', KabkotaController::class)->except(['show']);
     
     Route::resource('menu/user', UserController ::class);
    
 });
 
 
-// Route::middleware(['skpd'])->group(function (){
 
-    
-
-// });
-
-// Route::middleware(['pusat'])->group(function (){
-
-//     Route::resource('/menu/pusat', ProgramPemerintahPusatController::class)->except(['show']);
-
-// });
 
 Route::resource('/menu/mitraswasta', ProgramMitraSwastaController::class)->except(['show', 'index']);
 
 Route::resource('/menu/rtl', RencanaTindakLanjutController  ::class);
 Route::resource('/menu/pp', PelaporanPembelajaranController::class);
-// Route::resource('/menu/skpd', TentukanSkpdController::class)->except(['show']);
-
-
+Route::resource('/menu/lp', LaporanPencapaianController::class);
 
 Route::get('/getTarget/{id}', [CapaianController::class, 'getTargets']);
 Route::get('/getIndikator/{id}', [CapaianController::class, 'getIndikators']);
-
 
 
 Route::resource('/menu/program', ProgramController::class)->except(['show']);

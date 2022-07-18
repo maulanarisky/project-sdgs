@@ -40,6 +40,9 @@ class DatabaseSeeder extends Seeder
         Role::create([
             'name' => 'Pelaku Usaha',
         ]);
+        Role::create([
+            'name' => 'KabKota',
+        ]);
 
         //table User
         User::create([

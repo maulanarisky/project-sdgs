@@ -24,7 +24,6 @@ class ProgramPemerintahPusatController extends Controller
             'tahunSinggle' => Tahun::findOrFail($tahunID),
             'tahuns' => Tahun::all(),
             'programs' => Program::all(),
-
             'program_pemerintah_pusats' => ProgramPemerintahPusat::all()
         ]);
     }
@@ -52,7 +51,7 @@ class ProgramPemerintahPusatController extends Controller
             'indikator_id' => 'required|string',
             'program_id' => 'required|string',
             'kegiatan_id'=> 'required|string',
-            'kode_rincianoutput' => 'required|string',
+            'kode_rincianoutput' => 'required|string|unique',
             'name_rincianoutput' => 'required|string'
         ]);
 
@@ -91,7 +90,7 @@ class ProgramPemerintahPusatController extends Controller
             'indikator_id' => 'required|string',
             'program_id' => 'required|string',
             'kegiatan_id'=> 'required|string',
-            'kode_rincianoutput' => 'required|string',
+            'kode_rincianoutput' => 'required|string|unique',
             'name_rincianoutput' => 'required|string',
             'satuan' => 'required|string',
             'target_tahun' => 'required|string',

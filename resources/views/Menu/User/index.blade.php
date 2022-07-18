@@ -10,6 +10,7 @@
       <div class="card-header py-3">
         <a href="/menu/user/create" class="btn btn-success">Tambah Data</a>
       </div>
+
       <div class="card-body">
         
         <x-auth-session-status class="mb-4" :status="session('status')" />

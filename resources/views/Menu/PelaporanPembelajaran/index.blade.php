@@ -21,9 +21,13 @@
                             <tr align="center">
                                 <th>No</th>
                                 <th>Nama File</th>
+                                <th>Deskripsi File</th>
                                 <th>File</th>
+                                @if (Auth::user()->role_id != 1)
                                 <th>Aksi</th>
-                            </tr>
+                                @elseif (Auth::user()->role_id == 1)
+                                <th>Sumber Data</th>
+                                @endif
                         </thead>
                         <tbody>
                             @foreach ($pelaporan_pembelajarans as $pp)
@@ -31,8 +35,8 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $pp->name_file }}</td>
+                                        <td>{{ $pp->deskripsi }}</td>
                                         <td align="center" style="width: 8rem;"> <a href="/menu/pp/{{ $pp->id }}" class="btn btn-info"><i class="fas fa-fw fa-download"></i></a></td>
-                                        
                                         <td align="center" style="width: 8rem;">
                                             <a href="/menu/pp/{{ $pp->id }}/edit" class="btn btn-warning">
                                                 <i class="fas fa-fw fa-pen-square"></i>
@@ -48,6 +52,7 @@
                                     <tr>
                                         <td align="center">{{ $loop->iteration }}</td>
                                         <td>{{ $pp->name_file }}</td>
+                                        <td>{{ $pp->deskripsi }}</td>
                                         <td align="center" style="width: 8rem;"> 
                                             <a href="/menu/pp/{{ $pp->id }}" class="btn btn-info">
                                                 <i class="fas fa-fw fa-download"></i>
@@ -65,7 +70,7 @@
 
     </div>
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
 
     <script>
         ClassicEditor
@@ -76,6 +81,6 @@
                 .catch( error => {
                         console.error( error );
                 } );
-    </script>
+    </script> --}}
 
 @endsection

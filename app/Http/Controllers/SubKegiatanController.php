@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Indikator;
 use App\Models\ProgramPemerintahDaerah;
 use App\Models\SubKegiatan;
 use App\Models\Tahun;
@@ -40,48 +41,64 @@ class SubKegiatanController extends Controller
     {
         return view('menu.subkegiatan.edit', [
             'subkegiatan' => SubKegiatan::where('id','=', $subkegiatan->id)->first(),
+            'indikators' => Indikator::all(),
             'users' => User::all()
         ]);
     }
 
     public function update(Request $request, SubKegiatan $subkegiatan)
-    {
-        $rules = $request->validate([
-            'program' => 'required',
-            'kegiatan' => 'required',
-            'kode_sub_kegiatan' => 'required',
-            'name_sub_kegiatan' => 'required',
-            'indikator' => 'required',
-            'satuan' => 'required',
-            'user_id' => 'required'
-        ]);
-        
-        SubKegiatan::where('id', $subkegiatan->id)->update($rules);
-
-        //masih gagal
-        $cekSubKegitan = ProgramPemerintahDaerah::where([
-            ['sub_kegiatan_id', '=', $subkegiatan->id]
-        ])->first();
-        
-        if ($cekSubKegitan) {
-            $rulesSubKegiatan = $request->validate([
-                'sub_kegiatan_id' => 'required',
+    {   
+    //         $rules = $request->validate([
+    //         'program' => 'required',
+    //         'kegiatan' => 'required',
+    //         'kode_sub_kegiatan' => 'required',
+    //         'name_sub_kegiatan' => 'required',
+    //         'indikator_sub' => 'required',
+    //         'satuan' => 'required',
+    //         'user_id' => '',
+    //         'indikator_id' => 'required'
+    //    ]);
+    //    SubKegiatan::where('id', $subkegiatan->id)->update($rules);
+      
+            $rules = $request->validate([
+                'program' => 'required',
+                'kegiatan' => 'required',
+                'name_sub_kegiatan' => 'required',
+                'kode_sub_kegiatan' => 'required',
+                'indikator_sub' => 'required',
+                'satuan' => 'required',
                 'user_id' => 'required',
+                'indikator_id' => 'required'
             ]);
-            // dd($cekSubKegitan);
-            ProgramPemerintahDaerah::where('sub_kegiatan_id', $subkegiatan->id)->update($rulesSubKegiatan);   
-        } else {
-            $tahuns = Tahun::all();
-            foreach($tahuns as $tahun){
-                $validatedsubkegiatan = $request->validate([
+            
+            SubKegiatan::where('id', $subkegiatan->id)->update($rules);
+    
+           
+           $cekSubKegitan = ProgramPemerintahDaerah::where([
+           ['sub_kegiatan_id', '=', $subkegiatan->id, 'AND', 'user_id', '=', $subkegiatan->user_id != 1]
+           ])->first();
+            
+            
+            if ($cekSubKegitan) {
+                $rulesSubKegiatan = $request->validate([
                     'sub_kegiatan_id' => 'required',
                     'user_id' => 'required',
                 ]);
-
-                $validatedsubkegiatan['tahun_id'] = $tahun->id;
-                ProgramPemerintahDaerah::create($validatedsubkegiatan);
-            }
-        } 
+               
+                ProgramPemerintahDaerah::where('sub_kegiatan_id', $subkegiatan->id)->update($rulesSubKegiatan);   
+            } else {
+                $tahuns = Tahun::all();
+                foreach($tahuns as $tahun){
+                    $validatedsubkegiatan = $request->validate([
+                        'sub_kegiatan_id' => 'required',
+                        'user_id' => 'required',
+                    ]);
+    
+                    $validatedsubkegiatan['tahun_id'] = $tahun->id;
+                    ProgramPemerintahDaerah::create($validatedsubkegiatan);
+                }
+            } 
+        
         return redirect('/menu/subkegiatan')->with('success', ' Berhasil di <b>Ubah</b>');
     }
 
