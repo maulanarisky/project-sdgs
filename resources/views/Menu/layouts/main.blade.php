@@ -15,7 +15,11 @@
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+     <style>
+      .garis {
+        border: 0;
+      }
+    </style>
 </head>
 {{-- @if (Auth::user()->status== "active") --}}
     

@@ -238,7 +238,7 @@
                     @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/pkabkota/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-th-large"></i>
-                            <span>Form 2B Kab/Kota</span>
+                            <span>Form 2B</span>
                         </a>
                     @endif
             @endforeach

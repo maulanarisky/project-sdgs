@@ -26,4 +26,8 @@ class Tujuan extends Model
     {
         return $this->hasMany(Indikator::class, 'indikator_id');
     }
+    public function PelaporanPembelajaran()
+    {
+        return $this->hasMany(PelaporanPembelajaran::class, 'tujuan_id');
+    }
 }

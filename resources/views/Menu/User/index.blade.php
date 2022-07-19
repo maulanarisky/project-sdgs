@@ -4,13 +4,11 @@
  <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Kelola Pengguna</h1>
-    
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
         <a href="/menu/user/create" class="btn btn-success">Tambah Data</a>
-      </div>
-
       <div class="card-body">
         
         <x-auth-session-status class="mb-4" :status="session('status')" />

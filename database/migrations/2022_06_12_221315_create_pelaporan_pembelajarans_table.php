@@ -15,9 +15,18 @@ return new class extends Migration
     {
         Schema::create('pelaporan_pembelajarans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('tujuan_id')->nullable()->constrained('tujuans')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('name_file');
-            $table->string('deskripsi');
+            $table->string('name_program');
+            $table->string('lokasi');
+            $table->date('waktu');
+            $table->string('latar_belakang');
+            $table->string('proses_pelaksanaan');
+            $table->string('Hasil');
+            $table->string('dampak');
+            $table->string('tantangan');
+            $table->string('pembelajaran');
+            $table->string('peluang_replikasi');
             $table->string('file');
             $table->timestamps();
         });

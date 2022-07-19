@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
         return view('menu.user.index', [
-            'users' => User::all()
+            'users' => User::Where('role_id', '!=', 1)->get()
         ]);
     }
 
