@@ -122,15 +122,14 @@
                       <x-validation-message name="lokasi_pelaksanaan_kegiatan" />
                     </div>
                   </div>
-
-                  <div class="row mt-4">
-                    <div class="col">
-                      <button type="submit"class="btn btn-success px-5" >
-                        Simpan
-                      </button>
+              </div>
+               <div class="row mt-2">
+                      <div class="col">
+                        <button type="submit" class="btn btn-success px-5">
+                          Simpan
+                        </button>
                     </div>
                   </div>
-              </div>
             </form>
           </div>
         </div>

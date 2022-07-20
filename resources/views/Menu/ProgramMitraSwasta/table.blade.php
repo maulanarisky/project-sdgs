@@ -25,8 +25,8 @@
       @foreach ($output_kegiatans as $output_kegiatan)
         @if ($output_kegiatan->user->id == Auth::user()->id && $output_kegiatan->tahun_id ==  $tahunSinggle->id)
           <tr align="center">
-            <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->indikator->kode_indikator}}</td>  
-            <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->name_program}}</td>  
+            <td style="vertical-align: middle">{{ $output_kegiatan->indikator->kode_indikator}}. {{ $output_kegiatan->indikator->deskripsi}}</td>  
+            <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->name_program}}.{{ $output_kegiatan->kegiatan->program->name_program}}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->name_kegiatan }}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->name_outputkegiatan }}</td> 
             <td style="vertical-align: middle">{{ $output_kegiatan->satuan }}</td>
@@ -53,8 +53,8 @@
           </tr>
         @elseif(Auth::user()->role_id == 1 && $output_kegiatan->tahun_id ==  $tahunSinggle->id)
           <tr align="center">
-            <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->indikator->kode_indikator}}</td>  
-            <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->name_program}}</td>  
+            <td style="vertical-align: middle">{{ $output_kegiatan->indikator->kode_indikator}}. {{ $output_kegiatan->indikator->deskripsi}}</td>  
+            <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->name_program}}.{{ $output_kegiatan->kegiatan->program->name_program}}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->name_kegiatan }}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->name_outputkegiatan }}</td> 
             <td style="vertical-align: middle">{{ $output_kegiatan->satuan }}</td>

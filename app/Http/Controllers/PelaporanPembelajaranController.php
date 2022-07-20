@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdatePelaporanPembelajaranRequest;
 use App\Models\Tujuan;
+use Barryvdh\DomPDF\PDF;
 
 class PelaporanPembelajaranController extends Controller
 {
@@ -123,7 +124,15 @@ class PelaporanPembelajaranController extends Controller
         return response()->download($pathToFile);
        
     }
-    
+    //  public function generatepdf($id)
+    // {
+    //     $data = PelaporanPembelajaran::findOrFail($id);
+            
+    //     $pdf = PDF::loadView('menu.PelaporanPembelajaran.show', $data);
+     
+    //     return $pdf->download('itsolutionstuff.pdf');
+       
+    // }
 
   
-}
+} 

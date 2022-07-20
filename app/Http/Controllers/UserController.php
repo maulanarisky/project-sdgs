@@ -12,7 +12,8 @@ class UserController extends Controller
     public function index()
     {
         return view('menu.user.index', [
-            'users' => User::Where('role_id', '!=', 1)->get()
+            'users' => User::Where('role_id', '!=', 1)->get(),
+            'user_1' => User::Where('role_id', '!=', 1)->get()
         ]);
     }
 
@@ -81,5 +82,30 @@ class UserController extends Controller
     {
         User::destroy($user->id);
         return redirect('/menu/user')->with('success', ' Berhasil di <b>Hapus</b>');
+    }
+
+    public function updateall($id)
+    {
+        $userupdate = User::Where('role_id', '!=', $id);
+       
+        
+        
+         $validateduser['status'] = "active";
+        
+        User::where('role_id', '!=', $id)->update($validateduser);
+        return redirect('/menu/user')->with('success', 'User Berhasil di <b>Aktifkan Semua</b>');
+
+    }
+     public function updateinactive($id)
+    {
+        $userupdate = User::Where('role_id', '!=', $id);
+       
+        
+        
+         $validateduser['status'] = "inactive";
+        
+        User::where('role_id', '!=', $id)->update($validateduser);
+        return redirect('/menu/user')->with('success', 'User Berhasil di <b>Non-aktifkan Semua</b>');
+
     }
 }

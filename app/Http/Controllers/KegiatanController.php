@@ -36,7 +36,7 @@ class KegiatanController extends Controller
 
 
         Kegiatan::create($validatedData);
-        return Redirect::back()->with('success', ' Kegiatan Berhasil di <b>Tambahkan</b>');
+        return redirect('/menu/kegiatan')->with('success', ' Kegiatan Berhasil di <b>Tambahkan</b>');
     }
 
     

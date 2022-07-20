@@ -31,7 +31,6 @@ return new class extends Migration
             $table->string('realisasi_anggaran_sem_1')->nullable();
             $table->string('realisasi_anggaran_sem_2')->nullable();
             $table->string('lokasi_pelaksanaan_kegiatan')->nullable();
-            $table->string('instansi_pelaksana')->nullable();
             $table->timestamps();
         });
     }

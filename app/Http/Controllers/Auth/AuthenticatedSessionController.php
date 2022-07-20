@@ -37,22 +37,24 @@ class AuthenticatedSessionController extends Controller
            
         } elseif (Auth::user()->role_id == 2 & Auth::user()->status=="active") {
 
-            return redirect('/menu/capaian/7');
+            return redirect()->intended(RouteServiceProvider::HOME);
 
         } elseif (Auth::user()->role_id == 3 & Auth::user()->status=="active") {
 
-            return redirect('/menu/pusat/7');
+            return redirect()->intended(RouteServiceProvider::HOME);
 
         } elseif (Auth::user()->role_id == 4 & Auth::user()->status=="active") {
 
-            return redirect('/menu/mitraswasta/7');
+            return redirect()->intended(RouteServiceProvider::HOME);
             
         } elseif (Auth::user()->role_id == 5 & Auth::user()->status=="active") {
 
-            return redirect('/menu/umkm');
+            return redirect()->intended(RouteServiceProvider::HOME);
+
         }elseif (Auth::user()->role_id == 6 & Auth::user()->status=="active") {
 
-            return redirect('/menu/pkabkota/7');
+            return redirect()->intended(RouteServiceProvider::HOME);
+
         }else{
 
             $request->session()->invalidate();
@@ -63,12 +65,7 @@ class AuthenticatedSessionController extends Controller
         
     }
 
-    /**
-     * Destroy an authenticated session.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+   
     public function destroy(Request $request)
     {
         Auth::guard('web')->logout();

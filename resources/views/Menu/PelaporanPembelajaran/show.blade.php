@@ -7,10 +7,8 @@
             <!-- view example -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                {{-- <a href="{{ route('download', $pp->id) }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm text-white">
-                 Download
-               </a> --}}
                 <a href="/menu/pp/download/{{$pp->id }}" class="btn btn-danger">Download File</a>
+                {{-- <a href="/menu/pp/pdf/{{$pp->id }}" class="btn btn-warning">Export PDF</a> --}}
               </div>
               <div class="card-body">
                 <div class="row">

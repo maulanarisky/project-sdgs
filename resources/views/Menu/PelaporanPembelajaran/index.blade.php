@@ -19,13 +19,12 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr align="center">
-                                <th>No</th>
-                                <th>Tujuan</th>
-                                <th>Program</th>
-                                
-                                <th>Aksi</th>
+                                <th width="5">No</th>
+                                <th width="30">Tujuan</th>
+                                <th width="40" >Program</th>
+                                <th width="10">Aksi</th>
                                 @if (Auth::user()->role_id == 1)
-                                <th>Sumber Data</th>
+                                <th width="15">Sumber Data</th>
                                 @endif
                         </thead>
                         <tbody>

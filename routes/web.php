@@ -9,6 +9,7 @@ use App\Http\Controllers\PilarController;
 use App\Http\Controllers\TargetController;
 use App\Http\Controllers\TujuanController;
 use App\Http\Controllers\CapaianController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SettingController;
@@ -36,11 +37,15 @@ use App\Http\Controllers\ProgramPemerintahDaerahController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Halaman Depan
 Route::get('/', [MainController::class, 'index']);
 Route::get('/tujuan/{tujuanId}/{tahunID}', [MainController::class, 'detail']);
 
+//Route Dashboard
+Route::resource('/menu/dashboard', DashboardController::class);
 
+
+//Route Setelah Login
 Route::resource('/menu/capaian', CapaianController::class)->except(['show', 'index','store','create']);
 Route::get('/menu/capaian/{tahunID}', [CapaianController::class, 'index']);
 
@@ -88,8 +93,12 @@ Route::middleware(['superadmin'])->group(function (){
    
 });
 
-// Route::get('/menu/pp/{id}/download', [PelaporanPembelajaranController::class, 'download']);
+
 Route::get('menu/pp/download/{id}', [PelaporanPembelajaranController::class, 'download'])->name('download');
+// Route::get('menu/pp/pdf/{id}', [PelaporanPembelajaranController::class, 'generatepdf'])->name('generatepdf');
+
+Route::get('menu/user/active/{id}', [UserController::class, 'updateall'])->name('updateall');
+Route::get('menu/user/inactive/{id}', [UserController::class, 'updateinactive'])->name('updateall');
 
 
 Route::resource('/menu/mitraswasta', ProgramMitraSwastaController::class)->except(['show', 'index']);

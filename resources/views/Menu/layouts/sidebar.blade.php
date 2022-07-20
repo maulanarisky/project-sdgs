@@ -10,6 +10,11 @@
 
     @can('superadmin')
 
+        <li class="nav-item {{ Request::is('menu/dashboard*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/dashboard">
+               <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
         <li class="nav-item {{ Request::is('menu/user*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/user">
                 <i class="fas fa-fw fa-user-friends"></i>
@@ -137,7 +142,7 @@
         <li class="nav-item {{ Request::is('menu/subkegiatan*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/subkegiatan">
                 <i class="fas fa-fw fa-th-large"></i>
-                <span>Subkegitaan Provinsi</span></a>
+                <span>Subkegitan Provinsi</span></a>
         </li>
         <!-- Nav Item - Indikator Kabkota -->
         <li class="nav-item {{ Request::is('menu/kabkota*') ? 'active' : '' }}">
@@ -148,6 +153,11 @@
     @endcan
 
     @can('skpd')
+        <li class="nav-item {{ Request::is('menu/dashboard*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/dashboard">
+               <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
             <span>Formulir Evaluasi</span>
         </h6>
@@ -227,6 +237,11 @@
     @endcan
 
     @can('kabkota')
+         <li class="nav-item {{ Request::is('menu/dashboard*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/dashboard">
+               <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
         <hr class="sidebar-divider d-none d-md-block">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted">
             <span>Formulir Realisasi Program</span>
@@ -280,7 +295,11 @@
     @endcan
 
     @can('pusat')
-
+        <li class="nav-item {{ Request::is('menu/dashboard*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/dashboard">
+               <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
             <span>Form 2</span>
         </h6>
@@ -346,10 +365,25 @@
     @endcan
 
     @can('mitraswasta')
-
+        <li class="nav-item {{ Request::is('menu/dashboard*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/dashboard">
+               <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
             <span>Self Assessments</span>
         </h6>
+         <li class="nav-item {{ Request::is('menu/program*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/program">
+                <i class="fas fa-fw fa-th-large"></i>
+                <span>Program</span></a>
+        </li>
+       <!-- Nav Item - Kegiatan -->
+        <li class="nav-item {{ Request::is('menu/kegiatan*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/kegiatan">
+                <i class="fas fa-fw fa-th-large"></i>
+                <span>Kegiatan</span></a>
+        </li>
         
         <li class="nav-item {{ Request::is('menu/mitraswasta*') ? 'active' : '' }}">
             @foreach ($tahuns as $tahun)
@@ -395,7 +429,11 @@
     @endcan
 
     @can('umkm')
-        
+        <li class="nav-item {{ Request::is('menu/dashboard*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/dashboard">
+               <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
             <span>Form 4</span>
         </h6>

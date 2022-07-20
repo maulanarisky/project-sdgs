@@ -51,7 +51,7 @@ class ProgramPemerintahPusatController extends Controller
             'indikator_id' => 'required|string',
             'program_id' => 'required|string',
             'kegiatan_id'=> 'required|string',
-            'kode_rincianoutput' => 'required|string|unique',
+            'kode_rincianoutput' => 'required|string',
             'name_rincianoutput' => 'required|string'
         ]);
 
@@ -90,7 +90,7 @@ class ProgramPemerintahPusatController extends Controller
             'indikator_id' => 'required|string',
             'program_id' => 'required|string',
             'kegiatan_id'=> 'required|string',
-            'kode_rincianoutput' => 'required|string|unique',
+            'kode_rincianoutput' => 'required|string',
             'name_rincianoutput' => 'required|string',
             'satuan' => 'required|string',
             'target_tahun' => 'required|string',

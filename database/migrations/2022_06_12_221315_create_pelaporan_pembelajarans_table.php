@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('waktu');
             $table->string('latar_belakang');
             $table->string('proses_pelaksanaan');
-            $table->string('Hasil');
+            $table->string('hasil');
             $table->string('dampak');
             $table->string('tantangan');
             $table->string('pembelajaran');

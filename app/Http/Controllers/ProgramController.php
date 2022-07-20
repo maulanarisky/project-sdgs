@@ -25,8 +25,7 @@ class ProgramController extends Controller
     public function create()
     {
          return view('menu.program.create',[
-            'programs' => Program::with('user')->get(),
-            'indikators' => Indikator::all()
+            'programs' => Program::with('user')->get()
         ]);
     }
 
@@ -35,12 +34,12 @@ class ProgramController extends Controller
     {
         $validatedData = $request->validate([
             'user_id' => 'required',
-            'indikator_id' => 'required',
+            'kode_program' => 'required',
             'name_program' => 'required|string'
         ]);
 
         Program::create($validatedData);
-        return Redirect::back()->with('success', ' <b>Program</b> Berhasil di <b>Tambahkan</b>');
+         return redirect('/menu/program')->with('success', ' <b>Program</b> Berhasil di <b>Tambahkan</b>');
 
         // return redirect()-->with('success', ' Progra m Berhasil di <b>Tambahkan</b>');
     }
@@ -65,6 +64,7 @@ class ProgramController extends Controller
     {
         $validatedData = $request->validate([
             'user_id' => 'required',
+            'kode_program' => 'required',
             'name_program' => 'required|string'
         ]);
 

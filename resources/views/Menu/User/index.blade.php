@@ -3,12 +3,27 @@
 
  <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Kelola Pengguna</h1>
+    <h1 class="h3 mb-2 text-gray-800 text-center">Kelola Pengguna</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-        <a href="/menu/user/create" class="btn btn-success">Tambah Data</a>
+        <div class="row">
+          <div class="col-md">
+            <a href="/menu/user/create" class="btn btn-success">Tambah Data</a>
+          </div>
+          <div class="col-md text-right">
+            {{-- @if (Auth::user()->role_id != 1 && Auth::user()->status ==  "inactive" ) --}}
+            <a href="/menu/user/active/{{ Auth::user()->role_id }}" class="btn btn-primary">Aktifkan Semua User</a>
+            {{-- @elseif(Auth::user()->role_id != 1 && Auth::user()->status ==  "active") --}}
+            <a href="/menu/user/inactive/{{ Auth::user()->role_id }}" class="btn btn-danger">Non-Aktif Semua User</a>
+            {{-- @endif --}}
+          </div>
+        </div>
+       
+
+      </div>
+    
       <div class="card-body">
         
         <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -35,7 +50,7 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->no_wa }}</td>
                     <td>{{ $user->role->name }}</td>
-                    <td>{{ $user->status }}</td>
+                    <td><b>{{ $user->status }}</b></td>
                     <td align="center" style="width: 8rem">
                       <a href="/menu/user/{{ $user->id }}/edit" class="btn btn-warning">
                         <i class="fas fa-fw fa-pen-square"></i>

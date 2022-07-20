@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
 
-  <h1 class="h3 mb-2 text-gray-800">Program</h1>
+  <h1 class="h3 mb-2 text-gray-800 text_center">Program</h1>
   <p class="mb-4">Tambah Data </p>
 
        <!-- Input Data Example -->
@@ -20,9 +20,17 @@
             @csrf
             <div class="row">
               <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-
+              
               <div class="col-md-6">
-                <label for="indikator_id">Pilih Tujuan</label>
+                <div class="form-group">
+                  <label for="kode_program">Kode Program</label>
+                  <input type="text" class="form-control  @error('kode_program') is-invalid @enderror" id="kode_program"aria-describedby="kode_program" required  name="kode_program"/>
+                  <x-validation-message name="kode_program" />
+                </div>
+              </div>
+
+              {{-- <div class="col-md-6">
+                <label for="indikator_id">Pilih Indikator</label>
                 <select class="form-control" name="indikator_id">
                     <option value="">Pilih Indikator</option>
                     @foreach ($indikators as $indikator)
@@ -31,7 +39,7 @@
                 </select>
                 <x-validation-message name="indikator_id" />
               </div>
-    
+            </div> --}}
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="name_program">Nama Program</label>
