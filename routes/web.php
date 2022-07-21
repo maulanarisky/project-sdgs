@@ -82,6 +82,9 @@ Route::middleware(['superadmin'])->group(function (){
     
     Route::resource('menu/user', UserController ::class);
 
+    Route::get('menu/user/active/{id}', [UserController::class, 'updateall'])->name('updateall');
+    Route::get('menu/user/inactive/{id}', [UserController::class, 'updateinactive'])->name('updateinall');
+
     Route::get('/form1-export/{tahunID}', [CapaianController::class, 'form1Export']);
     Route::get('/form2a-export/{tahunID}', [ProgramPemerintahPusatController::class, 'form2aExport']);
     Route::get('/form2b-export/{tahunID}', [ProgramPemerintahDaerahController::class, 'form2bExport']);
@@ -97,8 +100,7 @@ Route::middleware(['superadmin'])->group(function (){
 Route::get('menu/pp/download/{id}', [PelaporanPembelajaranController::class, 'download'])->name('download');
 // Route::get('menu/pp/pdf/{id}', [PelaporanPembelajaranController::class, 'generatepdf'])->name('generatepdf');
 
-Route::get('menu/user/active/{id}', [UserController::class, 'updateall'])->name('updateall');
-Route::get('menu/user/inactive/{id}', [UserController::class, 'updateinactive'])->name('updateall');
+
 
 
 Route::resource('/menu/mitraswasta', ProgramMitraSwastaController::class)->except(['show', 'index']);
