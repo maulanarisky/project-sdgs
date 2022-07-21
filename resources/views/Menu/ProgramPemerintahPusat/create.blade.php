@@ -4,8 +4,8 @@
 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800" style="text-transform: uppercase">Program Kegiatan {{ Auth::user()->name }}</h1>
-                    <p class="mb-4">Tambah Data </p>
+                    <h1 class="h3 mb-2 text-gray-800 text-center" style="text-transform: uppercase ">Program Kegiatan {{ Auth::user()->name }}</h1>
+                    <p class="mb-4 text-center">Tambah Data </p>
 
                     <!-- Input Data Example -->
                       <div class="card shadow mb-4 border-left-success" >
@@ -24,7 +24,7 @@
                                                 <label for="tahun_id">Pilih Tahun</label>
                                                 <select class="form-control" name="tahun_id" id="tahun_id">
                                                     @foreach ($tahuns as $tahun)
-                                                        <option value="{{ $tahun->id }}">{{ $tahun->tahun }}</option>
+                                                        <option value="{{ $tahun->id }}">{{ $tahun->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

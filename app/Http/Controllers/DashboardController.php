@@ -3,15 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Capaian;
+use App\Models\Indikator;
 use App\Models\PelaporanPembelajaran;
 use App\Models\ProgramPemerintahDaerah;
 use App\Models\ProgramPemerintahPusat;
 use App\Models\RencanaTindakLanjut;
 use App\Models\Tahun;
+use App\Models\Tujuan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    public function index(){
+        return view('menu.dashboard.index', [
+            'users' => User::Where('role_id', '!=', 1)->count(),
+            'tujuans' => Tujuan::all()->count(),
+            'indikators' => Indikator::all()->count()
+            
+        ]);
+    }
     public function capaian($tahunID)
     {
         return view('menu.dashboard.capaian.index', [

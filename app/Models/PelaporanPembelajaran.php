@@ -15,4 +15,8 @@ class PelaporanPembelajaran extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function Tujuan()
+    {
+        return $this->belongsTo(Tujuan::class, 'tujuan_id');
+    }
 }

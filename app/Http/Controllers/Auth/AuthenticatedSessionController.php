@@ -31,38 +31,41 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        if (Auth::user()->role_id == 1 & Auth::user()->status=="active") {
 
-        if (Auth::user()->role_id == 1) {
+            return redirect()->intended(RouteServiceProvider::HOME);
+           
+        } elseif (Auth::user()->role_id == 2 & Auth::user()->status=="active") {
 
             return redirect()->intended(RouteServiceProvider::HOME);
 
-        } elseif (Auth::user()->role_id == 2) {
+        } elseif (Auth::user()->role_id == 3 & Auth::user()->status=="active") {
 
-            return redirect('/menu/capaian/7');
+            return redirect()->intended(RouteServiceProvider::HOME);
 
-        } elseif (Auth::user()->role_id == 3) {
+        } elseif (Auth::user()->role_id == 4 & Auth::user()->status=="active") {
 
-            return redirect('/menu/pusat');
-
-        } elseif (Auth::user()->role_id == 4) {
-
-            return redirect('/menu/mitraswasta/7');
+            return redirect()->intended(RouteServiceProvider::HOME);
             
-        } elseif (Auth::user()->role_id == 5) {
+        } elseif (Auth::user()->role_id == 5 & Auth::user()->status=="active") {
 
-            return redirect('/menu/umkm');
+            return redirect()->intended(RouteServiceProvider::HOME);
+
+        }elseif (Auth::user()->role_id == 6 & Auth::user()->status=="active") {
+
+            return redirect()->intended(RouteServiceProvider::HOME);
+
+        }else{
+
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect('/login')->with('warning', ' <b>Mohon Menunggu Akun Anda Aktif</b>');;
         }
-
 
         
     }
 
-    /**
-     * Destroy an authenticated session.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+   
     public function destroy(Request $request)
     {
         Auth::guard('web')->logout();

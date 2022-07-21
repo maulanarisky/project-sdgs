@@ -20,7 +20,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Nama Instansi atau lembaga</label>
-                                    <input id="name" name="name" type="text" class="@error('name') is-invalid @enderror form-control" aria-describedby="name"/>
+                                    <input id="name" name="name" type="text" class="@error('name') is-invalid @enderror form-control" value="{{  old('name')}}" aria-describedby="name"/>
                                     <x-validation-message name="name" />
                                 </div>
                             </div>
@@ -28,7 +28,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email">Email untuk login</label>
-                                    <input type="email" id="email" name="email" class="@error('email') is-invalid @enderror form-control" aria-describedby="email"/>
+                                    <input type="email" id="email" name="email" class="@error('email') is-invalid @enderror  form-control" aria-describedby="email"/>
                                     <x-validation-message name="email" />
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="no_wa">No Whatsapp</label>
-                                    <input type="number" id="no_wa" name="no_wa" class="@error('no_wa') is-invalid @enderror form-control" aria-describedby="no_wa"/>
+                                    <input type="number" id="no_wa" name="no_wa" class="@error('no_wa') is-invalid @enderror form-control" aria-describedby="no_wa" value="{{  old('no_wa')}}"/>
                                     <x-validation-message name="no_wa" />
                                 </div>
                             </div>

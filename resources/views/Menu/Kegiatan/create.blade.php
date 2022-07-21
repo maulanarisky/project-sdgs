@@ -2,7 +2,7 @@
 @section('container')
   <div class="container-fluid">
     
-    <h1 class="h3 mb-2 text-gray-800">Program->Kegiatan</h1>
+    <h1 class="h3 mb-2 text-gray-800 text-center">Program->Kegiatan</h1>
 
 
     <div class="card shadow mb-4 border-left-success" >
@@ -23,7 +23,7 @@
                     <select class="form-control" name="program_id" id="program_id">
                       @foreach ($programs as $program)
                         @if ($program->user->id == Auth::user()->id)
-                          <option value="{{ $program->id }}">{{ $program->name_program }}</option>   
+                          <option value="{{ $program->id }}">{{ $program->kode_program }}.{{ $program->name_program }}</option>   
                         @endif
                       @endforeach
                     </select>

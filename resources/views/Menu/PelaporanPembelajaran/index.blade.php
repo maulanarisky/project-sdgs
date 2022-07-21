@@ -19,41 +19,40 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr align="center">
-                                <th>No</th>
-                                <th>Nama File</th>
-                                <th>File</th>
-                                <th>Aksi</th>
-                            </tr>
+                                <th width="5">No</th>
+                                <th width="30">Tujuan</th>
+                                <th width="40" >Program</th>
+                                <th width="10">Aksi</th>
+                                @if (Auth::user()->role_id == 1)
+                                <th width="15">Sumber Data</th>
+                                @endif
                         </thead>
                         <tbody>
                             @foreach ($pelaporan_pembelajarans as $pp)
                                 @if ($pp->user->id == Auth::user()->id)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $pp->name_file }}</td>
-                                        <td align="center" style="width: 8rem;"> <a href="/menu/pp/{{ $pp->id }}" class="btn btn-info"><i class="fas fa-fw fa-download"></i></a></td>
-                                        
+                                        <td align="center">{{ $loop->iteration }}</td>
+                                        <td>{{ $pp->tujuan->name }}</td>
+                                        <td>{{ $pp->name_program }}</td>
                                         <td align="center" style="width: 8rem;">
-                                            <a href="/menu/pp/{{ $pp->id }}/edit" class="btn btn-warning">
-                                                <i class="fas fa-fw fa-pen-square"></i>
-                                            </a>
+                                            <a href="/menu/pp/{{ $pp->id }}" class="btn btn-info"><i class="fas fa-fw fa-eye"></i></a>
+                                            <a href="/menu/pp/{{ $pp->id }}/edit" class="btn btn-warning"> <i class="fas fa-fw fa-pen-square"></i></a>
                                             <form action="/menu/pp/{{ $pp->id }}" method="post" class="d-inline">
                                                 @method('delete')
                                                 @csrf
-                                                <button class=" btn btn-danger " onclick="return confirm('Apakah Yaking Menghapus File : {{ $pp->name_file }}:')"><i class="fas fa-fw fa-trash"></i></button>
+                                                <button class=" btn btn-danger " onclick="return confirm('Apakah Yaking Menghapus File : {{ $pp->name_program }}:')"><i class="fas fa-fw fa-trash"></i></button>
                                             </form>
                                         </td>
                                     </tr>
                                 @elseif(Auth::user()->role_id == 1)
-                                    <tr>
+                                 <tr>
                                         <td align="center">{{ $loop->iteration }}</td>
-                                        <td>{{ $pp->name_file }}</td>
-                                        <td align="center" style="width: 8rem;"> 
-                                            <a href="/menu/pp/{{ $pp->id }}" class="btn btn-info">
-                                                <i class="fas fa-fw fa-download"></i>
-                                            </a>
+                                        <td>{{ $pp->tujuan->name }}</td>
+                                        <td>{{ $pp->name_program }}</td>
+                                        <td align="center" style="width: 8rem;">
+                                            <a href="/menu/pp/{{ $pp->id }}" class="btn btn-info"><i class="fas fa-fw fa-eye"></i></a>  
                                         </td>
-                                        <td>{{ $pp->user->name }}</td>
+                                         <td>{{ $pp->user->name }}</td>
                                     </tr>
                                 @endif 
                             @endforeach
@@ -65,17 +64,5 @@
 
     </div>
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
-
-    <script>
-        ClassicEditor
-                .create( document.querySelector( '#editor' ) )
-                .then( editor => {
-                        console.log( editor );
-                } )
-                .catch( error => {
-                        console.error( error );
-                } );
-    </script>
 
 @endsection

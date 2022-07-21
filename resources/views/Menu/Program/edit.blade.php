@@ -3,7 +3,7 @@
 
   <div class="container-fluid">
 
-    <h1 class="h3 mb-2 text-gray-800">Program</h1>
+    <h1 class="h3 mb-2 text-gray-800 text-center">Program</h1>
       
       <div class="card shadow mb-4 border-left-success" >
         <div class="card-header py-3">
@@ -17,6 +17,14 @@
                     @csrf
                     <div class="row">
                       <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">      
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="kode_program">Kode Program</label>
+                          <input type="text" value="{{ $program->kode_program }}" class="form-control pt-1 @error('kode_program') is-invalid @enderror" id="kode_program" aria-describedby="kode_program" name="kode_program"/>
+                          <x-validation-message name="kode_program" />
+                        </div>
+                      </div>
+                    
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="name_program">Nama Program</label>

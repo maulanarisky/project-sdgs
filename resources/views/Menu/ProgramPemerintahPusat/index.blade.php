@@ -3,8 +3,8 @@
 
  <div class="container-fluid">
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Program {{ Auth::user()->name }}</h1>
-            <p class="mb-4">Detail</p>
+            <h1 class="h3 mb-2 text-gray-800 text-center">Form 2A {{ Auth::user()->name }}</h1>
+           
 
             <!-- DataTales Example -->
              <div class="card shadow mb-4">

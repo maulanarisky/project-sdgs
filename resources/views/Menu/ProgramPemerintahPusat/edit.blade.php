@@ -4,8 +4,8 @@
 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800" style="text-transform: uppercase">Program {{ Auth::user()->name }}</h1>
-                    <p class="mb-4">Tambah Data </p>
+                    <h1 class="h3 mb-2 text-gray-800 text-center" style="text-transform: uppercase">Program {{ Auth::user()->name }}</h1>
+                    <p class="mb-4 text-center">Ubah Data </p>
 
                     <!-- Input Data Example -->
                       <div class="card shadow mb-4 border-left-success" >
@@ -26,9 +26,9 @@
                                                 <select class="form-control" name="tahun_id" id="tahun_id">
                                                     @foreach ($tahuns as $tahun)
                                                       @if(old('tahun_id', $pusat->tahun_id) == $tahun->id)    
-                                                          <option value="{{ $tahun->id }}" selected>{{ $tahun->tahun }}</option>  
+                                                          <option value="{{ $tahun->id }}" selected>{{ $tahun->name }}</option>  
                                                       @else
-                                                          <option value="{{$tahun->id }}">{{ $tahun->tahun }}</option>  
+                                                          <option value="{{$tahun->id }}">{{ $tahun->name }}</option>  
                                                       @endif
                                                    @endforeach
                                                 </select>
@@ -203,7 +203,7 @@
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label for="instansi_pelaksana">Instansi Pelaksana</label>
-                                              <input type="text" multiple class="form-control pt-1 @error('instansi_pelaksana') is-invalid @enderror" id="instansi_pelaksana" value="{{ $pusat->instansi_pelaksana }}" aria-describedby="instansi_pelaksana" name="instansi_pelaksana" />
+                                      <input type="text" multiple class="form-control pt-1 @error('instansi_pelaksana') is-invalid @enderror" id="instansi_pelaksana" readonly value="{{ Auth::user()->name }}" aria-describedby="instansi_pelaksana" name="instansi_pelaksana" />
                                                 @error('instansi_pelaksana')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

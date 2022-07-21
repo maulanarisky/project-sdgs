@@ -30,6 +30,10 @@ class Indikator extends Model
     {
         return $this->hasMany(Capaian::class);
     }
+    public function SubKegiatan()
+    {
+        return $this->hasMany(SubKegiatan::class);
+    }
     public function available_capaian() {
         return $this->capaian()->where('available','=', 1);
     }

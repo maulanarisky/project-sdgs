@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('indikators', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('tujuan_id')->constrained('tujuans')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('target_id')->constrained('targets')->onUpdate('cascade')->onDelete('cascade');
             $table->string('kode_indikator');

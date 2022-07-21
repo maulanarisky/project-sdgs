@@ -40,6 +40,9 @@ class DatabaseSeeder extends Seeder
         Role::create([
             'name' => 'Pelaku Usaha',
         ]);
+        Role::create([
+            'name' => 'KabKota',
+        ]);
 
         //table User
         User::create([
@@ -98,61 +101,61 @@ class DatabaseSeeder extends Seeder
         Tujuan::create([
             'pilar_id' => 1,
             'kode_tujuan' => '1',
-            'name' => 'Tanpa Kemiskinan',
+            'name' => 'TANPA KEMISKINAN',
             'deskripsi' => 'Mengakhiri Kemiskinan dalam Segala Bentuk Dimanapun'
         ]);
         Tujuan::create([
             'pilar_id' => 1,
             'kode_tujuan' => '2',  
-            'name' => 'Tanpa Kelaparan',
+            'name' => 'TANPA KELAPARAN',
             'deskripsi' => 'Menghilangkan Kelaparan, Mencapai Ketahanan Pangan dan Gizi yang Baik, serta Meningkatkan Pertanian Berkelanjutan'
         ]);
         Tujuan::create([
             'pilar_id' => 1,
             'kode_tujuan' => '3',
-            'name' => 'Kehidupan sehat dan sejahtera',
+            'name' => 'KEHIDUPAN SEHAT DAN SEJAHTERA',
             'deskripsi' => 'Menjamin Kehidupan Yang Sehat dan Meningkatkan Kesejahteraan Seluruh Penduduk Semua Usia'
         ]);
         Tujuan::create([
             'pilar_id' => 1,
             'kode_tujuan' => '4',
-            'name' => 'Pendidikan Berkualitas',
+            'name' => 'PENDIDIKAN BERKUALITAS',
             'deskripsi' => 'Menjamin Kualitas Pendidikan yang Inklusif dan Merata serta Meningkatkan Kesempatan Belajar Sepanjang Hayat untuk Semua'
         ]);
         Tujuan::create([
             'pilar_id' => 1,
             'kode_tujuan' => '5',
-            'name' => 'Kesetaraan Gender',
+            'name' => 'KESETARAAN GENDER',
             'deskripsi' => 'Mencapai Kesetaraan Gender dan Memberdayakan Kaum Perempuan'
         ]);
         Tujuan::create([
             'pilar_id' => 3,
             'kode_tujuan' => '6',
-            'name' => 'air bersih dan sanitasi layak',
+            'name' => 'AIR BERSIH DAN SANITASI LAYAK',
             'deskripsi' => 'Menjamin Ketersediaan serta Pengelolaan Air Bersih dan Sanitasi yang Berkelanjutan untuk Semua'
         ]);
         Tujuan::create([
             'pilar_id' => 2,
             'kode_tujuan' => '7',
-            'name' => 'energi bersih dan terjangkau',
+            'name' => 'ENERGI BERSIH DAN TERJANGKAU',
             'deskripsi' => 'Menjamin Akses Energi yang Terjangkau, Andal, Berkelanjutan dan Modern untuk Semua'
         ]);
         Tujuan::create([
             'pilar_id' => 2,
             'kode_tujuan' => '8',
-            'name' => 'pekerjaan layak dan pertumbuhan ekonomi',
+            'name' => 'PEKERJAAN LAYAK DAN PERTUMBUHAN EKONOMI',
             'deskripsi' => 'Meningkatkan Pertumbuhan Ekonomi yang Inklusif dan Berkelanjutan, Kesempatan Kerja yang Produktif dan Menyeluruh, serta Pekerjaan yang Layak untuk Semua'
         ]);
         Tujuan::create([
             'pilar_id' => 2,
             'kode_tujuan' => '9',
-            'name' => 'industri, inovasi dan infrastruktur',
+            'name' => 'INDSUTRI, INOVASI DAN INFRASTRUKTUR',
             'deskripsi' => 'Membangun Infrastruktur yang Tangguh, Meningkatkan Industri Inklusif dan Berkelanjutan, serta Mendorong Inovasi'
         ]);
         Tujuan::create([
             'pilar_id' => 2,
             'kode_tujuan' => '10',
-            'name' => 'berkurangnya kesenjangan',
+            'name' => 'BERKURANGNYA KESENJANGAN',
             'deskripsi' => 'Mengurangi Kesenjangan Intra dan Antarnegara'
         ]);
         Tujuan::create([

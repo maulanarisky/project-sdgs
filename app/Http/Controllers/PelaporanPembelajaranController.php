@@ -6,6 +6,8 @@ use App\Models\PelaporanPembelajaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdatePelaporanPembelajaranRequest;
+use App\Models\Tujuan;
+use Barryvdh\DomPDF\PDF;
 
 class PelaporanPembelajaranController extends Controller
 {
@@ -21,16 +23,27 @@ class PelaporanPembelajaranController extends Controller
     public function create()
     {
          return view('Menu.PelaporanPembelajaran.create',[
-             'pelaporan_pembelajarans' => PelaporanPembelajaran::with('user')->get()
+             'pelaporan_pembelajarans' => PelaporanPembelajaran::with('user')->get(),
+             'tujuans' => Tujuan::all()
          ]);
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'tujuan_id' => 'required',
             'user_id' => 'required',
-            'name_file' => 'required|string',
-            'file' => 'required|mimes:doc,docx,csv,txt,xlx,xls,pdf|max:2048',
+            'name_program' => 'required|string',
+            'lokasi' => 'required',
+            'waktu' => 'required',
+            'latar_belakang' => 'required',
+            'proses_pelaksanaan' => 'required',
+            'hasil' => 'required',
+            'dampak' => 'required',
+            'tantangan' => 'required',
+            'pembelajaran' => 'required',
+            'peluang_replikasi' => 'required',
+            'file' => 'required|mimes:doc,docx,pdf|max:2048',
            
         ]);
 
@@ -46,9 +59,10 @@ class PelaporanPembelajaranController extends Controller
   
     public function show(PelaporanPembelajaran $pp)
     {
-        $entry = PelaporanPembelajaran::where('id', '=', $pp->id)->firstOrFail();
-        $pathToFile='storage/' . $pp->file; //$pathToFile=storage_path()."/app/public".$pp->file;
-        return response()->download($pathToFile);
+        return view('menu.PelaporanPembelajaran.show', [
+            'pp' => PelaporanPembelajaran::findOrFail($pp->id)
+        ]);
+       
     }
 
     
@@ -56,6 +70,7 @@ class PelaporanPembelajaranController extends Controller
     {
         return view('menu.PelaporanPembelajaran.edit',[
             'pp' => PelaporanPembelajaran::where('id','=', $pp->id)->first(),
+            'tujuans' => Tujuan::all()
         ]);
     }
 
@@ -63,9 +78,19 @@ class PelaporanPembelajaranController extends Controller
     public function update(Request $request, PelaporanPembelajaran $pp)
     {
         $rules = [
+             'tujuan_id' => 'required',
             'user_id' => 'required',
-            'name_file' => 'required|string',
-            'file' => 'required|mimes:doc,docx,csv,txt,xlx,xls,pdf|max:2048',
+            'name_program' => 'required|string',
+            'lokasi' => 'required',
+            'waktu' => 'required',
+            'latar_belakang' => 'required',
+            'proses_pelaksanaan' => 'required',
+            'hasil' => 'required',
+            'dampak' => 'required',
+            'tantangan' => 'required',
+            'pembelajaran' => 'required',
+            'peluang_replikasi' => 'required',
+            'file' => 'required|mimes:doc,docx,pdf|max:2048',
         ];
         
         $validatedData = $request->validate($rules);
@@ -91,7 +116,23 @@ class PelaporanPembelajaranController extends Controller
         PelaporanPembelajaran::destroy($pp->id);
         return redirect('/menu/pp')->with('success', 'Berhasil di <b>Hapus</b>');
     }
-    
+
+    public function download($id)
+    {
+        $entry = PelaporanPembelajaran::findOrFail($id);
+        $pathToFile='storage/' . $entry->file; //$pathToFile=storage_path()."/app/public".$pp->file;
+        return response()->download($pathToFile);
+       
+    }
+    //  public function generatepdf($id)
+    // {
+    //     $data = PelaporanPembelajaran::findOrFail($id);
+            
+    //     $pdf = PDF::loadView('menu.PelaporanPembelajaran.show', $data);
+     
+    //     return $pdf->download('itsolutionstuff.pdf');
+       
+    // }
 
   
-}
+} 

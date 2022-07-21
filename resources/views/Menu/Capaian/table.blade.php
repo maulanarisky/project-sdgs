@@ -2,7 +2,7 @@
     <thead>
         <tr align="center" valign="middle">
             <td >Kode Tujuan</td>
-            <td >Kode Target</td>
+            <td >Target</td>
             <td >Kode Indikator</td>
             <td >Nama Indikator</td>
             <td>Sumber Data</td>
@@ -23,7 +23,7 @@
                 @if ($capaian->user->id == Auth::user()->id)
                     <tr align="center" >
                         <td>{{ $capaian->indikator->target->tujuan->kode_tujuan }}</td>
-                        <td>{{ $capaian->indikator->target->kode_target }}</td>
+                        <td>{{ $capaian->indikator->target->kode_target }}.{{ $capaian->indikator->target->deskripsi }}</td>
                         <td>{{ $capaian->indikator->kode_indikator}}</td>
                         <td align="left">{{ $capaian->indikator->deskripsi }}</td>
                         <td>{{ $capaian->user->name }}</td>
@@ -54,13 +54,13 @@
 
                         <td align="center">
                             <a href="/menu/capaian/{{ $capaian->id }}/edit" class="btn btn-warning mb-2"><i class="fas fa-fw fa-pen-square"></i></a>
-                            <form action="/menu/capaian/{{ $capaian->id }}" method="post" class="d-inline">
+                            {{-- <form action="/menu/capaian/{{ $capaian->id }}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin menghapur indikator : {{ $capaian->name }} ?')">
                                     <i class="fas fa-fw fa-trash"></i>
                                 </button>
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
 
@@ -68,7 +68,7 @@
                 @elseif (Auth::user()->role_id == 1 )
                     <tr align="center" >
                         <td>{{ $capaian->indikator->target->tujuan->kode_tujuan }}</td>
-                        <td>{{ $capaian->indikator->target->kode_target }}</td>
+                        <td>{{ $capaian->indikator->target->kode_target }}.{{ $capaian->indikator->target->deskripsi }}</td>
                         <td>{{ $capaian->indikator->kode_indikator}}</td>
                         <td align="left">{{ $capaian->indikator->deskripsi }}</td>
                         <td>{{ $capaian->user->name }}</td>
@@ -78,7 +78,7 @@
                         <td>{{ $capaian->target_awal }}</td>
                         <td>{{ $capaian->capaian }}</td>
                         
-                          @if ($capaian->status == 'tercapai')
+                        @if ($capaian->status == 'tercapai')
                             <td valign="middle"><span class="badge badge-pill badge-success">Tercapai</span></td> 
                         @elseif($capaian->status == 'akan_tercapai')
                             <td valign="middle"><span class="badge badge-pill badge-warning">Akan Tercapai</span></i></td>

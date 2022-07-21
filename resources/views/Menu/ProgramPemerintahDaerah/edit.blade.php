@@ -19,54 +19,33 @@
             <div class="col-md-6">     
               <div class="form-group">
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                <label for="tahun_id">Pilih Tahun</label>
-                <select class="form-control" name="tahun_id" id="tahun_id">
-                    @foreach ($tahuns as $tahun)
-                      @if(old('tahun_id', $pemda->tahun_id) == $tahun->id)    
-                          <option value="{{ $tahun->id }}" selected>{{ $tahun->tahun }}</option>  
-                      @else
-                          <option value="{{$tahun->id }}">{{ $tahun->tahun }}</option>  
-                      @endif
-                    @endforeach
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-6">     
-              <div class="form-group">
-                <label for="kegiatan_id">Pilih Kegiatan</label>
-                  <select class="form-control" name="kegiatan_id" id="kegiatan_id">
-                    @foreach ($kegiatans as $kegiatan)
-                      @if(old('kegiatan_id', $pemda->kegiatan_id) == $kegiatan->id)    
-                        <option value="{{ $kegiatan->id }}" selected>{{ $kegiatan->name_kegiatan }}</option>  
-                      @else
-                        <option value="{{$kegiatan->id }}">{{ $kegiatan->name_kegiatan }}</option>  
-                      @endif
-                    @endforeach
-                  </select>
+                <input type="hidden" name="sub_kegiatan_id" value="{{ $pemda->sub_kegiatan_id }}">
+                <label for="tahun_id">Tahun</label>
+                 <input type="text" class="form-control @error('tahun_id') is-invalid @enderror" value="{{ $pemda->tahun->name }}" name="tahun_id" readonly/>
+                <x-validation-message name="tahun_id" />
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
-                <label for="kode_subkegiatan">Kode Sub-Kegiatan</label>
-                <input type="text" class="form-control @error('kode_subkegiatan') is-invalid @enderror" value="{{ $pemda->kode_subkegiatan }}"name="kode_subkegiatan"/>
-                <x-validation-message name="kode_subkegiatan" />
+                <label for="indikator">indikator</label>
+                <input type="text" class="form-control @error('indikator') is-invalid @enderror" value="{{ $pemda->SubKegiatan->indikator }}"name="indikator" readonly/>
+                <x-validation-message name="indikator" />
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
-                <label for="name_subkegiatan">Nama Sub-Kegiatan</label>
-                <input type="text" multiple class="form-control pt-1 @error('name_subkegiatan') is-invalid @enderror" value="{{ $pemda->name_subkegiatan }}"  name="name_subkegiatan" />
-                <x-validation-message name="name_subkegiatan" />
+                <label for="name_sub_kegiatan">Nama SubKegiatan</label>
+                <input type="text" multiple class="form-control pt-1 @error('name_sub_kegiatan') is-invalid @enderror" readonly value="{{ $pemda->SubKegiatan->name_sub_kegiatan }}"  name="name_sub_kegiatan" />
+                <x-validation-message name="name_sub_kegiatan" />
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label for="satuan">Satuan</label>
-                <input type="text" multiple class="form-control pt-1 @error('satuan') is-invalid @enderror"id="satuan" value="{{ $pemda->satuan }}"  aria-describedby="satuan" name="satuan" />
+                <input type="text" multiple class="form-control pt-1 @error('satuan') is-invalid @enderror"id="satuan" readonly value="{{ $pemda->SubKegiatan->satuan }}"  aria-describedby="satuan" name="satuan" />
                 <x-validation-message name="satuan" />
               </div>
             </div>
