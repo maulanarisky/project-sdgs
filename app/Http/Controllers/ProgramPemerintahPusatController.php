@@ -100,7 +100,6 @@ class ProgramPemerintahPusatController extends Controller
             'realisasi_anggaran_sem_1' =>'required|string',
             'realisasi_anggaran_sem_2' =>'required|string',
             'lokasi_pelaksanaan_kegiatan' => 'required|string',
-            'instansi_pelaksana' => 'required|string'
         ]);
 
         ProgramPemerintahPusat::where('id', $pusat->id)->update($validatedData);

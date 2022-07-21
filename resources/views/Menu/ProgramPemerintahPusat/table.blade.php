@@ -1,14 +1,11 @@
-       <table class="table table-bordered" id="dataTable"  width="100%" cellspacing="0">
+       <table class="table table-bordered" id="example"  width="100%" cellspacing="0">
                     <thead>
                       <tr class="text-center">
-                        <th rowspan="2" colspan="5"style="vertical-align: middle" >Tujuan | Indikator | Program | Kegiatan | Rincian Output</th>  
-                        {{-- <th rowspan="2" style="vertical-align: middle"> Tujuan </th>
-                        <th rowspan="2" style="vertical-align: middle">Kode Indikator</th>
-                        <th rowspan="2" style="vertical-align: middle"> Nama Program</th> --}}
-                        {{-- <th rowspan="2" style="vertical-align: middle">Kode Kegiatan </th> --}}
-                        {{-- <th rowspan="2" style="vertical-align: middle"> Nama Kegiatan </th>
-                        <th rowspan="2" style="vertical-align: middle">Kode Rincian Output </th>
-                        <th rowspan="2" style="vertical-align: middle"> Nama Rincian Output</th> --}}
+                        <th rowspan="2" style="vertical-align: middle" >Tujuan </th>
+                        <th rowspan="2" style="vertical-align: middle" > Indikator </th>
+                        <th rowspan="2" style="vertical-align: middle" > Program </th>
+                        <th rowspan="2" style="vertical-align: middle" > Kegiatan</th>
+                        <th rowspan="2" style="vertical-align: middle" >Rincian Output</th>
                         <th rowspan="2" style="vertical-align: middle"> Tahun </th>
                         <th rowspan="2" style="vertical-align: middle">Satuan</th>                        
                         <th rowspan="2" style="vertical-align: middle">Target Tahun (n)</th>

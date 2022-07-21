@@ -40,9 +40,9 @@
                                                 <select class="form-control" name="tujuan_id" id="tujuan_id">
                                                     @foreach ($tujuans as $tujuan)
                                                       @if(old('tujuan_id', $pusat->tujuan_id) == $tujuan->id)    
-                                                          <option value="{{ $tujuan->id }}" selected>{{ $tujuan->name }}</option>  
+                                                          <option value="{{ $tujuan->id }}" selected>{{ $tujuan->kode_tujuan }}.{{ $tujuan->name }}</option>  
                                                       @else
-                                                          <option value="{{$tujuan->id }}">{{ $tujuan->name }}</option>  
+                                                          <option value="{{$tujuan->id }}">{{ $tujuan->kode_tujuan }}.{{ $tujuan->name }}</option>  
                                                       @endif
                                                    @endforeach
                                                 </select>
@@ -54,9 +54,9 @@
                                                 <select class="form-control" name="indikator_id" id="indikator_id">
                                                      @foreach ($indikators as $indikator)
                                                       @if(old('indikator_id', $pusat->indikator_id) == $indikator->id)    
-                                                          <option value="{{ $indikator->id }}" selected>{{ $indikator->deskripsi }}</option>  
+                                                          <option value="{{ $indikator->id }}" selected>{{ $indikator->kode_indikator }}.{{ $indikator->deskripsi }}</option>  
                                                       @else
-                                                          <option value="{{$indikator->id }}">{{ $indikator->deskripsi }}</option>  
+                                                          <option value="{{$indikator->id }}">{{ $indikator->kode_indikator }}.{{ $indikator->deskripsi }}</option>  
                                                       @endif
                                                    @endforeach
                                                 </select>

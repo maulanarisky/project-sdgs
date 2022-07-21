@@ -1,10 +1,9 @@
-<table class="table table-bordered" id="dataTable"  width="100%" cellspacing="0">
+<table class="table table-bordered" id="example"  width="100%" cellspacing="0">
     <thead>
         <tr align="center" valign="middle">
             <td >Kode Tujuan</td>
             <td >Target</td>
-            <td >Kode Indikator</td>
-            <td >Nama Indikator</td>
+            <td >Kode & Nama Indikator</td>
             <td>Sumber Data</td>
             <td >Satuan</td>
             <td >Baseline</td>
@@ -24,8 +23,7 @@
                     <tr align="center" >
                         <td>{{ $capaian->indikator->target->tujuan->kode_tujuan }}</td>
                         <td>{{ $capaian->indikator->target->kode_target }}.{{ $capaian->indikator->target->deskripsi }}</td>
-                        <td>{{ $capaian->indikator->kode_indikator}}</td>
-                        <td align="left">{{ $capaian->indikator->deskripsi }}</td>
+                        <td align="left">{{ $capaian->indikator->kode_indikator}}.{{ $capaian->indikator->deskripsi }}</td>
                         <td>{{ $capaian->user->name }}</td>
                         <td>{{ $capaian->indikator->satuan }}</td>
                         <td>{{ $capaian->baseline }}</td>
@@ -69,8 +67,7 @@
                     <tr align="center" >
                         <td>{{ $capaian->indikator->target->tujuan->kode_tujuan }}</td>
                         <td>{{ $capaian->indikator->target->kode_target }}.{{ $capaian->indikator->target->deskripsi }}</td>
-                        <td>{{ $capaian->indikator->kode_indikator}}</td>
-                        <td align="left">{{ $capaian->indikator->deskripsi }}</td>
+                         <td align="left">{{ $capaian->indikator->kode_indikator}}.{{ $capaian->indikator->deskripsi }}</td>
                         <td>{{ $capaian->user->name }}</td>
                         <td>{{ $capaian->indikator->satuan }}</td>
                         <td>{{ $capaian->baseline }}</td>
