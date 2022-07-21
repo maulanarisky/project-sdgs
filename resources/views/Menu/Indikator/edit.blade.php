@@ -82,7 +82,7 @@
                                         <select class="@error('user_id') is-invalid @enderror form-control" name="user_id" id="user_id" required>
                                            <option value=""> Pilih Sumber Data</option> 
                                             @foreach ($users as $user)
-                                                @if ($user->role_id == 2 || $user->role_id == 3)
+                                                @if ($user->role_id == 2 )
                                                     @if (old('user_id', $indikator->user_id == $user->id))
                                                         <option value="{{ $user->id }}" selected> {{ $user->name }}</option> 
                                                     @else

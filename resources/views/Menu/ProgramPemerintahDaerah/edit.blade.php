@@ -29,7 +29,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="indikator">indikator</label>
-                <input type="text" class="form-control @error('indikator') is-invalid @enderror" value="{{ $pemda->SubKegiatan->indikator }}"name="indikator" readonly/>
+                <input type="text" class="form-control @error('indikator') is-invalid @enderror" value="{{ $pemda->SubKegiatan->indikator->kode_indikator }}.{{ $pemda->SubKegiatan->indikator->deskripsi }}"name="indikator" readonly/>
                 <x-validation-message name="indikator" />
               </div>
             </div>
