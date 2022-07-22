@@ -8,7 +8,7 @@
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <a href="/menu/pp/download/{{$pp->id }}" class="btn btn-danger">Download File</a>
-                {{-- <a href="/menu/pp/pdf/{{$pp->id }}" class="btn btn-warning">Export PDF</a> --}}
+                {{-- <a href="/menu/pp/pdf/{{$pp->id }}" target="_blank" class="btn btn-warning">Export PDF</a> --}}
               </div>
               <div class="card-body">
                 <div class="row">
@@ -99,4 +99,5 @@
               </div>
             </div>
           </div>
+          
 @endsection
