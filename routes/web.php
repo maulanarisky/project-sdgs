@@ -98,7 +98,7 @@ Route::middleware(['superadmin'])->group(function (){
 
 
 Route::get('menu/pp/download/{id}', [PelaporanPembelajaranController::class, 'download'])->name('download');
-// Route::get('menu/pp/pdf/{id}', [PelaporanPembelajaranController::class, 'generatepdf'])->name('generatepdf');
+// Route::get('menu/pp/pdf/{id}', [PelaporanPembelajaranController::class, 'cetak'])->name('cetak');
 
 
 

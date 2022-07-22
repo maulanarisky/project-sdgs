@@ -124,14 +124,11 @@ class PelaporanPembelajaranController extends Controller
         return response()->download($pathToFile);
        
     }
-    //  public function generatepdf($id)
+    // public function cetak($id)
     // {
-    //     $data = PelaporanPembelajaran::findOrFail($id);
-            
-    //     $pdf = PDF::loadView('menu.PelaporanPembelajaran.show', $data);
-     
-    //     return $pdf->download('itsolutionstuff.pdf');
-       
+    //     return view('Menu.PelaporanPembelajaran.pdf', [
+    //         'pp' => PelaporanPembelajaran::findOrFail($id)
+    //     ]);
     // }
 
   
