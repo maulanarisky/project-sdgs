@@ -1,7 +1,10 @@
 <table class="table table-bordered" id="example" width="100%" cellspacing="0">
     <thead>
       <tr class="text-center">
-        <th rowspan="2" colspan="4"style="vertical-align: middle" > Indikator | Program | Kegiatan | Output Kegiatan</th>
+        <th rowspan="2" style="vertical-align: middle" > Indikator </th>
+        <th rowspan="2" style="vertical-align: middle" >  Program </th>
+        <th rowspan="2" style="vertical-align: middle" >  Kegiatan </th>
+        <th rowspan="2" style="vertical-align: middle" > Output Kegiatan</th>
         <th rowspan="2" style="vertical-align: middle"> Satuan </th>  
         <th rowspan="2" style="vertical-align: middle"> Target Tahun {{ $tahunSinggle->name }}</th>
         <th colspan="2">Realisasi Target Tahun {{ $tahunSinggle->name }}</th>

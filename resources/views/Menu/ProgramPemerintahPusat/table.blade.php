@@ -1,4 +1,4 @@
-       <table class="table table-bordered" id="example"  width="100%" cellspacing="0">
+       <table class="table table-bordered" id="example" width="100%" cellspacing="0">
                     <thead>
                       <tr class="text-center">
                         <th rowspan="2" style="vertical-align: middle" >Tujuan </th>

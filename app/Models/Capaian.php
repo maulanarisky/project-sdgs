@@ -19,6 +19,14 @@ class Capaian extends Model
     {
         return $this->belongsTo(Tahun::class, 'tahun_id');
     }
+    public function target()
+    {
+        return $this->belongsTo(Target::class, 'target_id');
+    }
+    public function tujuan()
+    {
+        return $this->belongsTo(Tujuan::class, 'tujuan_id');
+    }
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

@@ -1,7 +1,7 @@
  <table class="table table-bordered" id="example" width="100%" cellspacing="0">
           <thead>
             <tr class="text-center">
-              <th rowspan="2" style="vertical-align: middle" > Indikator | Program | Kegiatan | Sub Kegiatan</th>  
+              <th rowspan="2" style="vertical-align: middle" > Indikator</th>  
               <th rowspan="2" style="vertical-align: middle" >  Program </th>  
               <th rowspan="2" style="vertical-align: middle" > Kegiatan </th>  
               <th rowspan="2" style="vertical-align: middle" > Sub Kegiatan</th>  
@@ -44,18 +44,8 @@
                   <td style="vertical-align: middle">{{ $pkk->lokasi_pelaksanaan_kegiatan }}</td>
                   <td style="vertical-align: middle">{{ $pkk->sumber_pendanaan }}</td>
                   <td style="vertical-align: middle">{{ $pkk->user->name }}</td>
-
                   <td align="center" style="width: 8rem">
-                    
-                    <a href="/menu/pkabkota/{{ $pkk->id }}/edit" class="btn btn-warning p-2" ><i class="fas fa-fw fa-pen-square"></i></a>
-                    
-                    {{-- <form action="/menu/pemda/{{ $pemda->id }}" method="post" class="d-inline">
-                      @method('delete')
-                      @csrf
-                      <button class="btn btn-danger p-2 mt-2" onclick="return confirm('Apakah Anda Yakin menghapur tujuan : {{ $pemda->name_subkegiatan }} ?')">
-                        <i class="fas fa-fw fa-trash"></i>
-                      </button>
-                    </form> --}}
+                    <a href="/menu/pkabkota/{{ $pkk->id }}/edit" class="btn btn-warning p-2" ><i class="fas fa-fw fa-pen-square"></i></a> 
                   </td>
                 </tr>
               @elseif(Auth::user()->role_id == 1 && $pkk->tahun_id ==  $tahunSinggle->id)

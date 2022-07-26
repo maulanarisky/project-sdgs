@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Export;
 use App\Exports\Form1Export;
 use App\Models\Capaian;
 use App\Models\Indikator;
@@ -16,10 +17,10 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class CapaianController extends Controller
 {
-    public function form1Export($tahunID){
-        return Excel::download(new Form1Export($tahunID), 'form 1.xlsx');
+    public function Export($tahunID)
+    {
+        return Excel::download(new Export($tahunID), 'form 1.xlsx');
     }
-    
     public function index($tahunID)
     {
         return view('menu.capaian.index', [
