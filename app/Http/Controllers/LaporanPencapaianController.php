@@ -53,7 +53,7 @@ class LaporanPencapaianController extends Controller
 
     public function edit(LaporanPencapaian $lp)
     {
-        return view('menu.laporanpencapaian.edit',[
+        return view('Menu.LaporanPencapaian.edit',[
             'lp' => LaporanPencapaian::where('id','=', $lp->id)->first(),
         ]);
     }

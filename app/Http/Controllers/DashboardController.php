@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
-        return view('menu.dashboard.index', [
+        return view('Menu.Dashboard.index', [
             'users' => User::Where('role_id', '!=', 1)->count(),
             'tujuans' => Tujuan::all()->count(),
             'indikators' => Indikator::all()->count()

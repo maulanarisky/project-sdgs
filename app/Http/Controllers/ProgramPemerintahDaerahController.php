@@ -74,7 +74,7 @@ class ProgramPemerintahDaerahController extends Controller
     {
         $validatedData = $request->validate([
             'user_id' => 'required',
-            // 'tahun_id' => 'required',
+            'tahun_id' => 'required',
             'sub_kegiatan_id'=> 'required|string',
             'target_tahun' => 'required|string',
             'realisasi_target_sem_1' => 'required|string',

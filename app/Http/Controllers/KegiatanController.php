@@ -20,7 +20,7 @@ class KegiatanController extends Controller
 
     public function create()
     {
-         return view('menu.kegiatan.create', [
+         return view('Menu.Kegiatan.create', [
             'programs' => Program::all()
         ]);
     }
@@ -47,7 +47,7 @@ class KegiatanController extends Controller
 
     public function edit(Kegiatan $kegiatan)
     {
-         return view('menu.kegiatan.edit',[
+         return view('Menu.Kegiatan.edit',[
             'kegiatan' => Kegiatan::where('id','=', $kegiatan->id)->first(),
             'programs' => Program::all()
         ]);

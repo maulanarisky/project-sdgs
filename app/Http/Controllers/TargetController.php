@@ -12,14 +12,14 @@ class TargetController extends Controller
 {
     public function index()
     {   
-        return view('menu.target.index', [
+        return view('menu.Target.index', [
             'targets' => Target::with('tujuan')->get()
         ]);
     }
 
     public function create()
     {
-        return view('menu.target.create', [
+        return view('Menu.Target.create', [
             'tujuans' => Tujuan::all()
         ]);
     }
@@ -43,7 +43,7 @@ class TargetController extends Controller
 
     public function edit($id)
     {
-        return view('menu.target.edit',[
+        return view('Menu.Target.edit',[
             'target' => Target::where('id','=', $id)->first(),
             'tujuans' => Tujuan::all()
         ]);

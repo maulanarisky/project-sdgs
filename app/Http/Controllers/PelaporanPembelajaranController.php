@@ -59,7 +59,7 @@ class PelaporanPembelajaranController extends Controller
   
     public function show(PelaporanPembelajaran $pp)
     {
-        return view('menu.PelaporanPembelajaran.show', [
+        return view('Menu.PelaporanPembelajaran.show', [
             'pp' => PelaporanPembelajaran::findOrFail($pp->id)
         ]);
        

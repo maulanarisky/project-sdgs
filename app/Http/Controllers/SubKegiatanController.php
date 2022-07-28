@@ -13,7 +13,7 @@ class SubKegiatanController extends Controller
 {
     public function index()
     {
-        return view('menu.subkegiatan.index', [
+        return view('Menu.SubKegiatan.index', [
             'subkegiatans' => SubKegiatan::all(),
         ]);
     }
@@ -39,7 +39,7 @@ class SubKegiatanController extends Controller
  
     public function edit(SubKegiatan $subkegiatan)
     {
-        return view('menu.subkegiatan.edit', [
+        return view('Menu.SubKegiatan.edit', [
             'subkegiatan' => SubKegiatan::where('id','=', $subkegiatan->id)->first(),
             'indikators' => Indikator::all(),
             'users' => User::all()
@@ -48,17 +48,7 @@ class SubKegiatanController extends Controller
 
     public function update(Request $request, SubKegiatan $subkegiatan)
     {   
-    //         $rules = $request->validate([
-    //         'program' => 'required',
-    //         'kegiatan' => 'required',
-    //         'kode_sub_kegiatan' => 'required',
-    //         'name_sub_kegiatan' => 'required',
-    //         'indikator_sub' => 'required',
-    //         'satuan' => 'required',
-    //         'user_id' => '',
-    //         'indikator_id' => 'required'
-    //    ]);
-    //    SubKegiatan::where('id', $subkegiatan->id)->update($rules);
+    
       
             $rules = $request->validate([
                 'program' => 'required',

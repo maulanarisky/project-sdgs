@@ -18,7 +18,7 @@ class KabkotaController extends Controller
      */
     public function index()
     {
-        return view('menu.SubkegiatanKabkota.index', [
+        return view('Menu.SubkegiatanKabkota.index', [
             'kabkotas' => Kabkota::all(),
         ]);
     }
@@ -44,7 +44,7 @@ class KabkotaController extends Controller
    
     public function edit(Kabkota $kabkotum)
     {
-         return view('menu.SubkegiatanKabkota.edit', [
+         return view('Menu.SubkegiatanKabkota.edit', [
             'kab' => Kabkota::where('id','=', $kabkotum->id)->first(),
             'indikators' => Indikator::all(),
             'users' => User::all()

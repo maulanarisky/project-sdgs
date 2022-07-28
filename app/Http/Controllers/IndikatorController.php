@@ -16,14 +16,14 @@ class IndikatorController extends Controller
 {
     public function index()
     {
-        return view('menu.indikator.index', [
+        return view('Menu.Indikator.index', [
             'indikators' => Indikator::with('target.tujuan')->get(),
         ]);
     }
 
     public function create()
     {
-        return view('menu.indikator.create', [
+        return view('Menu.Indikator.create', [
             'tujuans' => Tujuan::all(),
             'targets' => Target::all()
         ]);
@@ -51,7 +51,7 @@ class IndikatorController extends Controller
 
     public function edit($id)
     {
-        return view('menu.indikator.edit', [
+        return view('Menu.Indikator.edit', [
             'indikator' => Indikator::where('id','=', $id)->first(),
             'tujuans' => Tujuan::all(),
             'targets' => Target::all(),

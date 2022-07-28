@@ -45,7 +45,7 @@ class ProgramKabKotaController extends Controller
   
     public function edit(ProgramKabKota $pkabkotum)
     {
-        return view('Menu.ProgramKabkota.edit',[
+        return view('Menu.ProgramKabKota.edit',[
             'pkabkota' => ProgramKabKota::where('id','=',$pkabkotum->id)->first(),
         ]);
     }

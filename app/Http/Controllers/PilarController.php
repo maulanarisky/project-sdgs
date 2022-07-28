@@ -9,14 +9,14 @@ class PilarController extends Controller
 {
     public function index()
     {
-        return view('menu.pilar.index', [
+        return view('Menu.Pilar.index', [
             'pilars' => Pilar::all()
         ]);
     }
 
     public function create()
     {
-        return view('menu.pilar.create', [
+        return view('Menu.Pilar.create', [
             'pilar' => Pilar::all()->last()
         ]);
     }
@@ -39,8 +39,9 @@ class PilarController extends Controller
 
     public function edit($id)
     {
-        $pilar = Pilar::where('id','=', $id)->first();
-        return view('menu/pilar/edit', compact('pilar'));
+        return view('Menu.Pilar.edit', [
+            'pilar' => Pilar::where('id','=', $id)->first()
+        ]);
     }
 
     public function update(Request $request, Pilar $pilar)

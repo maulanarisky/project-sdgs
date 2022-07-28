@@ -11,14 +11,14 @@ class TujuanController extends Controller
 {
     public function index()
     {
-        return view('menu.tujuan.index', [
+        return view('Menu.Tujuan.index', [
             'tujuans' => Tujuan::all()
         ]);
     }
 
     public function create()
     {
-        return view('menu.tujuan.create', [
+        return view('Menu.Tujuan.create', [
             'pilars' => Pilar::all(),
             'tujuan' => Tujuan::all()->last()
         ]);
@@ -50,7 +50,7 @@ class TujuanController extends Controller
 
     public function edit($id)
     {
-        return view('menu.tujuan.edit',[
+        return view('Menu.Tujuan.edit',[
             'tujuan' => Tujuan::where('id','=', $id)->first(),
             'pilars' => Pilar::all()
         ]);
