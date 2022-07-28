@@ -138,12 +138,7 @@
                 <i class="fas fa-fw fa-th-large"></i>
                 <span>Indikator</span></a>
         </li>
-        <!-- Nav Item - Indikator Provinsi -->
-        <li class="nav-item {{ Request::is('menu/subkegiatan*') ? 'active' : '' }}">
-            <a class="nav-link" href="/menu/subkegiatan">
-                <i class="fas fa-fw fa-th-large"></i>
-                <span>Subkegitan Provinsi</span></a>
-        </li>
+       
         <!-- Nav Item - Indikator Kabkota -->
         <li class="nav-item {{ Request::is('menu/kabkota*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/kabkota">
@@ -233,6 +228,16 @@
                 <i class="fas fa-fw fa-book"></i>
                 <span>Laporan Pencapaian TPB </span>
             </a>
+        </li>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
+            <span>Meta Data</span>
+        </h6>
+         <!-- Nav Item - Indikator Provinsi -->
+        <li class="nav-item {{ Request::is('menu/subkegiatan*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/subkegiatan">
+                <i class="fas fa-fw fa-th-large"></i>
+                <span>Subkegitan Provinsi</span></a>
         </li>
     @endcan
 
@@ -330,7 +335,7 @@
 
         <hr class="sidebar-divider d-none d-md-block">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted">
-            <span>Rencana Tindak Lanjut/span>
+            <span>Rencana Tindak Lanjut</span>
         </h6>
 
         {{-- nav item - Rencana Tindak Lanjut --}}

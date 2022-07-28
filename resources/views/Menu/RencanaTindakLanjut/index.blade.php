@@ -3,7 +3,7 @@
   
   <div class="container-fluid">
 
-    <h1 class="h3 mb-2 text-gray-800 text-center">Rencana Tindak Lanjut</h1>
+    <h1 class="h3 mb-2 text-gray-800 text-center">Identifikasi Masalah & Rencana Tindak Lanjut </h1>
 
     <div class="card shadow mb-4">
 

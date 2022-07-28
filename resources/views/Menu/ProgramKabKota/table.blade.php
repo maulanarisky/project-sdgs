@@ -1,6 +1,7 @@
  <table class="table table-bordered" id="example" width="100%" cellspacing="0">
           <thead>
             <tr class="text-center">
+              <th rowspan="2" style="vertical-align: middle" > Tujuan</th>  
               <th rowspan="2" style="vertical-align: middle" > Indikator</th>  
               <th rowspan="2" style="vertical-align: middle" >  Program </th>  
               <th rowspan="2" style="vertical-align: middle" > Kegiatan </th>  
@@ -29,6 +30,7 @@
             @foreach ($program_kab_kotas as $pkk)
               @if ($pkk->user->id == Auth::user()->id  && $pkk->tahun_id ==  $tahunSinggle->id)
                 <tr>                       
+                  <td style="vertical-align: middle">{{ $pkk->kabkota->indikator->target->tujuan->kode_tujuan }}.{{ $pkk->kabkota->indikator->target->tujuan->name }}</td>
                   <td style="vertical-align: middle">{{ $pkk->Kabkota->indikator->kode_indikator }}.{{ $pkk->Kabkota->indikator->deskripsi }}</td>
                   <td style="vertical-align: middle">{{ $pkk->Kabkota->program_kabkota}}</td>
                   <td style="vertical-align: middle">{{ $pkk->Kabkota->kegiatan_kabkota }}</td>
@@ -50,6 +52,7 @@
                 </tr>
               @elseif(Auth::user()->role_id == 1 && $pkk->tahun_id ==  $tahunSinggle->id)
               <tr>                       
+                <td style="vertical-align: middle">{{ $pkk->kabkota->indikator->target->tujuan->kode_tujuan }}.{{ $pkk->kabkota->indikator->target->tujuan->name }}</td>
                 <td style="vertical-align: middle">{{ $pkk->Kabkota->indikator->kode_indikator }}.{{ $pkk->Kabkota->indikator->deskripsi }}</td>
                 <td style="vertical-align: middle">{{ $pkk->Kabkota->program_kabkota }}</td>
                 <td style="vertical-align: middle">{{ $pkk->Kabkota->kegiatan_kabkota }}</td>

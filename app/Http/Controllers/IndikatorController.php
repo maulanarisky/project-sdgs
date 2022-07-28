@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Capaian;
 use App\Models\Indikator;
+use App\Models\ProgramPemerintahDaerah;
+use App\Models\ProgramPemerintahPusat;
 use App\Models\Tahun;
 use App\Models\Target;
 use App\Models\Tujuan;
@@ -80,7 +82,7 @@ class IndikatorController extends Controller
                 'indikator_id' => 'required',
                 'user_id' => 'required',
             ]);
-            Capaian::where('indikator_id', $indikator->id)->update($rulesCapaian);   
+            Capaian::where('indikator_id', $indikator->id)->update($rulesCapaian);    
 
         } else {
 

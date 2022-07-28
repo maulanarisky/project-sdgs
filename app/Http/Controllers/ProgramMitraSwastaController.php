@@ -22,7 +22,7 @@ class ProgramMitraSwastaController extends Controller
     {
          return view('Menu.ProgramMitraSwasta.index',[
             'tahunSinggle' => Tahun::findOrFail($tahunID),
-            'output_kegiatans' => ProgramMitraSwasta::with('kegiatan.program', 'user')->get(),
+            'output_kegiatans' => ProgramMitraSwasta::with('kegiatan.program','indikator.target.tujuan' ,'user')->get(),
         ]);
     }
 

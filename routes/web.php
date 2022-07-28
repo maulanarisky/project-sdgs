@@ -67,6 +67,8 @@ Route::get('menu/mitraswasta/{tahunID}', [ProgramMitraSwastaController::class,'i
 Route::resource('/menu/umkm', ProgramPelakuUsahaController::class);
 Route::get('/export/{tahunID}', [CapaianController::class, 'Export']);
 
+Route::resource('/menu/subkegiatan', SubKegiatanController::class)->except(['show']);
+
 Route::middleware(['superadmin'])->group(function (){
     
     Route::resource('/menu/pilar', PilarController::class)->except(['show']);
@@ -76,8 +78,6 @@ Route::middleware(['superadmin'])->group(function (){
     Route::resource('/menu/target', TargetController::class)->except(['show']);
     
     Route::resource('/menu/indikator', IndikatorController::class)->except(['show']);
-
-    Route::resource('/menu/subkegiatan', SubKegiatanController::class)->except(['show']);
 
     Route::resource('/menu/kabkota', KabkotaController::class)->except(['show']);
     

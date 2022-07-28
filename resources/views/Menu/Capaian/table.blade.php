@@ -20,7 +20,7 @@
         @foreach ($capaians as $capaian)
             @if ($capaian->tahun_id == $tahunSinggle->id && $capaian->user->id == Auth::user()->id)
                     <tr align="center" >
-                          <td>{{  $capaian->indikator->target->tujuan->kode_tujuan }}</td>
+                        <td>{{  $capaian->indikator->target->tujuan->kode_tujuan }}.{{  $capaian->indikator->target->tujuan->name }}</td>
                         <td>{{ $capaian->indikator->target->kode_target }}.{{ $capaian->indikator->target->deskripsi }}</td>
                         <td>{{ $capaian->indikator->kode_indikator}}.{{ $capaian->indikator->deskripsi }}</td>
                         <td>{{ $capaian->user->name }}</td>
@@ -48,7 +48,7 @@
                 {{-- jika yg login superadmin --}}
                 @elseif (Auth::user()->role_id == 1 && $capaian->tahun_id == $tahunSinggle->id)
                     <tr align="center" >
-                        <td>{{  $capaian->indikator->target->tujuan->kode_tujuan }}</td>
+                        <td>{{  $capaian->indikator->target->tujuan->kode_tujuan }}.{{  $capaian->indikator->target->tujuan->name }}</td>
                         <td>{{ $capaian->indikator->target->kode_target }}.{{ $capaian->indikator->target->deskripsi }}</td>
                         <td>{{ $capaian->indikator->kode_indikator}}.{{ $capaian->indikator->deskripsi }}</td>
                         <td>{{ $capaian->user->name }}</td>

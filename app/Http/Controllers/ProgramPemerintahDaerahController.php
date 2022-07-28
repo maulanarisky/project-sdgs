@@ -22,7 +22,7 @@ class ProgramPemerintahDaerahController extends Controller
     public function index($tahunID)
     {
          return view('Menu.ProgramPemerintahDaerah.index',[
-            'program_pemerintah_daerahs' => ProgramPemerintahDaerah::with('SubKegiatan.Indikator', 'tahun', 'user')->get(),
+            'program_pemerintah_daerahs' => ProgramPemerintahDaerah::with('indikator.target.tujuan', 'tahun', 'user')->get(),
             'tahuns' => Tahun::all(),
             // 'sub_kegiatan' => SubKegiatan::all(),
             'tahunSinggle' => Tahun::findOrFail($tahunID),

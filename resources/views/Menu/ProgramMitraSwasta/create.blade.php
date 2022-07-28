@@ -31,16 +31,6 @@
                                             </div>
                                          </div>
                                            <div class="col-md-6">     
-                                            <div class="form-group"> 
-                                                <label for="tujuan_id">Pilih tujuan</label>
-                                                <select class="form-control" name="tujuan_id" id="tujuan_id">
-                                                    @foreach ($tujuans as $tujuan)
-                                                        <option value="{{ $tujuan->id }}">{{ $tujuan->kode_tujuan }} {{ $tujuan->name }}</option> 
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                         </div>
-                                           <div class="col-md-6">     
                                             <div class="form-group">
                                                 <label for="indikator_id">Pilih Indikator</label>
                                                 <select class="form-control" name="indikator_id" id="indikator_id">
