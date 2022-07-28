@@ -31,11 +31,11 @@
                         <td>{{ $capaian->capaian }}</td>
                         
                         @if ($capaian->status == 'tercapai')
-                            <td valign="middle">Tercapai</td> 
+                            <td valign="middle" style= "background-color:rgb(110, 239, 110);"><strong>Tercapai</strong></td> 
                         @elseif($capaian->status == 'akan_tercapai')
-                            <td valign="middle">Akan Tercapai</td>
+                            <td valign="middle" style= "background-color:rgb(239, 212, 116);"><strong>Akan Tercapai</strong></td>
                         @elseif($capaian->status == 'perlu_perhatian_kusus')
-                            <td valign="middle">Perlu <br> Perhatian Khusus</td>
+                            <td valign="middle" style= "background-color:rgb(230, 127, 127);"><strong>Perlu <br> Perhatian Khusus</strong></td>
                         @else
                             <td valign="middle"></td>
                         @endif
@@ -59,13 +59,13 @@
                         <td>{{ $capaian->capaian }}</td>
                         
                         @if ($capaian->status == 'tercapai')
-                            <td valign="middle">Tercapain</td> 
+                            <td valign="middle" style= "background-color:rgb(110, 239, 110);"><strong>Tercapai</strong></td> 
                         @elseif($capaian->status == 'akan_tercapai')
-                            <td valign="middle">Akan Tercapai</td>
+                            <td valign="middle" style= "background-color:rgb(239, 212, 116);"><strong>Akan Tercapai</strong></td>
                         @elseif($capaian->status == 'perlu_perhatian_kusus')
-                            <td valign="middle"><i class="fa fa-caret-down text-danger" aria-hidden="true"></i> </td>
+                            <td valign="middle" style= "background-color:rgb(230, 127, 127);"><strong>Perlu <br> Perhatian Khusus</strong></td>
                         @else
-                            <td valign="middle">Perlu <br> Perhatian Khusus</td>
+                            <td valign="middle"></td>
                         @endif
                     </tr>
                 @endif

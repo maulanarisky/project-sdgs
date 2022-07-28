@@ -7,7 +7,7 @@
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            {!! __('Anda lupa kata sandi? Tidak masalah. Cukup beri tahu kami alamat email Anda dan kami akan mengirimkan email tautan pengaturan ulang kata sandi yang memungkinkan Anda membuat kata sandi yang baru.<b> Bila tidak Ada error yang muncul silahkan cek email anda baik pada kotak masuk ataupun spam</b>') !!}
         </div>
 
         <!-- Session Status -->

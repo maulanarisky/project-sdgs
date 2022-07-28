@@ -48,7 +48,21 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'superadmin',
             'email' => 'superadmin@gmail.com',
-            'no_wa' => '082233777721',
+            'no_wa' => '0822377721',
+            'role_id' => 1,
+            'password' => bcrypt('12341234')
+        ]);
+        User::create([
+            'name' => 'superadmin',
+            'email' => 'superadmin2@gmail.com',
+            'no_wa' => '08221',
+            'role_id' => 1,
+            'password' => bcrypt('12341234')
+        ]);
+        User::create([
+            'name' => 'superadmin2',
+            'email' => 'sdgs.kaltim@gmail.com',
+            'no_wa' => '08223772401',
             'role_id' => 1,
             'password' => bcrypt('12341234')
         ]);
