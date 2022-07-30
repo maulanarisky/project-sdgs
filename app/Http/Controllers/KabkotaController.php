@@ -8,6 +8,7 @@ use App\Models\ProgramKabKota;
 use App\Models\Tahun;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KabkotaController extends Controller
 {
@@ -20,6 +21,7 @@ class KabkotaController extends Controller
     {
         return view('Menu.SubkegiatanKabkota.index', [
             'kabkotas' => Kabkota::all(),
+            // 'pkk' => ProgramKabKota::all(),
         ]);
     }
 
@@ -36,62 +38,89 @@ class KabkotaController extends Controller
     }
 
    
-    public function show(Kabkota $kabkota)
+    public function show(Kabkota $kabkotum)
     {
-        //
+        $pilih = Kabkota::where('id', '=', $kabkotum->id)->get();
+        // $pkk = ProgramKabKota::all();
+        $tahuns = Tahun::all();
+
+        foreach($tahuns as $tahun){
+            $validatedkabkota['kabkota_id'] = $kabkotum->id;
+            $validatedkabkota['user_id'] = Auth::user()->id;
+            $validatedkabkota['tahun_id'] = $tahun->id;
+
+            ProgramKabKota::create($validatedkabkota);
+        }
+        // return redirect()->back()->with('success', "Berhasil di <b>Tambahkan</b> No : ('/menu/pkabkota/7')"  ); 
+        return redirect('/menu/pkabkota/7')->with('success', "Subkegiatan : <strong>{$kabkotum->name_subkegiatan_kabkota} </strong> Berhasil DiTambahkan "  ); 
+       
+        // foreach($pkk as $pk){
+        //     if($pk->user_id == null && $pk->kabkota_id == null){
+        //     foreach($tahuns as $tahun){
+        //         $validatedkabkota['kabkota_id'] = $kabkotum->id;
+        //         $validatedkabkota['user_id'] = Auth::user()->id;
+        //         $validatedkabkota['tahun_id'] = $tahun->id;
+
+        //         ProgramKabKota::create($validatedkabkota);
+        //     }
+        //     return redirect('/menu/pkabkota/7')->with('success', ' Berhasil di <b>Tambhakan</b>'); 
+        //     }
+        // }
+        
+         
     }
 
    
     public function edit(Kabkota $kabkotum)
     {
-         return view('Menu.SubkegiatanKabkota.edit', [
-            'kab' => Kabkota::where('id','=', $kabkotum->id)->first(),
-            'indikators' => Indikator::all(),
-            'users' => User::all()
-        ]);
+        //  return view('Menu.SubkegiatanKabkota.edit', [
+        //     'kab' => Kabkota::where('id','=', $kabkotum->id)->first(),
+        //     'indikators' => Indikator::all(),
+        //     'users' => User::all()
+        // ]);
     }
 
   
     public function update(Request $request, Kabkota $kabkotum)
     {
-          $rules = $request->validate([
-            'program_kabkota' => 'required',
-            'kegiatan_kabkota' => 'required',
-            'kode_subkegiatan_kabkota' => 'required',
-            'name_subkegiatan_kabkota' => 'required',
-            'indikator_kabkota' => 'required',
-            'satuan' => 'required',
-            'user_id' => '',
-            'indikator_id' => 'required'
-       ]);
-       Kabkota::where('id', $kabkotum->id)->update($rules);
+    //       $rules = $request->validate([
+    //         'program_kabkota' => 'required',
+    //         'kegiatan_kabkota' => 'required',
+    //         'kode_subkegiatan_kabkota' => 'required',
+    //         'name_subkegiatan_kabkota' => 'required',
+    //         'indikator_kabkota' => 'required',
+    //         'satuan' => 'required',
+    //         'user_id' => '',
+    //         'indikator_id' => 'required'
+    //    ]);
+    //    Kabkota::where('id', $kabkotum->id)->update($rules);
            
-           $cekkabkota = ProgramKabKota::where([
-           ['kabkota_id', '=', $kabkotum->id]
-           ])->first();
+    //        $cekkabkota = ProgramKabKota::where([
+    //        ['kabkota_id', '=', $kabkotum->id]
+    //        ])->first();
             
             
-            if ($cekkabkota) {
-                $rulesKabkota = $request->validate([
-                    'kabkota_id' => 'required',
-                    'user_id' => 'required',
-                ]);
+    //         if ($cekkabkota) {
+    //             $rulesKabkota = $request->validate([
+    //                 'kabkota_id' => 'required',
+    //                 'user_id' => 'required',
+    //             ]);
                
-                ProgramKabKota::where('kabkota_id', $kabkotum->id)->update($rulesKabkota);   
-            } else {
-                $tahuns = Tahun::all();
-                foreach($tahuns as $tahun){
-                    $validatedkabkota = $request->validate([
-                        'kabkota_id' => 'required',
-                        'user_id' => 'required',
-                    ]);
+    //             ProgramKabKota::where('kabkota_id', $kabkotum->id)->update($rulesKabkota);   
+    //         } else {
+    //             $tahuns = Tahun::all();
+    //             foreach($tahuns as $tahun){
+    //                 $validatedkabkota = $request->validate([
+    //                     'kabkota_id' => 'required',
+    //                     'user_id' => 'required',
+    //                 ]);
     
-                    $validatedkabkota['tahun_id'] = $tahun->id;
-                    ProgramKabKota::create($validatedkabkota);
-                }
-            } 
+    //                 $validatedkabkota['tahun_id'] = $tahun->id;
+    //                 ProgramKabKota::create($validatedkabkota);
+    //             }
+    //         } 
         
-        return redirect('/menu/kabkota')->with('success', ' Berhasil di <b>Ubah</b>');
+    //     return redirect('/menu/kabkota')->with('success', ' Berhasil di <b>Ubah</b>');
     }
 
     
@@ -99,4 +128,6 @@ class KabkotaController extends Controller
     {
         //
     }
+
+    
 }

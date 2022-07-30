@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\Form2bkabkotaExport;
+use App\Models\Indikator;
 use App\Models\ProgramKabKota;
 use App\Models\Tahun;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class ProgramKabKotaController extends Controller
     public function index($tahunID)
     {
          return view('Menu.ProgramKabKota.index',[
-            'program_kab_kotas' => ProgramKabKota::with('Kabkota.Indikator', 'tahun', 'user')->get(),
+            'program_kab_kotas' => ProgramKabKota::with('kabkota.indikator.tujuan', 'tahun', 'user')->orderBy('id', 'DESC')->get(),
             'tahuns' => Tahun::all(),
             // 'sub_kegiatan' => SubKegiatan::all(),
             'tahunSinggle' => Tahun::findOrFail($tahunID),
@@ -47,6 +48,7 @@ class ProgramKabKotaController extends Controller
     {
         return view('Menu.ProgramKabKota.edit',[
             'pkabkota' => ProgramKabKota::where('id','=',$pkabkotum->id)->first(),
+            'indikators' => Indikator::all(),
         ]);
     }
 
@@ -55,7 +57,7 @@ class ProgramKabKotaController extends Controller
     {
           $validatedData = $request->validate([
             'user_id' => 'required',
-            // 'tahun_id' => 'required',
+            'indikator_id' => 'required',
             'kabkota_id'=> 'required|string',
             'target_tahun' => 'required|string',
             'realisasi_target_sem_1' => 'required|string',
@@ -72,14 +74,10 @@ class ProgramKabKotaController extends Controller
         return redirect('/menu/pkabkota/7')->with('success', 'Berhasil di <b>Ubah</b>');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ProgramKabKota  $programKabKota
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ProgramKabKota $programKabKota)
+   
+    public function destroy(ProgramKabKota $pkabkotum)
     {
-        //
+        ProgramKabKota::destroy($pkabkotum->id);
+        return redirect('/menu/pkabkota/7')->with('success', ' Berhasil di <b>Hapus</b>');
     }
 }

@@ -60,7 +60,7 @@
                              <tr>                       
                                <td style="vertical-align: middle">{{ $pusat->indikator->target->tujuan->kode_tujuan }}.{{ $pusat->indikator->target->tujuan->name }}</td>
                                <td style="vertical-align: middle">{{ $pusat->indikator->kode_indikator }}. {{ $pusat->indikator->deskripsi }}</td>
-                               <td style="vertical-align: middle">{{ $pusat->program->kode_program }}.{{ $pusat->program->name_program }}</td>
+                          <td style="vertical-align: middle">{{ $pusat->kegiatan->program->kode_program }}.{{ $pusat->kegiatan->program->name_program }}</td>
                                {{-- <td>{{ $pusat->kegiatan->kode_kegiatan }}</td> --}}
                                <td style="vertical-align: middle">{{ $pusat->kegiatan->id }}.{{ $pusat->kegiatan->name_kegiatan }}</td>
                                <td style="vertical-align: middle">{{ $pusat->kode_rincianoutput }}. {{ $pusat->name_rincianoutput }}</td>

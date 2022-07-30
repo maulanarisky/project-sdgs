@@ -139,12 +139,7 @@
                 <span>Indikator</span></a>
         </li>
        
-        <!-- Nav Item - Indikator Kabkota -->
-        <li class="nav-item {{ Request::is('menu/kabkota*') ? 'active' : '' }}">
-            <a class="nav-link" href="/menu/kabkota">
-                <i class="fas fa-fw fa-th-large"></i>
-                <span>Subkegiatan Kab/Kota</span></a>
-        </li>
+      
     @endcan
 
     @can('skpd')
@@ -297,6 +292,15 @@
                 <span>Laporan Pencapaian TPB </span>
             </a>
         </li>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
+            <span>Meta Data</span>
+        </h6>
+          <!-- Nav Item - Indikator Kabkota -->
+        <li class="nav-item {{ Request::is('menu/kabkota*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/kabkota">
+                <i class="fas fa-fw fa-th-large"></i>
+                <span>Subkegiatan Kab/Kota</span></a>
+        </li>
     @endcan
 
     @can('pusat')
@@ -366,6 +370,8 @@
                 <span>Laporan Pencapaian TPB </span>
             </a>
         </li>
+
+        
 
     @endcan
 

@@ -90,7 +90,7 @@ class UserController extends Controller
        
         
         
-         $validateduser['status'] = "active";
+        $validateduser['status'] = "active";
         
         User::where('role_id', '!=', $id)->update($validateduser);
         return redirect('/menu/user')->with('success', 'User Berhasil di <b>Aktifkan Semua</b>');

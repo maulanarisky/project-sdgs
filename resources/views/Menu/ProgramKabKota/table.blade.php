@@ -29,9 +29,15 @@
           <tbody id="myTable">
             @foreach ($program_kab_kotas as $pkk)
               @if ($pkk->user->id == Auth::user()->id  && $pkk->tahun_id ==  $tahunSinggle->id)
-                <tr>                       
-                  <td style="vertical-align: middle">{{ $pkk->kabkota->indikator->target->tujuan->kode_tujuan }}.{{ $pkk->kabkota->indikator->target->tujuan->name }}</td>
-                  <td style="vertical-align: middle">{{ $pkk->Kabkota->indikator->kode_indikator }}.{{ $pkk->Kabkota->indikator->deskripsi }}</td>
+                <tr>
+                  @if ($pkk->indikator_id != '')
+                  <td style="vertical-align: middle">{{ $pkk->indikator->tujuan->kode_tujuan }}.{{ $pkk->indikator->tujuan->name }}</td>
+                  <td style="vertical-align: middle">{{ $pkk->indikator->kode_indikator }}.{{ $pkk->indikator->deskripsi }}</td>
+                  @elseif($pkk->indikator_id == '')
+                  <td></td>
+                  <td></td>
+                  @endif
+
                   <td style="vertical-align: middle">{{ $pkk->Kabkota->program_kabkota}}</td>
                   <td style="vertical-align: middle">{{ $pkk->Kabkota->kegiatan_kabkota }}</td>
                   <td style="vertical-align: middle">{{ $pkk->Kabkota->name_subkegiatan_kabkota }}</td>
@@ -48,12 +54,26 @@
                   <td style="vertical-align: middle">{{ $pkk->user->name }}</td>
                   <td align="center" style="width: 8rem">
                     <a href="/menu/pkabkota/{{ $pkk->id }}/edit" class="btn btn-warning p-2" ><i class="fas fa-fw fa-pen-square"></i></a> 
+                     <form action="/menu/pkabkota/{{ $pkk->id }}" method="post" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-danger  p-2 mt-2" onclick="return confirm('Apakah Anda Yakin menghapus Program Kab/Kota : {{ $pkk->Kabkota->program_kabkota }} ?')">
+                            <i class="fas fa-fw fa-trash"></i>
+                        </button>
+                    </form>
                   </td>
                 </tr>
               @elseif(Auth::user()->role_id == 1 && $pkk->tahun_id ==  $tahunSinggle->id)
               <tr>                       
-                <td style="vertical-align: middle">{{ $pkk->kabkota->indikator->target->tujuan->kode_tujuan }}.{{ $pkk->kabkota->indikator->target->tujuan->name }}</td>
-                <td style="vertical-align: middle">{{ $pkk->Kabkota->indikator->kode_indikator }}.{{ $pkk->Kabkota->indikator->deskripsi }}</td>
+              
+                 @if ($pkk->indikator_id != '')
+                  <td style="vertical-align: middle">{{ $pkk->indikator->tujuan->kode_tujuan }}.{{ $pkk->indikator->tujuan->name }}</td>
+                  <td style="vertical-align: middle">{{ $pkk->indikator->kode_indikator }}.{{ $pkk->indikator->deskripsi }}</td>
+                  @elseif($pkk->indikator_id == '')
+                  <td></td>
+                  <td></td>
+                @endif
+                
                 <td style="vertical-align: middle">{{ $pkk->Kabkota->program_kabkota }}</td>
                 <td style="vertical-align: middle">{{ $pkk->Kabkota->kegiatan_kabkota }}</td>
                 <td style="vertical-align: middle">{{ $pkk->Kabkota->name_subkegiatan_kabkota }}</td>

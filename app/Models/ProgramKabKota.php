@@ -23,5 +23,13 @@ class ProgramKabKota extends Model
     {
         return $this->belongsTo(Tahun::class, 'tahun_id');
     }
+    public function Indikator()
+    {
+        return $this->belongsTo(Indikator::class, 'indikator_id');
+    }
+    public function Target()
+    {
+        return $this->belongsTo(Target::class, 'target');
+    }
 
 }

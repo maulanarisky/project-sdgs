@@ -6,7 +6,7 @@
   <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800" style="text-transform: uppercase">Rencana Tindak lanjut</h1>
+    <h1 class="h3 mb-2 text-gray-800 text-center" style="text-transform: uppercase">Rencana Tindak lanjut</h1>
 
     <div class="card shadow mb-4 border-left-success" >
       <div class="card-header py-3">
@@ -19,17 +19,22 @@
             <form action="/menu/rtl" method="post" >
               @csrf
               <div class="row">
-                <div class="col-md-6">     
-                  <div class="form-group"> 
-                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                    <label for="tujuan_id">Pilih tujuan</label>
-                    <select class="form-control" name="tujuan_id" id="tujuan_id">
-                      @foreach ($tujuans as $tujuan)
-                        <option value="{{ $tujuan->id }}">{{ $tujuan->kode_tujuan }} {{ $tujuan->name }}</option> 
-                      @endforeach
+                <div class="col-md-6">
+                  <div class="form-group">
+                  <label for="indikator_id">Indikator TPB</label>
+                      <select class="@error('indikator_id') is-invalid @enderror form-control" name="indikator_id" id="indikator_id" required>
+                        <option value=""> Pilih Indikator TPB</option> 
+                        @foreach ($indikators as $indikator)
+                        @if ($indikator->user_id == Auth::user()->id)
+                            <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }}.{{ Str::limit($indikator->deskripsi, 50) }}</option>
+                        @elseif (Auth::user()->role_id != 2 )
+                            <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }}.{{ Str::limit($indikator->deskripsi, 50)}}</option>
+                        @endif
+                        @endforeach
                     </select>
-                  </div>
+                    <x-validation-message name="indikator_id" />
                 </div>
+            </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
@@ -74,6 +79,7 @@
                   <div class="form-group">
                     <label for="pelaksana">Institusi Pelaksana</label>
                     <input type="text" readonly class="form-control pt-1 @error('pelaksana') is-invalid @enderror" value="{{ Auth::user()->name }}" id="pelaksana"aria-describedby="pelaksana" name="pelaksana" />
+                    <input type="hidden" readonly class="form-control pt-1 @error('pelaksana') is-invalid @enderror" value="{{ Auth::user()->id }}"name="user_id" id="pelaksana"aria-describedby="pelaksana" name="pelaksana" />
                     <x-validation-message name="pelaksana" /> 
                   </div>
                 </div>  

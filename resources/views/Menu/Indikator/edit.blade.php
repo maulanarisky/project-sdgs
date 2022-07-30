@@ -19,6 +19,7 @@
                             @method('put')
                             @csrf
                             <div class="row">
+                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="tujuan_id">Pilih Tujuan</label>
@@ -56,7 +57,7 @@
                                     <div class="form-group">
                                         <label for="kode_indikator">Kode Indikator</label>
                                         <input type="hidden" name="indikator_id" id="indikator_id" value="{{ $indikator->id }}"/>
-                                        <input name="kode_indikator" id="kode_indikator" value="{{ $indikator->kode_indikator }}" type="text" class="@error('kode_indikator') is-invalid @enderror form-control" aria-describedby="kode_indikator"/>
+                                        <input name="kode_indikator" id="kode_indikator" value="{{ $indikator->kode_indikator }}" readonly type="text" class="@error('kode_indikator') is-invalid @enderror form-control" aria-describedby="kode_indikator"/>
                                         <x-validation-message name="kode_indikator" />
                                     </div>
                                 </div>
@@ -64,7 +65,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="deskripsi">Nama Indikator</label>
-                                        <input name="deskripsi" id="deskripsi" value="{{ $indikator->deskripsi }}" type="text" class="@error('deskripsi') is-invalid @enderror form-control" aria-describedby="nama_indikator"/>
+                                        <input name="deskripsi" id="deskripsi" value="{{ $indikator->deskripsi }}" readonly type="text" class="@error('deskripsi') is-invalid @enderror form-control" aria-describedby="nama_indikator"/>
                                         <x-validation-message name="deskripsi" />
                                     </div>
                                 </div>

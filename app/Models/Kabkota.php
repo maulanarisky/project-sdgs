@@ -18,9 +18,13 @@ class Kabkota extends Model
     {
         return $this->hasMany(ProgramPemerintahDaerah::class);
     }
-     public function Indikator()
+    public function Indikator()
     {
         return $this->belongsTo(Indikator::class, 'indikator_id');
+    }
+    public function Programkabkota()
+    {
+        return $this->hasMany(ProgramKabKota::class, 'kabkota_id');
     }
     public function available_ProgramPemerintahDaerah() {
         return $this->ProgramPemerintahDaerah()->where('available','=', 1);

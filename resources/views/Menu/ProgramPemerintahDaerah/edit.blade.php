@@ -20,9 +20,8 @@
               <div class="form-group">
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 <input type="hidden" name="sub_kegiatan_id" value="{{ $pemda->sub_kegiatan_id }}">
-                <input type="hidden" name="tahun_id" value="{{ $pemda->tahun->id }}">
                 <label for="tahun_id">Tahun</label>
-                 <input type="text" class="form-control @error is-invalid @enderror" value="{{ $pemda->tahun->name }}" name="" readonly/>
+                 <input type="text" name="tahun_id" class="form-control @error('tahun_id') is-invalid @enderror" value="{{ $pemda->tahun->name }}" readonly/>
                 <x-validation-message name="tahun_id" />
               </div>
             </div>

@@ -19,4 +19,8 @@ class RencanaTindakLanjut extends Model
     {
         return $this->belongsTo(Tujuan::class, 'tujuan_id');
     }
+    public function Indikator()
+    {
+        return $this->belongsTo(Indikator::class, 'indikator_id');
+    }
 }

@@ -68,6 +68,8 @@ Route::resource('/menu/umkm', ProgramPelakuUsahaController::class);
 Route::get('/export/{tahunID}', [CapaianController::class, 'Export']);
 
 Route::resource('/menu/subkegiatan', SubKegiatanController::class)->except(['show']);
+Route::resource('/menu/kabkota', KabkotaController::class);
+// Route::get('/menu/kabkota/pilih/{$id}', [KabkotaController::class , 'pilih'])->name('pilih');
 
 Route::middleware(['superadmin'])->group(function (){
     
@@ -78,8 +80,6 @@ Route::middleware(['superadmin'])->group(function (){
     Route::resource('/menu/target', TargetController::class)->except(['show']);
     
     Route::resource('/menu/indikator', IndikatorController::class)->except(['show']);
-
-    Route::resource('/menu/kabkota', KabkotaController::class)->except(['show']);
     
     Route::resource('menu/user', UserController ::class);
 
