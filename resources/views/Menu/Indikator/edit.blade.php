@@ -23,7 +23,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="tujuan_id">Pilih Tujuan</label>
-                                        <select class="@error('tujuan_id') is-invalid @enderror form-control" name="tujuan_id" id="tujuan">
+                                        {{-- <select class="@error('tujuan_id') is-invalid @enderror form-control" name="tujuan_id" id="tujuan">
                                             @foreach ($tujuans as $tujuan)
                                                 @if (old('tujuan_id', $indikator->tujuan_id === $tujuan->id))
                                                     <option value="{{ $tujuan->id }}" selected>{{ $tujuan->kode_tujuan }} {{ $tujuan->name }}</option> 
@@ -31,7 +31,10 @@
                                                     <option style="text-transform: uppercase" value="{{ $tujuan->id }}">{{ $tujuan->kode_tujuan }} {{ $tujuan->name }}</option>   
                                                 @endif
                                             @endforeach
-                                        </select>
+                                        </select> --}}
+                                        <input type="hidden" name="tujuan_id" id="tujuan_id" value="{{ $indikator->tujuan_id }}"/>
+                                        <input name="tujuan_id" id="tujuan_id" value="{{ $indikator->tujuan->kode_tujuan }} {{ $indikator->tujuan->name }}" readonly type="text" class="@error('tujuan_id') is-invalid @enderror form-control"/>
+
                                         <x-validation-message name="tujuan_id" />
                                     </div>
                                 </div>
@@ -39,7 +42,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="target_id">Pilih Target</label>
-                                        <select class="@error('target_id') is-invalid @enderror form-control" name="target_id" id="target">
+                                        {{-- <select class="@error('target_id') is-invalid @enderror form-control" name="target_id" id="target">
                                             @foreach ($targets as $target)
                                                 @if (old('target_id', $indikator->target_id == $target->id))
                                                     <option value="{{ $target->id }}" selected>{{ $target->kode_target }} {{ $target->deskripsi }}</option> 
@@ -47,7 +50,9 @@
                                                         <option value="{{ $target->id }}">{{ $target->kode_target }} {{ $target->deskripsi }}</option>   
                                                 @endif
                                             @endforeach
-                                        </select>
+                                        </select> --}}
+                                          <input type="hidden" name="target_id" id="target_id" value="{{ $indikator->target_id }}"/>
+                                        <input name="target_id" id="target_id" value="{{ $indikator->target->kode_target }} {{ $indikator->target->deskripsi }}" readonly type="text" class="@error('target_id') is-invalid @enderror form-control"/>
                                         <x-validation-message name="target_id" />
                                     </div>
                                 </div>

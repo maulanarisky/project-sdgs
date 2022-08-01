@@ -89,7 +89,7 @@ class SubKegiatanController extends Controller
                 }
             } 
         
-        return redirect('/menu/subkegiatan')->with('success', ' Berhasil di <b>Ubah</b>');
+        return redirect('/menu/subkegiatan')->with('success', "Berhasil di <b>Ubah</b>. SIlahkan Kembali Ke Menu Form 2b");
     }
 
   
