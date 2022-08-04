@@ -80,12 +80,13 @@ Route::middleware(['superadmin'])->group(function (){
     Route::resource('/menu/target', TargetController::class)->except(['show']);
     
     Route::resource('/menu/indikator', IndikatorController::class)->except(['show']);
+    Route::get('menu/indikator/active/{id}', [IndikatorController::class, 'updateform1'])->name('updateform1');
+    Route::get('menu/indikator/inactive/{id}', [IndikatorController::class, 'nonform1'])->name('nonform1');
     
     Route::resource('menu/user', UserController ::class);
 
     Route::get('menu/user/active/{id}', [UserController::class, 'updateall'])->name('updateall');
     Route::get('menu/user/inactive/{id}', [UserController::class, 'updateinactive'])->name('updateinall');
-
     
     Route::get('/form2a-export/{tahunID}', [ProgramPemerintahPusatController::class, 'form2aExport']);
     Route::get('/form2b-export/{tahunID}', [ProgramPemerintahDaerahController::class, 'form2bExport']);

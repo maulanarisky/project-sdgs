@@ -34,7 +34,9 @@
                                                 <label for="indikator_id">Pilih Indikator</label>
                                                 <select class="form-control" name="indikator_id" id="indikator_id">
                                                     @foreach ($indikators as $indikator)
+                                                      @if ($indikator->user_id == Auth::user()->id)
                                                         <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }} {{ $indikator->deskripsi }}</option>
+                                                      @endif
                                                     @endforeach
                                                 </select>
                                             </div>

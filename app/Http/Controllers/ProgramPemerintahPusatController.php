@@ -88,11 +88,11 @@ class ProgramPemerintahPusatController extends Controller
             'name_rincianoutput' => 'required|string',
             'satuan' => 'required|string',
             'target_tahun' => 'required|string',
-            'realisasi_target_sem_1' => 'required|string',
-            'realisasi_target_sem_2' => 'required|string',
+            'realisasi_target_sem_1' => 'string',
+            'realisasi_target_sem_2' => 'string',
             'alokasi_anggaran' => 'required|string',
-            'realisasi_anggaran_sem_1' =>'required|string',
-            'realisasi_anggaran_sem_2' =>'required|string',
+            'realisasi_anggaran_sem_1' =>'string',
+            'realisasi_anggaran_sem_2' =>'string',
             'lokasi_pelaksanaan_kegiatan' => 'required|string',
         ]);
 

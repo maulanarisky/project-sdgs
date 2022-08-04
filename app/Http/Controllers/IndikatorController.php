@@ -67,7 +67,8 @@ class IndikatorController extends Controller
             'kode_indikator' => 'required',
             'deskripsi' => 'required|string',
             'user_id' => 'required',
-            'satuan' => ''
+            'satuan' => '',
+            'status' => 'required'
         ]);
         Indikator::where('id', $indikator->id)->update($rules);
 
@@ -105,5 +106,26 @@ class IndikatorController extends Controller
     {
         Indikator::destroy($indikator->id);
         return redirect('/menu/indikator')->with('success', ' Berhasil di <b>Hapus</b>');
+    }
+
+    public function updateform1($id)
+    {
+        // $indikator = Indikator::where();
+
+           $validatedform1['status'] = "active";
+           Indikator::where('user_id','!=', $id )->update($validatedform1);
+      
+        return redirect('/menu/indikator')->with('success', 'Akses Form 1 <b>Dibuka</b>');
+
+    }
+    public function nonform1($id)
+    {
+        // $indikator = Indikator::where();
+       
+           $validatedform1['status'] = "inactive";
+           Indikator::where('user_id','!=', $id )->update($validatedform1);
+      
+        return redirect('/menu/indikator')->with('success', 'Akses Form 1 <b>Ditutup</b>');
+
     }
 }

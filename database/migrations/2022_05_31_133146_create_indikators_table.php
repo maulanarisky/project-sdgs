@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('kode_indikator');
             $table->text('deskripsi');
             $table->text('satuan')->nullable();
+            $table->string('status')->default('inactive');
             $table->timestamps();
         });
     }

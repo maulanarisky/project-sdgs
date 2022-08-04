@@ -38,12 +38,14 @@
                                             <div class="form-group">
                                                 <label for="indikator_id">Pilih Indikator</label>
                                                 <select class="form-control" name="indikator_id" id="indikator_id">
-                                                     @foreach ($indikators as $indikator)
+                                                    @foreach ($indikators as $indikator)
+                                                    @if ($indikator->user_id == Auth::user()->id)
                                                       @if(old('indikator_id', $pusat->indikator_id) == $indikator->id)    
                                                           <option value="{{ $indikator->id }}" selected>{{ $indikator->kode_indikator }}.{{ $indikator->deskripsi }}</option>  
                                                       @else
                                                           <option value="{{$indikator->id }}">{{ $indikator->kode_indikator }}.{{ $indikator->deskripsi }}</option>  
                                                       @endif
+                                                    @endif
                                                    @endforeach
                                                 </select>
                                             </div>

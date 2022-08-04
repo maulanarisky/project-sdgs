@@ -43,7 +43,7 @@
                 <select id="role" name="role" class="block mt-1 w-full">
                     <option value= "">Pilih Role</option>
                     @foreach ($roles as $role)
-                        @if ($role->id != 1)
+                        @if ($role->id != 1 && $role->id != 7)
                             <option value={{ $role->id }}>{{ $role->name }}</option>                       
                         @endif
                     @endforeach

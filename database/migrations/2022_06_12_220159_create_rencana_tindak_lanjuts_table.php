@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('indikator_id')->constrained('indikators')->onUpdate('cascade')->onDelete('cascade');
             $table->string('kategori');
-            $table->string('deskripsi');
-            $table->string('rtk');
+            $table->text('deskripsi');
+            $table->text('rtk');
             $table->string('pelaksana');
             $table->timestamps();
         });

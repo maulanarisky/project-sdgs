@@ -20,6 +20,7 @@
         border: 0;
       }
     </style>
+
 </head>
 {{-- @if (Auth::user()->status== "active") --}}
     
@@ -122,6 +123,9 @@
         });
     });
 </script>
+
+
+
 </body>
 
 </html>

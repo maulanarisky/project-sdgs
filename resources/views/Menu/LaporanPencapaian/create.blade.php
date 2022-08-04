@@ -2,7 +2,7 @@
 @section('container')
     <div class="container-fluid">
 
-        <h1 class="h3 mb-3 text-gray-800 text-center">Pelaporan Pembelajaran</h1>
+        <h1 class="h3 mb-3 text-gray-800 text-center">Laporan Pencapaian</h1>
 
         <div class="card shadow mb-4 border-left-success" >
             <div class="card-header py-3">

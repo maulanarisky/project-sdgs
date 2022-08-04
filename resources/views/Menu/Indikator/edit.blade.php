@@ -33,7 +33,7 @@
                                             @endforeach
                                         </select> --}}
                                         <input type="hidden" name="tujuan_id" id="tujuan_id" value="{{ $indikator->tujuan_id }}"/>
-                                        <input name="tujuan_id" id="tujuan_id" value="{{ $indikator->tujuan->kode_tujuan }} {{ $indikator->tujuan->name }}" readonly type="text" class="@error('tujuan_id') is-invalid @enderror form-control"/>
+                                        <input name="" id="tujuan_id" value="{{ $indikator->tujuan->kode_tujuan }} {{ $indikator->tujuan->name }}" readonly type="text" class="@error('tujuan_id') is-invalid @enderror form-control"/>
 
                                         <x-validation-message name="tujuan_id" />
                                     </div>
@@ -52,7 +52,7 @@
                                             @endforeach
                                         </select> --}}
                                           <input type="hidden" name="target_id" id="target_id" value="{{ $indikator->target_id }}"/>
-                                        <input name="target_id" id="target_id" value="{{ $indikator->target->kode_target }} {{ $indikator->target->deskripsi }}" readonly type="text" class="@error('target_id') is-invalid @enderror form-control"/>
+                                        <input name="" id="target_id" value="{{ $indikator->target->kode_target }} {{ $indikator->target->deskripsi }}" readonly type="text" class="@error('target_id') is-invalid @enderror form-control"/>
                                         <x-validation-message name="target_id" />
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                         <select class="@error('user_id') is-invalid @enderror form-control" name="user_id" id="user_id" required>
                                            <option value=""> Pilih Sumber Data</option> 
                                             @foreach ($users as $user)
-                                                @if ($user->role_id == 2 )
+                                                @if ($user->role_id == 2 || $user->role_id == 3)
                                                     @if (old('user_id', $indikator->user_id == $user->id))
                                                         <option value="{{ $user->id }}" selected> {{ $user->name }}</option> 
                                                     @else
@@ -100,6 +100,15 @@
                                         <x-validation-message name="user_id" />
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select class="form-control" name="status" id="status">
+                                        <option value="inactive">inactive</option>      
+                                        <option value="active">active</option>      
+                                    </select>
+                                </div>
+                            </div>
                             
                             </div>
                             <div class="row mt-2">

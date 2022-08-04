@@ -17,6 +17,7 @@
 
         @if (Auth::user()->role_id == 1) 
           <a href="/export/{{ $tahunSinggle->id }}" class="btn btn-success">Excel</a>
+          {{-- <input type="button" id="btnEnableDisable" value="Disable" class="btn btn-danger" onclick = "EnableDisableLinks(this)" /> --}}
         @endif
       </div>
 

@@ -55,6 +55,10 @@ class AuthenticatedSessionController extends Controller
 
             return redirect()->intended(RouteServiceProvider::HOME);
 
+        }elseif (Auth::user()->role_id == 7 & Auth::user()->status=="active") {
+
+            return redirect()->intended(RouteServiceProvider::HOME);
+
         }else{
 
             $request->session()->invalidate();
