@@ -27,7 +27,7 @@
                                 {{-- <th>Nama Indikator TPB</th> --}}
                                 <th>Satuan</th>
                                 {{-- <th>Sumber Data</th> --}}
-                                <th>Pilih Subkegiatan</th>
+                                {{-- <th>Pilih Subkegiatan</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -39,9 +39,9 @@
                                     <td>{{ $kab->kode_subkegiatan_kabkota }}. {{ $kab->name_subkegiatan_kabkota }}</td>
                                     <td>{{ $kab->indikator_kabkota}}</td>
                                     <td>{{ $kab->satuan }}</td>
-                                    <td align="center" style="width: 8rem;">
+                                    {{-- <td align="center" style="width: 8rem;">
                                         <a href="/menu/kabkota/{{ $kab->id }}" class="btn btn-info"><i class="fas fa-fw fa-check"></i></a>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

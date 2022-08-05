@@ -43,7 +43,6 @@ class ProgramMitraSwastaController extends Controller
         $validatedData = $request->validate([
             'user_id' => 'required',
             'tahun_id' => 'required',
-            'tujuan_id' => 'required',
             'indikator_id' => 'required|string',
             // 'program_id' => 'required|string',
             'kegiatan_id'=> 'required|string',

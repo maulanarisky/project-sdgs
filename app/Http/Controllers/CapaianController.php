@@ -6,6 +6,7 @@ use App\Exports\Export;
 use App\Exports\Form1Export;
 use App\Models\Capaian;
 use App\Models\Indikator;
+use App\Models\SubKegiatan;
 use App\Models\Tahun;
 use App\Models\Target;
 use App\Models\Tujuan;
@@ -33,7 +34,7 @@ class CapaianController extends Controller
 
     public function create()
     {
-
+       
     }
 
     public function store(Request $request)

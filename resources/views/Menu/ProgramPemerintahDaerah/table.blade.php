@@ -6,8 +6,8 @@
               <th rowspan="2" style="vertical-align: middle" >  Program</th>  
               <th rowspan="2" style="vertical-align: middle" >  Kegiatan </th>  
               <th rowspan="2" style="vertical-align: middle" > Sub Kegiatan</th>  
-              <th rowspan="2" style="vertical-align: middle"> Satuan </th>                        
               <th rowspan="2" style="vertical-align: middle"> Tahun </th>                        
+              <th rowspan="2" style="vertical-align: middle"> Satuan </th>                        
               <th rowspan="2" style="vertical-align: middle"> Target Tahun {{ $tahunSinggle->name }} </th>
               <th colspan="2">Realisasi Target Tahun {{ $tahunSinggle->name }}</th>
               <th rowspan="2" style="vertical-align: middle"> Alokasi Anggaran Tahun {{ $tahunSinggle->name }}</th>
@@ -30,8 +30,8 @@
             @foreach ($program_pemerintah_daerahs as $pemda)
               @if ($pemda->user->id == Auth::user()->id  && $pemda->tahun_id ==  $tahunSinggle->id)
                 <tr>                       
-                  <td style="vertical-align: middle">{{ $pemda->subkegiatan->indikator->target->tujuan->kode_tujuan }}.{{ $pemda->subkegiatan->indikator->target->tujuan->name }}</td>
-                  <td style="vertical-align: middle">{{ $pemda->subkegiatan->indikator->kode_indikator }}.{{ $pemda->subkegiatan->indikator->deskripsi }}</td>
+                  <td style="vertical-align: middle">{{ $pemda->indikator->tujuan->kode_tujuan }}.{{ $pemda->indikator->tujuan->name }}</td>
+                  <td style="vertical-align: middle">{{ $pemda->indikator->kode_indikator }}.{{ $pemda->indikator->deskripsi }}</td>
                   <td style="vertical-align: middle">{{ $pemda->SubKegiatan->program }}</td>
                   <td style="vertical-align: middle">{{ $pemda->SubKegiatan->kegiatan }}</td>
                   <td style="vertical-align: middle">{{ $pemda->SubKegiatan->name_sub_kegiatan }}</td>
@@ -51,19 +51,19 @@
                     
                     <a href="/menu/pemda/{{ $pemda->id }}/edit" class="btn btn-warning p-2" ><i class="fas fa-fw fa-pen-square"></i></a>
                     
-                    {{-- <form action="/menu/pemda/{{ $pemda->id }}" method="post" class="d-inline">
+                    <form action="/menu/pemda/{{ $pemda->id }}" method="post" class="d-inline">
                       @method('delete')
                       @csrf
-                      <button class="btn btn-danger p-2 mt-2" onclick="return confirm('Apakah Anda Yakin menghapur tujuan : {{ $pemda->name_subkegiatan }} ?')">
+                      <button class="btn btn-danger p-2    " onclick="return confirm('Apakah Anda Yakin menghapur tujuan : {{ $pemda->name_subkegiatan }} ?')">
                         <i class="fas fa-fw fa-trash"></i>
                       </button>
-                    </form> --}}
+                    </form>
                   </td>
                 </tr>
               @elseif(Auth::user()->role_id == 1 && $pemda->tahun_id ==  $tahunSinggle->id)
               <tr>                       
-                <td style="vertical-align: middle">{{ $pemda->subkegiatan->indikator->target->tujuan->kode_tujuan }}.{{ $pemda->subkegiatan->indikator->target->tujuan->name }}</td>
-                <td style="vertical-align: middle">{{ $pemda->subkegiatan->indikator->kode_indikator }}.{{ $pemda->subkegiatan->indikator->deskripsi }}</td>
+                <td style="vertical-align: middle">{{ $pemda->indikator->tujuan->kode_tujuan }}.{{ $pemda->indikator->tujuan->name }}</td>
+                <td style="vertical-align: middle">{{ $pemda->indikator->kode_indikator }}.{{ $pemda->indikator->deskripsi }}</td>
               
                 <td style="vertical-align: middle">{{ $pemda->subkegiatan->program }}</td>
                 <td style="vertical-align: middle">{{ $pemda->subkegiatan->kegiatan }}</td>

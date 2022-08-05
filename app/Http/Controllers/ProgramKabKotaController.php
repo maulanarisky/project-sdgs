@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\Form2bkabkotaExport;
 use App\Models\Indikator;
+use App\Models\Kabkota;
 use App\Models\ProgramKabKota;
 use App\Models\Tahun;
 use Illuminate\Http\Request;
@@ -28,13 +29,30 @@ class ProgramKabKotaController extends Controller
   
     public function create()
     {
-        //
+        return view('Menu.ProgramKabKota.create',[
+            'indikators' => Indikator::all(),
+            'kabkotas' => Kabkota::all()
+        ]);
     }
 
     
     public function store(Request $request)
     {
-        //
+        $tahuns = Tahun::all();
+
+            
+            foreach($tahuns as $tahun){
+                $validatedCreateCapaian = $request->validate([
+                    'indikator_id' => 'required',
+                    'kabkota_id' => 'required',
+                    'user_id' => 'required',
+                ]);
+
+                $validatedCreateCapaian['tahun_id'] = $tahun->id;
+                ProgramKabKota::create($validatedCreateCapaian);
+            }
+
+        return redirect('/menu/pkabkota/7')->with('success', ' Berhasil di <b>Tambahkan</b>');
     }
 
  

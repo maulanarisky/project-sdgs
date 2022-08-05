@@ -61,7 +61,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="kode_indikator">Kode Indikator</label>
-                                        <input type="hidden" name="indikator_id" id="indikator_id" value="{{ $indikator->id }}"/>
+                                        <input type="hidden" name="indikator_id" value="{{ $indikator->id }}"/>
                                         <input name="kode_indikator" id="kode_indikator" value="{{ $indikator->kode_indikator }}" readonly type="text" class="@error('kode_indikator') is-invalid @enderror form-control" aria-describedby="kode_indikator"/>
                                         <x-validation-message name="kode_indikator" />
                                     </div>

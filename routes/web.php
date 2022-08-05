@@ -49,10 +49,10 @@ Route::resource('/menu/dashboard', DashboardController::class);
 Route::resource('/menu/capaian', CapaianController::class)->except(['show', 'index','store','create']);
 Route::get('/menu/capaian/{tahunID}', [CapaianController::class, 'index']);
 
-Route::resource('/menu/pemda', ProgramPemerintahDaerahController::class)->except(['show', 'index','store','create']);
+Route::resource('/menu/pemda', ProgramPemerintahDaerahController::class)->except(['show']);
 Route::get('/menu/pemda/{tahunID}', [ProgramPemerintahDaerahController::class, 'index']);
 
-Route::resource('/menu/pkabkota', ProgramKabKotaController::class)->except(['show', 'index','store','create']);
+Route::resource('/menu/pkabkota', ProgramKabKotaController::class)->except(['show']);
 Route::get('/menu/pkabkota/{tahunID}', [ProgramKabKotaController::class, 'index']);
 
 Route::resource('/menu/pusat', ProgramPemerintahPusatController::class)->except(['show', 'index']);
@@ -67,8 +67,8 @@ Route::get('menu/mitraswasta/{tahunID}', [ProgramMitraSwastaController::class,'i
 Route::resource('/menu/umkm', ProgramPelakuUsahaController::class);
 Route::get('/export/{tahunID}', [CapaianController::class, 'Export']);
 
-Route::resource('/menu/subkegiatan', SubKegiatanController::class)->except(['show']);
-Route::resource('/menu/kabkota', KabkotaController::class);
+Route::resource('/menu/subkegiatan', SubKegiatanController::class)->except(['show','edit','updadate','create','store']);
+Route::resource('/menu/kabkota', KabkotaController::class)->except(['show','edit','updadate','create','store']);
 // Route::get('/menu/kabkota/pilih/{$id}', [KabkotaController::class , 'pilih'])->name('pilih');
 
 Route::middleware(['superadmin'])->group(function (){

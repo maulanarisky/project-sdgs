@@ -40,34 +40,18 @@ class KabkotaController extends Controller
    
     public function show(Kabkota $kabkotum)
     {
-        $pilih = Kabkota::where('id', '=', $kabkotum->id)->get();
-        // $pkk = ProgramKabKota::all();
-        $tahuns = Tahun::all();
+        // $pilih = Kabkota::where('id', '=', $kabkotum->id)->get();
+        // $tahuns = Tahun::all();
 
-        foreach($tahuns as $tahun){
-            $validatedkabkota['kabkota_id'] = $kabkotum->id;
-            $validatedkabkota['user_id'] = Auth::user()->id;
-            $validatedkabkota['tahun_id'] = $tahun->id;
+        // foreach($tahuns as $tahun){
+        //     $validatedkabkota['kabkota_id'] = $kabkotum->id;
+        //     $validatedkabkota['user_id'] = Auth::user()->id;
+        //     $validatedkabkota['tahun_id'] = $tahun->id;
 
-            ProgramKabKota::create($validatedkabkota);
-        }
-        // return redirect()->back()->with('success', "Berhasil di <b>Tambahkan</b> No : ('/menu/pkabkota/7')"  ); 
-        return redirect('/menu/pkabkota/7')->with('success', "Subkegiatan : <strong>{$kabkotum->name_subkegiatan_kabkota} </strong> Berhasil DiTambahkan "  ); 
-       
-        // foreach($pkk as $pk){
-        //     if($pk->user_id == null && $pk->kabkota_id == null){
-        //     foreach($tahuns as $tahun){
-        //         $validatedkabkota['kabkota_id'] = $kabkotum->id;
-        //         $validatedkabkota['user_id'] = Auth::user()->id;
-        //         $validatedkabkota['tahun_id'] = $tahun->id;
-
-        //         ProgramKabKota::create($validatedkabkota);
-        //     }
-        //     return redirect('/menu/pkabkota/7')->with('success', ' Berhasil di <b>Tambhakan</b>'); 
-        //     }
+        //     ProgramKabKota::create($validatedkabkota);
         // }
-        
-         
+        // return redirect('/menu/pkabkota/7')->with('success', "Subkegiatan : <strong>{$kabkotum->name_subkegiatan_kabkota} </strong> Berhasil DiTambahkan "  ); 
+    
     }
 
    

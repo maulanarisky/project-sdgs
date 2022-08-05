@@ -6,6 +6,7 @@
         <th rowspan="2" style="vertical-align: middle" >  Program </th>
         <th rowspan="2" style="vertical-align: middle" >  Kegiatan </th>
         <th rowspan="2" style="vertical-align: middle" > Output Kegiatan</th>
+        <th rowspan="2" style="vertical-align: middle"> Tahun </th>  
         <th rowspan="2" style="vertical-align: middle"> Satuan </th>  
         <th rowspan="2" style="vertical-align: middle"> Target Tahun {{ $tahunSinggle->name }}</th>
         <th colspan="2">Realisasi Target Tahun {{ $tahunSinggle->name }}</th>
@@ -34,6 +35,7 @@
             <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->name_program}}.{{ $output_kegiatan->kegiatan->program->name_program}}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->name_kegiatan }}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->name_outputkegiatan }}</td> 
+            <td style="vertical-align: middle">{{ $output_kegiatan->tahun->name }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->satuan }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->target_tahun }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->realisasi_target_sem_1 }}</td>
@@ -63,6 +65,7 @@
             <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->name_program}}.{{ $output_kegiatan->kegiatan->program->name_program}}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->name_kegiatan }}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->name_outputkegiatan }}</td> 
+            <td style="vertical-align: middle">{{ $output_kegiatan->tahun->name }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->satuan }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->target_tahun }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->realisasi_target_sem_1 }}</td>

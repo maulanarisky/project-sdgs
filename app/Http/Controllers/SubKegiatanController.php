@@ -39,57 +39,55 @@ class SubKegiatanController extends Controller
  
     public function edit(SubKegiatan $subkegiatan)
     {
-        return view('Menu.SubKegiatan.edit', [
-            'subkegiatan' => SubKegiatan::where('id','=', $subkegiatan->id)->first(),
-            'indikators' => Indikator::all(),
-            'users' => User::all()
-        ]);
+        // return view('Menu.SubKegiatan.edit', [
+        //     'subkegiatan' => SubKegiatan::where('id','=', $subkegiatan->id)->first(),
+        //     'indikators' => Indikator::all(),
+        //     'users' => User::all()
+        // ]);
     }
 
     public function update(Request $request, SubKegiatan $subkegiatan)
     {   
-    
-      
-            $rules = $request->validate([
-                'program' => 'required',
-                'kegiatan' => 'required',
-                'name_sub_kegiatan' => 'required',
-                'kode_sub_kegiatan' => 'required',
-                'indikator_sub' => 'required',
-                'satuan' => 'required',
-                'user_id' => 'required',
-                'indikator_id' => 'required'
-            ]);
+        //     $rules = $request->validate([
+        //         'program' => 'required',
+        //         'kegiatan' => 'required',
+        //         'name_sub_kegiatan' => 'required',
+        //         'kode_sub_kegiatan' => 'required',
+        //         'indikator_sub' => 'required',
+        //         'satuan' => 'required',
+        //         'user_id' => 'required',
+        //         'indikator_id' => 'required'
+        //     ]);
             
-            SubKegiatan::where('id', $subkegiatan->id)->update($rules);
+        //     SubKegiatan::where('id', $subkegiatan->id)->update($rules);
     
            
-           $cekSubKegitan = ProgramPemerintahDaerah::where([
-           ['sub_kegiatan_id', '=', $subkegiatan->id, 'AND', 'user_id', '=', $subkegiatan->user_id != 1]
-           ])->first();
+        //    $cekSubKegitan = ProgramPemerintahDaerah::where([
+        //    ['sub_kegiatan_id', '=', $subkegiatan->id, 'AND', 'user_id', '=', $subkegiatan->user_id != 1]
+        //    ])->first();
             
             
-            if ($cekSubKegitan) {
-                $rulesSubKegiatan = $request->validate([
-                    'sub_kegiatan_id' => 'required',
-                    'user_id' => 'required',
-                ]);
+        //     if ($cekSubKegitan) {
+        //         $rulesSubKegiatan = $request->validate([
+        //             'sub_kegiatan_id' => 'required',
+        //             'user_id' => 'required',
+        //         ]);
                
-                ProgramPemerintahDaerah::where('sub_kegiatan_id', $subkegiatan->id)->update($rulesSubKegiatan);   
-            } else {
-                $tahuns = Tahun::all();
-                foreach($tahuns as $tahun){
-                    $validatedsubkegiatan = $request->validate([
-                        'sub_kegiatan_id' => 'required',
-                        'user_id' => 'required',
-                    ]);
+        //         ProgramPemerintahDaerah::where('sub_kegiatan_id', $subkegiatan->id)->update($rulesSubKegiatan);   
+        //     } else {
+        //         $tahuns = Tahun::all();
+        //         foreach($tahuns as $tahun){
+        //             $validatedsubkegiatan = $request->validate([
+        //                 'sub_kegiatan_id' => 'required',
+        //                 'user_id' => 'required',
+        //             ]);
     
-                    $validatedsubkegiatan['tahun_id'] = $tahun->id;
-                    ProgramPemerintahDaerah::create($validatedsubkegiatan);
-                }
-            } 
+        //             $validatedsubkegiatan['tahun_id'] = $tahun->id;
+        //             ProgramPemerintahDaerah::create($validatedsubkegiatan);
+        //         }
+        //     } 
         
-        return redirect('/menu/subkegiatan')->with('success', "Berhasil di <b>Ubah</b>. SIlahkan Kembali Ke Menu Form 2b");
+        // return redirect('/menu/subkegiatan')->with('success', "Berhasil di <b>Ubah</b>. SIlahkan Kembali Ke Menu Form 2b");
     }
 
   

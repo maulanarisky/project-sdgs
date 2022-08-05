@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('indikator_id')->nullable()->constrained('indikators')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('tahun_id')->nullable()->constrained('tahuns')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('kabkota_id')->constrained('kabkotas')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('kabkota_id')->nullable()->constrained('kabkotas')->onUpdate('cascade')->onDelete('cascade');
             $table->string('target_tahun')->nullable();
             $table->string('realisasi_target_sem_1')->nullable();
             $table->string('realisasi_target_sem_2')->nullable();

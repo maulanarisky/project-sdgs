@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('tahun_id')->constrained('tahuns')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('indikator_id')->nullable()->constrained('indikators')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('sub_kegiatan_id')->nullable()->constrained('sub_kegiatans')->onUpdate('cascade')->onDelete('cascade');
             $table->string('target_tahun')->nullable();
             $table->string('realisasi_target_sem_1')->nullable();

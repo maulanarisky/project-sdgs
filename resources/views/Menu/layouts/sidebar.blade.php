@@ -41,7 +41,7 @@
                     @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/pusat/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-book"></i>
-                            <span>Form 2A</span>
+                            <span>FORM 2A</span>
                         </a>
                     @endif
             @endforeach
@@ -52,7 +52,7 @@
                     @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/pemda/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-book"></i>
-                            <span>Form 2B Provinsi</span>
+                            <span>FORM 2B Provinsi</span>
                         </a>
                     @endif
             @endforeach
@@ -62,7 +62,7 @@
                     @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/pkabkota/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-book"></i>
-                            <span>Form 2B Kab/kota</span>
+                            <span>FORM 2B Kab/kota</span>
                         </a>
                     @endif
             @endforeach
@@ -149,14 +149,14 @@
                 <span>Dashboard</span></a>
         </li>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
-            <span>Formulir Evaluasi</span>
+            <span>FORMulir Evaluasi</span>
         </h6>
         <li class="nav-item {{ Request::is('menu/capaian*') ? 'active' : '' }}">
             @foreach ($tahuns as $tahun)
                     @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/capaian/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-book"></i>
-                            <span>Form 1</span>
+                            <span>FORM 1</span>
                         </a>
                     @endif
             @endforeach
@@ -164,7 +164,7 @@
         
         <hr class="sidebar-divider d-none d-md-block">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted">
-            <span>Formulir Realisasi Program</span>
+            <span>FORMulir Realisasi Program</span>
         </h6>
 
         <!-- Nav Item - Program -->
@@ -185,7 +185,7 @@
                     @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/pemda/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-book"></i>
-                            <span>Form 2B</span>
+                            <span>FORM 2B</span>
                         </a>
                     @endif
             @endforeach
@@ -235,7 +235,7 @@
         </li>
         <hr class="sidebar-divider d-none d-md-block">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted">
-            <span>Formulir Realisasi Program</span>
+            <span>FORMulir Realisasi Program</span>
         </h6>
 
         <!-- Nav Item - Sub Kegiatan -->
@@ -244,7 +244,7 @@
                     @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/pkabkota/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-book"></i>
-                            <span >Form 2B</span>
+                            <span >FORM 2B</span>
                         </a>
                     @endif
             @endforeach
@@ -287,27 +287,27 @@
     @endcan
 
     @can('pusat')
-    <li class="nav-item {{ Request::is('menu/dashboard*') ? 'active' : '' }}">
+        <li class="nav-item {{ Request::is('menu/dashboard*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/dashboard">
                <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
-    <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
-            <span>Formulir Evaluasi</span>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
+            <span>FORMulir Evaluasi</span>
         </h6>
         <li class="nav-item {{ Request::is('menu/capaian*') ? 'active' : '' }}">
             @foreach ($tahuns as $tahun)
                     @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/capaian/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-book"></i>
-                            <span>Form 1</span>
+                            <span>FORM 1</span>
                         </a>
                     @endif
             @endforeach
         </li>
         
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
-            <span>Form 2</span>
+            <span>FORM 2</span>
         </h6>
 
         <li class="nav-item {{ Request::is('menu/program*') ? 'active' : '' }}">
@@ -328,7 +328,7 @@
                     @if (now()->year == $tahun->name)
                         <a class="nav-link" href="/menu/pusat/{{ $tahun->id }}">
                             <i class="fas fa-fw fa-book"></i>
-                            <span>Form 2A</span>
+                            <span>FORM 2A</span>
                         </a>
                     @endif
             @endforeach
@@ -426,7 +426,7 @@
                 <span>Dashboard</span></a>
         </li>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center mt-4 text-muted">
-            <span>Form 4</span>
+            <span>FORM 4</span>
         </h6>
 
         <li class="nav-item {{ Request::is('menu/umkm*') ? 'active' : '' }}">
@@ -444,7 +444,7 @@
         <li class="nav-item {{ Request::is('menu/rtl*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/rtl">
                 <i class="fas fa-fw fa-book"></i>
-                <span>Form 5</span>
+                <span>FORM 5</span>
             </a>
         </li>
 
@@ -456,7 +456,7 @@
         <li class="nav-item {{ Request::is('menu/pp*') ? 'active' : '' }}">
             <a class="nav-link" href="/menu/pp">
                 <i class="fas fa-fw fa-book"></i>
-                <span>Form 6</span>
+                <span>FORM 6</span>
             </a>
         </li>
     @endcan

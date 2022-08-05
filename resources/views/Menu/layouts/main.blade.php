@@ -21,6 +21,13 @@
       }
     </style>
 
+
+    {{-- SELECT2 JQUERY --}}
+    <!-- Select2 CSS --> 
+    <link href="/css/select2.min.css" rel="stylesheet" />
+
+    
+
 </head>
 {{-- @if (Auth::user()->status== "active") --}}
     
@@ -115,6 +122,9 @@
 
     <!-- Page level custom scripts -->
     <script src="/js/demo/datatables-demo.js"></script>
+
+    <!-- Select2 JS --> 
+    <script src="/js/select2.min.js"></script>
 <script>
     $(document).ready(function(){
         $("#example").DataTable({
@@ -122,6 +132,23 @@
             scrollX : true
         });
     });
+</script>
+<script>
+  $(document).ready(function(){
+  // Initialize select2
+  $("#sub_kegiatan_id").select2();
+  
+});
+  $(document).ready(function(){
+  // Initialize select2
+  $("#indikator_id").select2();
+  
+});
+  $(document).ready(function(){
+  // Initialize select2
+  $("#kabkota_id").select2();
+  
+});
 </script>
 
 

@@ -18,9 +18,8 @@
 
         @if (Auth::user()->role_id == 1) 
           <a href="/form2b-export/{{  $tahunSinggle->id }}" class="btn btn-success">Excel</a>
-          {{-- <a href="#" class="btn btn-danger">PDF</a> --}}
-        {{-- @else
-          <a href="/menu/pemda/create" class="btn btn-success">Tambah Data</a> --}}
+        @else
+          <a href="/menu/pemda/create" class="btn btn-success">Tambah Indikator Dan Sub Kegiatan</a>
         @endif
       </div>
 
