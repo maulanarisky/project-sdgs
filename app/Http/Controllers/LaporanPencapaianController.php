@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\LaporanPencapaian;
+use App\Models\Tahun;
+use App\Models\Tujuan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class LaporanPencapaianController extends Controller
@@ -20,7 +23,9 @@ class LaporanPencapaianController extends Controller
     public function create()
     {
          return view('Menu.LaporanPencapaian.create',[
-            'laporan_pencapaians' => LaporanPencapaian::with('user')->get()
+            'lp' => LaporanPencapaian::with('user')->get(),
+            'tujuans' => Tujuan::all(),
+            'tahuns' => Tahun::all()
          ]);
     }
 
@@ -29,6 +34,8 @@ class LaporanPencapaianController extends Controller
     {
         $validatedData = $request->validate([
             'user_id' => 'required',
+            'tujuan_id' => 'required',
+            'tahun_id' => 'required',
             'name_file' => 'required|string',
             'file' => 'required|mimes:doc,docx,pdf|max:2048',
            
@@ -55,6 +62,8 @@ class LaporanPencapaianController extends Controller
     {
         return view('Menu.LaporanPencapaian.edit',[
             'lp' => LaporanPencapaian::where('id','=', $lp->id)->first(),
+            'tujuans' => Tujuan::all(),
+            'tahuns' => Tahun::all()
         ]);
     }
 
@@ -62,6 +71,8 @@ class LaporanPencapaianController extends Controller
     {
          $rules = [
             'user_id' => 'required',
+            'tujuan_id' => 'required',
+            'tahun_id' => 'required',
             'name_file' => 'required|string',
             'file' => 'required|mimes:doc,docx,pdf|max:2048',
         ];

@@ -23,6 +23,7 @@
                                 <th>Nama Tujuan</th>
                                 <th>Deskripsi tujuan</th>
                                 <th>Gambar</th>
+                                <th>Sumber Data</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -33,6 +34,11 @@
                                     <td width="50px" style="text-transform: uppercase">{{ $tujuan->name }}</td>
                                     <td width="450px" align="left">{{ $tujuan->deskripsi }}</td>
                                     <td><img src="{{ asset('storage/' . $tujuan->img) }}" height="50px" alt=""></td>
+                                    @if ($tujuan->user_id == null)
+                                        <td></td>
+                                    @else
+                                        <td>{{ $tujuan->user->name }}</td>
+                                    @endif
                                     <td>
                                         <a href="/menu/tujuan/{{ $tujuan->id }}/edit" class="btn btn-warning"><i class="fas fa-fw fa-pen-square"></i></a>
                                         <form action="/menu/tujuan/{{ $tujuan->id }}" method="post" class="d-inline">

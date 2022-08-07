@@ -14,6 +14,40 @@
                             @method('put')
                             @csrf
                             <div class="row">
+                                <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="tahun_id">Pilih Tahun</label>
+                                            <select class="@error('tahun_id') is-invalid @enderror form-control" name="tahun_id" required>
+                                                <option style="text-transform: uppercase" value="">Pilih Tahun</option>   
+                                                @foreach ($tahuns as $tahun)
+                                                    @if (old('tahun_id', $lp->tahun_id === $tahun->id))
+                                                        <option value="{{ $tahun->id }}" selected>{{ $tahun->name }}</option> 
+                                                    @else
+                                                        <option style="text-transform: uppercase" value="{{ $tahun->id }}">{{ $tahun->name }}</option>   
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                            <x-validation-message name="tahun_id" />
+                                        </div>
+                                    </div>
+                                   <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="tujuan_i       d">Pilih Tujuan</label>
+                                        <select class="@error('tujuan_id') is-invalid @enderror form-control" name="tujuan_id" id="tujuan">
+                                            <option style="text-transform: uppercase" value="">Pilih Tujuan</option>   
+                                            @foreach ($tujuans as $tujuan)
+                                            @if($tujuan->user_id == Auth::user()->id)
+                                                @if (old('tujuan_id', $lp->tujuan_id === $tujuan->id))
+                                                    <option value="{{ $tujuan->id }}" selected>{{ $tujuan->kode_tujuan }} {{ $tujuan->name }}</option> 
+                                                @else
+                                                    <option style="text-transform: uppercase" value="{{ $tujuan->id }}">{{ $tujuan->kode_tujuan }} {{ $tujuan->name }}</option>   
+                                                @endif
+                                            @endif
+                                            @endforeach
+                                        </select>
+                                        <x-validation-message name="tujuan_id" />
+                                    </div>
+                                </div>
                                
                                 <div class="col-md-6">
                                     <div class="form-group">

@@ -25,7 +25,7 @@
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <div class="table-responsive">
-          @include('menu.ProgramPelakuUsaha.table')
+          @include('Menu.ProgramPelakuUsaha.table')
         </div>
       </div>
     </div>

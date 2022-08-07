@@ -28,7 +28,7 @@
               <div class="card-body">
                 <x-auth-session-status class="mb-4" :status="session('status')" />
                 <div class="table-responsive">
-                   @include('menu.programpemerintahpusat.table')
+                   @include('Menu.ProgramPemerintahPusat.table')
                 </div>
               </div>
             </div>

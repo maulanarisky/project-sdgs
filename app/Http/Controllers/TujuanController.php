@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pilar;
+use App\Models\User;
 use App\Models\Tujuan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -20,6 +21,7 @@ class TujuanController extends Controller
     {
         return view('Menu.Tujuan.create', [
             'pilars' => Pilar::all(),
+            'users' => User::Where('role_id', '=', 7),
             'tujuan' => Tujuan::all()->last()
         ]);
     }
@@ -52,7 +54,8 @@ class TujuanController extends Controller
     {
         return view('Menu.Tujuan.edit',[
             'tujuan' => Tujuan::where('id','=', $id)->first(),
-            'pilars' => Pilar::all()
+            'pilars' => Pilar::all(),
+            'users' => User::Where('role_id', '=', 7)->get(),
         ]);
     }
 
@@ -60,6 +63,7 @@ class TujuanController extends Controller
     {
         $rules = [
             'pilar_id' => 'required',
+            'user_id' => '',
             'kode_tujuan' => 'required',
             'name' => 'required|string',
             'img' => 'image|file',

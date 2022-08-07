@@ -28,7 +28,7 @@
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <div class="table-responsive">
-          @include('menu.ProgramMitraSwasta.table')
+          @include('Menu.ProgramMitraSwasta.table')
         </div>
       </div>
     </div>

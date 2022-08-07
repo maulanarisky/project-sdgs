@@ -26,7 +26,7 @@
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <div class="table-responsive">
-          @include('menu.RencanaTindakLanjut.table')
+          @include('Menu.RencanaTindakLanjut.table')
         </div>
       </div>
     </div>
