@@ -12,7 +12,7 @@ class SettingController extends Controller
 {
      public function edit(User $setting)
     {
-         return view('menu.setting.edit', Array('setting' => Auth::user()));
+         return view('Menu.Setting.edit', Array('setting' => Auth::user()));
     }
 
    

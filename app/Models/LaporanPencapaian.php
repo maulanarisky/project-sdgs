@@ -14,4 +14,13 @@ class LaporanPencapaian extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function Tujuan()
+    {
+        return $this->belongsTo(Tujuan::class, 'tujuan_id');
+    }
+    public function Tahun()
+    {
+        return $this->belongsTo(Tahun::class, 'tahun_id');
+    }
 }

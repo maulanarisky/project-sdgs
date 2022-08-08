@@ -17,15 +17,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('indikator_id')->constrained('indikators')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('kode_pojk');
-            $table->string('kegiatan_pojk');
-            $table->string('no_urut');
-            $table->string('kegiatan');
-            $table->string('indikator_capaian');
-            $table->string('satuan');
-            $table->string('waktu');
-            $table->string('target');
-            $table->string('capaian');
+            $table->string('kode_pojk')->nullable();
+            $table->string('kegiatan_pojk')->nullable();
+            $table->string('no_urut')->nullable();
+            $table->string('kegiatan')->nullable();
+            $table->string('indikator_capaian')->nullable();
+            $table->string('satuan')->nullable();
+            $table->string('waktu')->nullable();
+            $table->string('target')->nullable();
+            $table->string('capaian')->nullable();
             $table->timestamps();
         });
     }

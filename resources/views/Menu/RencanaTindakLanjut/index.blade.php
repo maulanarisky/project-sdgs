@@ -3,7 +3,7 @@
   
   <div class="container-fluid">
 
-    <h1 class="h3 mb-2 text-gray-800 text-center">Rencana Tindak Lanjut</h1>
+    <h1 class="h3 mb-2 text-gray-800 text-center">Identifikasi Masalah & Rencana Tindak Lanjut </h1>
 
     <div class="card shadow mb-4">
 
@@ -13,7 +13,6 @@
           <div class="col-9">
             @if (Auth::user()->role_id == 1) 
               <a href="/form5-export" class="btn btn-success">Excel</a>
-              {{-- <a href="#" class="btn btn-danger">PDF</a> --}}
             @else
               <a href="/menu/rtl/create" class="btn btn-success" >Tambah Data</a>
             @endif
@@ -26,7 +25,7 @@
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <div class="table-responsive">
-          @include('menu.RencanaTindakLanjut.table')
+          @include('Menu.RencanaTindakLanjut.table')
         </div>
       </div>
     </div>

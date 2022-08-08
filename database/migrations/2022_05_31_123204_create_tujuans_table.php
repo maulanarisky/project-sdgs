@@ -19,6 +19,7 @@ return new class extends Migration
                     ->constrained('pilars')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('kode_tujuan')->unique();
             $table->string('name');
             $table->string('deskripsi');

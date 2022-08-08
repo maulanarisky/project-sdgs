@@ -20,6 +20,8 @@
                         <thead>
                             <tr align="center">
                                 <th>No</th>
+                                <th>Tahun</th>
+                                <th>Tujuan</th>
                                 <th>Nama File</th>
                                 <th>File</th>
                                 @if (Auth::user()->role_id != 1)
@@ -33,6 +35,16 @@
                                 @if ($lp->user->id == Auth::user()->id)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        @if ($lp->tahun_id == null)
+                                            <td></td>
+                                        @else
+                                            <td>{{ $lp->tahun->name }}</td>
+                                        @endif
+                                        @if ($lp->tujuan_id == null)
+                                            <td></td>
+                                        @else
+                                        <td>{{ $lp->tujuan->name }}</td>
+                                        @endif
                                         <td>{{ $lp->name_file }}</td>
                                         <td align="center" style="width: 8rem;"> <a href="/menu/lp/{{ $lp->id }}" class="btn btn-info"><i class="fas fa-fw fa-download"></i></a></td>
                                         <td align="center" style="width: 8rem;">
@@ -49,6 +61,16 @@
                                 @elseif(Auth::user()->role_id == 1)
                                     <tr>
                                         <td align="center">{{ $loop->iteration }}</td>
+                                        @if ($lp->tahun_id == null)
+                                            <td></td>
+                                        @else
+                                            <td>{{ $lp->tahun->name }}</td>
+                                        @endif
+                                        @if ($lp->tujuan_id == null)
+                                            <td></td>
+                                        @else
+                                        <td>{{ $lp->tujuan->name }}</td>
+                                        @endif
                                         <td>{{ $lp->name_file }}</td>
                                         <td align="center" style="width: 8rem;"> 
                                             <a href="/menu/lp/{{ $lp->id }}" class="btn btn-info">

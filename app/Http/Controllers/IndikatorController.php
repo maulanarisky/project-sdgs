@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Capaian;
 use App\Models\Indikator;
+use App\Models\ProgramPemerintahDaerah;
+use App\Models\ProgramPemerintahPusat;
 use App\Models\Tahun;
 use App\Models\Target;
 use App\Models\Tujuan;
@@ -14,14 +16,14 @@ class IndikatorController extends Controller
 {
     public function index()
     {
-        return view('menu.indikator.index', [
+        return view('Menu.Indikator.index', [
             'indikators' => Indikator::with('target.tujuan')->get(),
         ]);
     }
 
     public function create()
     {
-        return view('menu.indikator.create', [
+        return view('Menu.Indikator.create', [
             'tujuans' => Tujuan::all(),
             'targets' => Target::all()
         ]);
@@ -49,7 +51,7 @@ class IndikatorController extends Controller
 
     public function edit($id)
     {
-        return view('menu.indikator.edit', [
+        return view('Menu.Indikator.edit', [
             'indikator' => Indikator::where('id','=', $id)->first(),
             'tujuans' => Tujuan::all(),
             'targets' => Target::all(),
@@ -65,7 +67,8 @@ class IndikatorController extends Controller
             'kode_indikator' => 'required',
             'deskripsi' => 'required|string',
             'user_id' => 'required',
-            'satuan' => ''
+            'satuan' => '',
+            'status' => 'required'
         ]);
         Indikator::where('id', $indikator->id)->update($rules);
 
@@ -80,7 +83,7 @@ class IndikatorController extends Controller
                 'indikator_id' => 'required',
                 'user_id' => 'required',
             ]);
-            Capaian::where('indikator_id', $indikator->id)->update($rulesCapaian);   
+            Capaian::where('indikator_id', $indikator->id)->update($rulesCapaian);    
 
         } else {
 
@@ -103,5 +106,26 @@ class IndikatorController extends Controller
     {
         Indikator::destroy($indikator->id);
         return redirect('/menu/indikator')->with('success', ' Berhasil di <b>Hapus</b>');
+    }
+
+    public function updateform1($id)
+    {
+        // $indikator = Indikator::where();
+
+           $validatedform1['status'] = "active";
+           Indikator::where('user_id','!=', $id )->update($validatedform1);
+      
+        return redirect('/menu/indikator')->with('success', 'Akses Form 1 <b>Dibuka</b>');
+
+    }
+    public function nonform1($id)
+    {
+        // $indikator = Indikator::where();
+       
+           $validatedform1['status'] = "inactive";
+           Indikator::where('user_id','!=', $id )->update($validatedform1);
+      
+        return redirect('/menu/indikator')->with('success', 'Akses Form 1 <b>Ditutup</b>');
+
     }
 }

@@ -35,47 +35,22 @@
                                             </div>
                                          </div>
                                            <div class="col-md-6">     
-                                            <div class="form-group"> 
-                                                <label for="tujuan_id">Pilih tujuan</label>
-                                                <select class="form-control" name="tujuan_id" id="tujuan_id">
-                                                    @foreach ($tujuans as $tujuan)
-                                                      @if(old('tujuan_id', $pusat->tujuan_id) == $tujuan->id)    
-                                                          <option value="{{ $tujuan->id }}" selected>{{ $tujuan->kode_tujuan }}.{{ $tujuan->name }}</option>  
-                                                      @else
-                                                          <option value="{{$tujuan->id }}">{{ $tujuan->kode_tujuan }}.{{ $tujuan->name }}</option>  
-                                                      @endif
-                                                   @endforeach
-                                                </select>
-                                            </div>
-                                         </div>
-                                           <div class="col-md-6">     
                                             <div class="form-group">
                                                 <label for="indikator_id">Pilih Indikator</label>
                                                 <select class="form-control" name="indikator_id" id="indikator_id">
-                                                     @foreach ($indikators as $indikator)
+                                                    @foreach ($indikators as $indikator)
+                                                    @if ($indikator->user_id == Auth::user()->id)
                                                       @if(old('indikator_id', $pusat->indikator_id) == $indikator->id)    
                                                           <option value="{{ $indikator->id }}" selected>{{ $indikator->kode_indikator }}.{{ $indikator->deskripsi }}</option>  
                                                       @else
                                                           <option value="{{$indikator->id }}">{{ $indikator->kode_indikator }}.{{ $indikator->deskripsi }}</option>  
                                                       @endif
+                                                    @endif
                                                    @endforeach
                                                 </select>
                                             </div>
                                          </div>
-                                           <div class="col-md-6">     
-                                            <div class="form-group">
-                                                <label for="program_id">Pilih Program</label>
-                                                <select class="form-control" name="program_id" id="program_id">
-                                              @foreach ($programs as $program)
-                                                @if(old('program_id', $pusat->program_id) == $program->id)    
-                                                    <option value="{{ $program->id }}" selected>{{ $program->name_program }}</option>  
-                                                @else
-                                                    <option value="{{$program->id }}">{{ $program->name_program }}</option>  
-                                                @endif
-                                              @endforeach
-                                                </select>
-                                            </div>
-                                         </div>
+                                          
                                            <div class="col-md-6">     
                                             <div class="form-group">
                                                 <label for="kegiatan_id">Pilih Kegiatan</label>

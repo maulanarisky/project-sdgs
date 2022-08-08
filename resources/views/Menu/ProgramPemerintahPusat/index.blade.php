@@ -3,7 +3,7 @@
 
  <div class="container-fluid">
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800 text-center">Form 2A {{ Auth::user()->name }}</h1>
+            <h1 class="h3 mb-2 text-gray-800 text-center">Formulir Realisasi Program, Kegiatan dan Anggaran Program Pemerintah Pusat</h1>
            
 
             <!-- DataTales Example -->
@@ -28,7 +28,7 @@
               <div class="card-body">
                 <x-auth-session-status class="mb-4" :status="session('status')" />
                 <div class="table-responsive">
-                   @include('menu.programpemerintahpusat.table')
+                   @include('Menu.ProgramPemerintahPusat.table')
                 </div>
               </div>
             </div>

@@ -1,7 +1,8 @@
-<table class="table table-bordered"id="example" width="100%" cellspacing="0">
+<table class="table table-bordered" id="example" width="100%" cellspacing="0">
     <thead>
       <tr class="text-center">
         <th rowspan="2" style="vertical-align: middle"> Tujuan SDGs </th>
+        <th rowspan="2" style="vertical-align: middle"> Indikator SDGs </th>
         <th colspan="2"> Identifikasi Masalah </th>
         <th rowspan="2" style="vertical-align: middle"> Rencana Tindak Lanjut </th>
         <th rowspan="2" style="vertical-align: middle"> Institusi Pelaksana Pemerintah <br> / Non Pemerintah </th>
@@ -18,7 +19,8 @@
       @foreach ($rencana_tindak_lanjuts as $rtl)
         @if ($rtl->user->id == Auth::user()->id)
           <tr>
-            <td>{{ $rtl->tujuan->name }}</td>
+            <td>{{ $rtl->indikator->target->tujuan->kode_tujuan }}.{{ $rtl->indikator->target->tujuan->name }}</td>
+            <td>{{ $rtl->indikator->kode_indikator }}.{{ $rtl->indikator->deskripsi }}</td>
             <td>{{ $rtl->kategori }}</td>
             <td>{{ $rtl->deskripsi }}</td>
             <td>{{ $rtl->rtk }}</td>
@@ -40,7 +42,7 @@
         {{-- jika yg login admin --}}
         @elseif( Auth::user()->role_id == 1 )
           <tr>
-            <td>{{ $rtl->tujuan->name }}</td>
+            <td>{{ $rtl->indikator->target->tujuan->kode_tujuan }}.{{ $rtl->indikator->target->tujuan->name }}</td>
             <td>{{ $rtl->kategori }}</td>
             <td>{{ $rtl->deskripsi }}</td>
             <td>{{ $rtl->rtk }}</td>

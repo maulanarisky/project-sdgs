@@ -69,6 +69,23 @@
                                         <x-validation-message name="img" />
                                     </div>
                                 </div>
+                                <div class="col-md-6">     
+                                    <div class="form-group">
+                                        <label for="user_id">Pilih Sumber Data</label>
+                                        <select class="@error('user_id') is-invalid @enderror form-control" name="user_id" id="user_id">
+                                            <option value="">Pilih Sumber Data</option> 
+                                            @foreach ($users as $user)
+                                                @if (old('user_id', $tujuan->user_id == $user->id))
+                                                    <option value="{{ $user->id }}" selected>{{ $user->name }}</option> 
+                                                @else
+                                                    <option style="text-transform: uppercase" value="{{ $user->id }}">{{ $user->name }}</option>   
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        <x-validation-message name="user_id" />
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="row mt-2">
                                 <div class="col">

@@ -24,7 +24,7 @@ class ProgramPemerintahPusatController extends Controller
             'tahunSinggle' => Tahun::findOrFail($tahunID),
             'tahuns' => Tahun::all(),
             'programs' => Program::all(),
-            'program_pemerintah_pusats' => ProgramPemerintahPusat::all()
+            'program_pemerintah_pusats' => ProgramPemerintahPusat::with('indikator.target.tujuan','tahun','user', 'kegiatan.program')->get()
         ]);
     }
 
@@ -34,9 +34,7 @@ class ProgramPemerintahPusatController extends Controller
          return view('Menu.ProgramPemerintahPusat.create',[
             'program_pemerintah_pusats' => ProgramPemerintahPusat::all(),
             'tahuns' => Tahun::all(),
-            'tujuans' => Tujuan::all(),
             'indikators'=> Indikator::all(),
-            'programs' => Program::with('user')->get(),
             'kegiatans' =>Kegiatan::with('user')->get()
         ]);
     }
@@ -47,9 +45,7 @@ class ProgramPemerintahPusatController extends Controller
         $validatedData = $request->validate([
             'user_id' => 'required',
             'tahun_id' => 'required',
-            'tujuan_id' => 'required',
             'indikator_id' => 'required|string',
-            'program_id' => 'required|string',
             'kegiatan_id'=> 'required|string',
             'kode_rincianoutput' => 'required|string',
             'name_rincianoutput' => 'required|string'
@@ -84,21 +80,19 @@ class ProgramPemerintahPusatController extends Controller
     public function update(Request $request, ProgramPemerintahPusat $pusat)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required',
+           'user_id' => 'required',
             'tahun_id' => 'required',
-            'tujuan_id' => 'required',
             'indikator_id' => 'required|string',
-            'program_id' => 'required|string',
             'kegiatan_id'=> 'required|string',
             'kode_rincianoutput' => 'required|string',
             'name_rincianoutput' => 'required|string',
             'satuan' => 'required|string',
             'target_tahun' => 'required|string',
-            'realisasi_target_sem_1' => 'required|string',
-            'realisasi_target_sem_2' => 'required|string',
+            'realisasi_target_sem_1' => 'string',
+            'realisasi_target_sem_2' => 'string',
             'alokasi_anggaran' => 'required|string',
-            'realisasi_anggaran_sem_1' =>'required|string',
-            'realisasi_anggaran_sem_2' =>'required|string',
+            'realisasi_anggaran_sem_1' =>'string',
+            'realisasi_anggaran_sem_2' =>'string',
             'lokasi_pelaksanaan_kegiatan' => 'required|string',
         ]);
 

@@ -23,7 +23,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="program">Program</label>
-                                        <input name="program" id="program" value="{{ $subkegiatan->program }}" type="text" class="@error('program') is-invalid @enderror form-control" aria-describedby="program"/>
+                                        <input name="program" id="program" readonly value="{{ $subkegiatan->program }}" type="text" class="@error('program') is-invalid @enderror form-control" aria-describedby="program"/>
                                         <x-validation-message name="program" />
                                     </div>
                                 </div>
@@ -31,14 +31,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="kegiatan">Kegiatan</label>
-                                        <input name="kegiatan" id="kegiatan" value="{{ $subkegiatan->kegiatan }}" type="text" class="@error('kegiatan') is-invalid @enderror form-control" aria-describedby="nama_subkegiatan"/>
+                                        <input name="kegiatan" id="kegiatan" readonly value="{{ $subkegiatan->kegiatan }}" type="text" class="@error('kegiatan') is-invalid @enderror form-control" aria-describedby="nama_subkegiatan"/>
                                         <x-validation-message name="kegiatan" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name_sub_kegiatan">Nama Sub Kegiatan</label>
-                                        <input name="name_sub_kegiatan" id="name_sub_kegiatan" value="{{ $subkegiatan->name_sub_kegiatan }}" type="text" class="@error('name_sub_kegiatan') is-invalid @enderror form-control" aria-describedby="name_sub_kegiatan"/>
+                                        <input name="name_sub_kegiatan" id="name_sub_kegiatan" readonly value="{{ $subkegiatan->name_sub_kegiatan }}" type="text" class="@error('name_sub_kegiatan') is-invalid @enderror form-control" aria-describedby="name_sub_kegiatan"/>
                                         <x-validation-message name="name_sub_kegiatan" />
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                                   <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="indikator">Indikator Sub Kegiatan</label>
-                                        <input name="indikator_sub" id="indikator" value="{{ $subkegiatan->indikator_sub }}" type="text" class="@error('indikator') is-invalid @enderror form-control" aria-describedby="indikator"/>
+                                        <input name="indikator_sub" id="indikator" readonly value="{{ $subkegiatan->indikator_sub }}" type="text" class="@error('indikator') is-invalid @enderror form-control" aria-describedby="indikator"/>
                                         <x-validation-message name="indikator" />
                                     </div>
                                 </div>
@@ -56,11 +56,13 @@
                                         <select class="@error('indikator_id') is-invalid @enderror form-control" name="indikator_id" id="indikator_id" required>
                                              <option value=""> pilih Indikator TPB</option> 
                                             @foreach ($indikators as $indikator)
-                                                    @if (old('indikator_id', $subkegiatan->indikator_id == $indikator->id))
-                                                        <option value="{{ $indikator->id }}" selected>{{ $indikator->kode_indikator }}. {{ $indikator->deskripsi }}</option> 
-                                                    @else
-                                                        <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }}.{{ $indikator->deskripsi }}</option>   
-                                                    @endif
+                                            @if ($indikator->user_id == Auth::user()->id)
+                                                @if (old('indikator_id', $subkegiatan->indikator_id == $indikator->id))
+                                                    <option value="{{ $indikator->id }}" selected>{{ $indikator->kode_indikator }}. {{ $indikator->deskripsi }}</option> 
+                                                @else
+                                                    <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }}.{{ $indikator->deskripsi }}</option>   
+                                                @endif
+                                            @endif
                                             @endforeach
                                         </select>
                                         <x-validation-message name="indikator_id" />
@@ -69,26 +71,16 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="satuan">Satuan</label>
-                                        <input name="satuan" id="satuan" value="{{ $subkegiatan->satuan }}" type="text" class="@error('satuan') is-invalid @enderror form-control" aria-describedby="satuan"/>
+                                        <input name="satuan" id="satuan" value="{{ $subkegiatan->satuan }}" readonly type="text" class="@error('satuan') is-invalid @enderror form-control" aria-describedby="satuan"/>
                                         <x-validation-message name="satuan" />
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                  <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="user_id">Pilih Sumber Data</label>
-                                        <select class="@error('user_id') is-invalid @enderror form-control" name="user_id" id="user_id" required>
-                                             <option value=""> Pilih Sumber Data</option> 
-                                            @foreach ($users as $user)
-                                                @if ($user->role_id == 2 )
-                                                    @if (old('user_id', $subkegiatan->user_id == $user->id))
-                                                        <option value="{{ $user->id }}" selected> {{ $user->name }}</option> 
-                                                    @else
-                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>   
-                                                    @endif                                           
-                                                @endif
-                                            @endforeach
-                                        </select>
+                                        <label for="user_id">Sumber Data</label>
+                                        <input name="user_id" id="user_id" readonly value="{{ Auth::user()->id }}" type="hidden" class="@error('user_id') is-invalid @enderror form-control" aria-describedby="user_id"/>
+                                        <input name="" id="user_id" readonly value="{{ Auth::user()->name }}" type="text" class="@error('user_id') is-invalid @enderror form-control" aria-describedby="user_id"/>
                                         <x-validation-message name="user_id" />
                                     </div>
                                 </div>

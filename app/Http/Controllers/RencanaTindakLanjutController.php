@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\Form5Export;
+use App\Models\Indikator;
 use App\Models\RencanaTindakLanjut;
 use App\Models\Tujuan;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class RencanaTindakLanjutController extends Controller
     public function index()
     {
          return view('Menu.RencanaTindakLanjut.index',[
-            'rencana_tindak_lanjuts' => RencanaTindakLanjut::with('user', 'tujuan')->get()
+            'rencana_tindak_lanjuts' => RencanaTindakLanjut::with('indikator.target.tujuan','user', 'tujuan')->get()
         ]);
     }
 
@@ -27,6 +28,7 @@ class RencanaTindakLanjutController extends Controller
         return view('Menu.RencanaTindakLanjut.create',[
             'rencana_tindak_lanjuts' => RencanaTindakLanjut::all(),
             'tujuans' => Tujuan::all(),
+            'indikators' => Indikator::all(),
         ]);
     }
 
@@ -35,7 +37,7 @@ class RencanaTindakLanjutController extends Controller
     {
         $validatedData = $request->validate([
             'user_id' => 'required',
-            'tujuan_id' => 'required',
+            'indikator_id' => 'required',
             'kategori' => 'required|string',
             'deskripsi'=> 'required|string',
             'rtk'=> 'required|string',
@@ -58,7 +60,7 @@ class RencanaTindakLanjutController extends Controller
     {
          return view('Menu.RencanaTindakLanjut.edit',[
             'rtl' => RencanaTindakLanjut::where('id','=',$rtl->id)->first(),
-            'tujuans' => Tujuan::all(),
+            'indikators' => Indikator::all(),
         ]);
     }
 
@@ -66,7 +68,7 @@ class RencanaTindakLanjutController extends Controller
     {
          $validatedData = $request->validate([
             'user_id' => 'required',
-            'tujuan_id' => 'required',
+            'indikator_id' => 'required',
             'kategori' => 'required|string',
             'deskripsi'=> 'required|string',
             'rtk'=> 'required|string',

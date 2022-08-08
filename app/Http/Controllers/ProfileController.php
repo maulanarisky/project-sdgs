@@ -12,7 +12,7 @@ class ProfileController extends Controller
     
     public function edit(User $profile)
     {
-         return view('menu.profile.edit', Array('profile' => Auth::user()));
+         return view('Menu.Profile.edit', Array('profile' => Auth::user()));
     }
 
    

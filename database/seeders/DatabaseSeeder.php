@@ -43,12 +43,30 @@ class DatabaseSeeder extends Seeder
         Role::create([
             'name' => 'KabKota',
         ]);
+        Role::create([
+            'name' => 'Bappeda',
+        ]);
+        
 
         //table User
         User::create([
             'name' => 'superadmin',
             'email' => 'superadmin@gmail.com',
-            'no_wa' => '082233777721',
+            'no_wa' => '0822377721',
+            'role_id' => 1,
+            'password' => bcrypt('12341234')
+        ]);
+        User::create([
+            'name' => 'superadmin',
+            'email' => 'superadmin2@gmail.com',
+            'no_wa' => '08221',
+            'role_id' => 1,
+            'password' => bcrypt('12341234')
+        ]);
+        User::create([
+            'name' => 'superadmin2',
+            'email' => 'sdgs.kaltim@gmail.com',
+            'no_wa' => '08223772401',
             'role_id' => 1,
             'password' => bcrypt('12341234')
         ]);
@@ -772,6 +790,13 @@ class DatabaseSeeder extends Seeder
             'tujuan_id' => 1,
             'target_id' => 3,
             'kode_indikator' => '1.3.1.(b)',
+            'deskripsi' => 'Proporsi peserta Program Jaminan Sosial Bidang Ketenagakerjaan (formal)',
+        ]);
+        Indikator::create([
+            'user_id' => 1,
+            'tujuan_id' => 1,
+            'target_id' => 3,
+            'kode_indikator' => '1.3.1.(b)',
             'deskripsi' => 'Proporsi peserta Program Jaminan Sosial Bidang Ketenagakerjaan (Informal)',
         ]);
         Indikator::create([
@@ -837,6 +862,13 @@ class DatabaseSeeder extends Seeder
             'target_id' => 7,
             'kode_indikator' => '2.2.2*',
             'deskripsi' => 'Prevalensi wasting (berat badan/tinggi badan) anak pada usia kurang dari 5 tahun, berdasarkan tipe.',
+        ]);
+        Indikator::create([
+            'user_id' => 1,
+            'tujuan_id' => 2,
+            'target_id' => 7,
+            'kode_indikator' => '2.2.2.(a)',
+            'deskripsi' => 'Kualitas konsumsi pangan yang diindikasikan oleh skor Pola Pangan Harapan (PPH).',
         ]);
         Indikator::create([
             'user_id' => 1,
@@ -1241,12 +1273,54 @@ class DatabaseSeeder extends Seeder
             'kode_indikator' => '4.5.1.*',
             'deskripsi' => 'Rasio Angka Partisipasi Murni (APM) perempuan/laki-laki di (1a) SD/MI/sederajat',
         ]);
+        Indikator::create([ //4.5--------------------------------------------------
+            'user_id' => 1,
+            'tujuan_id' => 4,
+            'target_id' => 27,
+            'kode_indikator' => '4.5.1.*',
+            'deskripsi' => 'Rasio Angka Partisipasi Murni (APM) SD/MI/sederajat Pedesaan dan Perkotaan (1b) ',
+        ]);
+        Indikator::create([ //4.5--------------------------------------------------
+            'user_id' => 1,
+            'tujuan_id' => 4,
+            'target_id' => 27,
+            'kode_indikator' => '4.5.1.*',
+            'deskripsi' => 'Rasio Angka Partisipasi Murni (APM) SD/MI/sederajat antara Kuintil Terendah dan Kuintil Tertinggi (1c)',
+        ]);
+        Indikator::create([ //4.5--------------------------------------------------
+            'user_id' => 1,
+            'tujuan_id' => 4,
+            'target_id' => 27,
+            'kode_indikator' => '4.5.1.*',
+            'deskripsi' => 'Rasio Angka Partisipasi Murni (APM) SD/MI/sederajat antara Disabilitas dan Tanpa Disabilitas  (1d4) ',
+        ]);
         Indikator::create([ 
             'user_id' => 1,
             'tujuan_id' => 4,
             'target_id' => 27,
             'kode_indikator' => '4.5.1.*',
             'deskripsi' => 'Rasio Angka Partisipasi Kasar (APK) perempuan/laki-laki di (2a) SMP/MTs/sederajat',
+        ]);
+        Indikator::create([ 
+            'user_id' => 1,
+            'tujuan_id' => 4,
+            'target_id' => 27,
+            'kode_indikator' => '4.5.1.*',
+            'deskripsi' => 'Rasio Angka Partisipasi Kasar (APK) SMP/sederajat Pedesaan dan Perkotaan (2b) ',
+        ]);
+        Indikator::create([ 
+            'user_id' => 1,
+            'tujuan_id' => 4,
+            'target_id' => 27,
+            'kode_indikator' => '4.5.1.*',
+            'deskripsi' => 'Rasio Angka Partisipasi Murni (APM) SMP/sederajat antara Kuintil Terendah dan Kuintil Tertinggi (2c)',
+        ]);
+        Indikator::create([ 
+            'user_id' => 1,
+            'tujuan_id' => 4,
+            'target_id' => 27,
+            'kode_indikator' => '4.5.1.*',
+            'deskripsi' => 'Rasio Angka Partisipasi Kasar (APK) SMP/sederajat antara Disabilitas dan Tanpa Disabilitas  (2d) ',
         ]);
         Indikator::create([ 
             'user_id' => 1,
@@ -1260,7 +1334,49 @@ class DatabaseSeeder extends Seeder
             'tujuan_id' => 4,
             'target_id' => 27,
             'kode_indikator' => '4.5.1.*',
+            'deskripsi' => 'Rasio Angka Partisipasi Kasar (APK) SMA/SMK/MA/sederajat Pedesaan dan Perkotaan (3b)',
+        ]);
+        Indikator::create([ 
+            'user_id' => 1,
+            'tujuan_id' => 4,
+            'target_id' => 27,
+            'kode_indikator' => '4.5.1.*',
+            'deskripsi' => 'Rasio Angka Partisipasi Kasar (APK) SMA/SMK/MA/sederajat antara Kuintil Terendah dan Kuintil Tertinggi (3c) ',
+        ]);
+        Indikator::create([ 
+            'user_id' => 1,
+            'tujuan_id' => 4,
+            'target_id' => 27,
+            'kode_indikator' => '4.5.1.*',
+            'deskripsi' => 'Rasio Angka Partisipasi Kasar (APK) SMA/SMK/MA/sederajat antara Disabilitas dan Tanpa Disabilitas  (3d) ',
+        ]);
+        Indikator::create([ 
+            'user_id' => 1,
+            'tujuan_id' => 4,
+            'target_id' => 27,
+            'kode_indikator' => '4.5.1.*',
             'deskripsi' => 'Rasio Angka Partisipasi Kasar (APK) perempuan/laki-laki di (4a) Perguruan Tinggi',
+        ]);
+        Indikator::create([ 
+            'user_id' => 1,
+            'tujuan_id' => 4,
+            'target_id' => 27,
+            'kode_indikator' => '4.5.1.*',
+            'deskripsi' => 'Rasio Angka Partisipasi Kasar (APK)  Perguruan Tinggi Pedesaan dan Perkotaan (4b)',
+        ]);
+        Indikator::create([ 
+            'user_id' => 1,
+            'tujuan_id' => 4,
+            'target_id' => 27,
+            'kode_indikator' => '4.5.1.*',
+            'deskripsi' => 'Rasio Angka Partisipasi Kasar (APK) Perguruan Tinggi antara Kuintil Terendah dan Kuintil Tertinggi (4c)',
+        ]);
+        Indikator::create([ 
+            'user_id' => 1,
+            'tujuan_id' => 4,
+            'target_id' => 27,
+            'kode_indikator' => '4.5.1.*',
+            'deskripsi' => 'Rasio Angka Partisipasi Kasar (APK)  Perguruan Tinggi antara Disabilitas dan Tanpa Disabilitas  (4d)',
         ]);
         Indikator::create([ //4.6-----------------------------------------------------------
             'user_id' => 1,

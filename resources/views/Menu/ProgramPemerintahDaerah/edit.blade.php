@@ -21,7 +21,7 @@
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 <input type="hidden" name="sub_kegiatan_id" value="{{ $pemda->sub_kegiatan_id }}">
                 <label for="tahun_id">Tahun</label>
-                 <input type="text" class="form-control @error('tahun_id') is-invalid @enderror" value="{{ $pemda->tahun->name }}" name="tahun_id" readonly/>
+                 <input type="text" name="tahun_id" class="form-control @error('tahun_id') is-invalid @enderror" value="{{ $pemda->tahun->name }}" readonly/>
                 <x-validation-message name="tahun_id" />
               </div>
             </div>
@@ -29,7 +29,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="indikator">indikator</label>
-                <input type="text" class="form-control @error('indikator') is-invalid @enderror" value="{{ $pemda->SubKegiatan->indikator->kode_indikator }}.{{ $pemda->SubKegiatan->indikator->deskripsi }}"name="indikator" readonly/>
+                <input type="text" class="form-control @error('indikator') is-invalid @enderror" value="{{ $pemda->indikator->kode_indikator }}.{{ $pemda->indikator->deskripsi }}"name="indikator" readonly/>
                 <x-validation-message name="indikator" />
               </div>
             </div>

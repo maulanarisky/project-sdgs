@@ -22,7 +22,7 @@
 
     <main class="flex-shrink-0">
 
-      @extends('layouts.navigation')
+      @extends('layouts.header')
 
       <!--head-->
       <header class="py-5">

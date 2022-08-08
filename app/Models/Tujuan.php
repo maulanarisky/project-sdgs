@@ -30,4 +30,8 @@ class Tujuan extends Model
     {
         return $this->hasMany(PelaporanPembelajaran::class, 'tujuan_id');
     }
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

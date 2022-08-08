@@ -90,7 +90,7 @@
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="status"">Pilih Status</label>
+                                        <label for="status">Pilih Status</label>
                                         <select class="@error('status') is-invalid @enderror form-control" name="status" id="status">
                                             <option value="">Pilih Status</option>
                                             <option value="tercapai" {{   $capaian->status === 'tercapai' ? 'selected' : '' }}>Tercapai</option>

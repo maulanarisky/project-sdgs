@@ -6,7 +6,7 @@
   <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800" style="text-transform: uppercase">Rencana Tindak lanjut</h1>
+    <h1 class="h3 mb-2 text-gray-800 text-center" style="text-transform: uppercase">Rencana Tindak lanjut</h1>
 
     <div class="card shadow mb-4 border-left-success" >
       <div class="card-header py-3">
@@ -23,15 +23,26 @@
                 <div class="col-md-6">     
                   <div class="form-group"> 
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                    <label for="tujuan_id">Pilih tujuan</label>
-                    <select class="form-control" name="tujuan_id" id="tujuan_id">
-                      @foreach ($tujuans as $tujuan)
-                        @if(old('tujuan_id', $rtl->tujuan_id) == $tujuan->id)    
-                            <option value="{{ $tujuan->id }}" selected>{{ $tujuan->name }}</option>  
-                        @else
-                            <option value="{{$tujuan->id }}">{{ $tujuan->name }}</option>  
-                        @endif
+                    <label for="indikator_id">Pilih Indikator</label>
+                    <select class="form-control" name="indikator_id" id="indikator_id">
+                      @foreach ($indikators as $indikator)
+                      @if ($rtl->user_id == Auth::user()->id)
+                        @if ($indikator->user_id == Auth::user()->id)
+                          @if(old('indikator_id', $rtl->indikator_id) == $indikator->id)    
+                              <option value="{{ $indikator->id }}" selected>{{ $indikator->kode_indikator }}.{{ Str::limit($indikator->deskripsi, 50) }}</option>
+                          @else
+                              <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }}.{{ Str::limit($indikator->deskripsi, 50) }}</option>
+                          @endif
+                      @elseif (Auth::user()->role_id != 2 &&  Auth::user()->role_id != 3 )
+                           @if(old('indikator_id', $rtl->indikator_id) == $indikator->id)    
+                              <option value="{{ $indikator->id }}" selected>{{ $indikator->kode_indikator }}.{{ Str::limit($indikator->deskripsi, 50) }}</option>
+                          @else
+                              <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }}.{{ Str::limit($indikator->deskripsi, 50) }}</option>
+                          @endif
+                      @endif
+                      @endif
                       @endforeach
+                    
                     </select>         
                   </div>
                 </div>
@@ -39,7 +50,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="deskripsi">Deskripsi Masalah</label>
-                    <input type="text" multiple value="{{ $rtl->kategori }}" class="form-control pt-1 @error('deskripsi') is-invalid @enderror" id="deskripsi"aria-describedby="deskripsi" name="deskripsi" />
+                    <input type="text" multiple value="{{ $rtl->deskripsi }}" class="form-control pt-1 @error('deskripsi') is-invalid @enderror" id="deskripsi"aria-describedby="deskripsi" name="deskripsi" />
                     <x-validation-message name="deskripsi" />
                   </div>
                 </div>

@@ -1,9 +1,9 @@
-<table class="table table-bordered" id="example"  width="100%" cellspacing="0">
+<table class="table table-bordered" id="dataTable"  cellspacing="0">
     <thead>
         <tr align="center" valign="middle">
             <td >Kode Tujuan</td>
             <td >Target</td>
-            <td >Kode & Nama Indikator</td>
+            <td >Indikator</td>
             <td>Sumber Data</td>
             <td >Satuan</td>
             <td >Baseline</td>
@@ -11,19 +11,18 @@
             <td>Target</td>
             <td>Capaian</td>
             <td>Status</td>
-            @if (Auth::user()->role_id != 1) 
+            @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 7) 
             <td>Aksi</td>
             @endif
         </tr>
     </thead>
     <tbody>
         @foreach ($capaians as $capaian)
-            @if ($capaian->tahun_id == $tahunSinggle->id)
-                @if ($capaian->user->id == Auth::user()->id)
+            @if ($capaian->tahun_id == $tahunSinggle->id && $capaian->user->id == Auth::user()->id)
                     <tr align="center" >
-                        <td>{{ $capaian->indikator->target->tujuan->kode_tujuan }}</td>
+                        <td>{{ $capaian->indikator->target->tujuan->kode_tujuan }}.{{  $capaian->indikator->target->tujuan->name }}</td>
                         <td>{{ $capaian->indikator->target->kode_target }}.{{ $capaian->indikator->target->deskripsi }}</td>
-                        <td align="left">{{ $capaian->indikator->kode_indikator}}.{{ $capaian->indikator->deskripsi }}</td>
+                        <td>{{ $capaian->indikator->kode_indikator}}.{{ $capaian->indikator->deskripsi }}</td>
                         <td>{{ $capaian->user->name }}</td>
                         <td>{{ $capaian->indikator->satuan }}</td>
                         <td>{{ $capaian->baseline }}</td>
@@ -31,43 +30,33 @@
                         <td>{{ $capaian->target_awal }}</td>
                         <td>{{ $capaian->capaian }}</td>
                         
-                        {{-- @if ($capaian->status == 'tercapai')
-                            <td valign="middle"><i class="fa fa-circle text-success" aria-hidden="true"></i></td> 
-                        @elseif($capaian->status == 'akan_tercapai')
-                            <td valign="middle"><i class="fa fa-play text-warning" aria-hidden="true"></i></td>
-                        @elseif($capaian->status == 'perlu_perhatian_kusus')
-                            <td valign="middle"><i class="fa fa-caret-down text-danger" aria-hidden="true"></i> </td>
-                        @else
-                            <td></td>
-                        @endif --}}
                         @if ($capaian->status == 'tercapai')
-                            <td valign="middle"><span class="badge badge-pill badge-success">Tercapai</span></td> 
+                            <td valign="middle" style= "background-color:rgb(110, 239, 110);"><strong>Tercapai</strong></td> 
                         @elseif($capaian->status == 'akan_tercapai')
-                            <td valign="middle"><span class="badge badge-pill badge-warning">Akan Tercapai</span></i></td>
+                            <td valign="middle" style= "background-color:rgb(239, 212, 116);"><strong>Akan Tercapai</strong></td>
                         @elseif($capaian->status == 'perlu_perhatian_kusus')
-                            <td valign="middle"><span class="badge badge-pill badge-danger">Perlu Perhatian <br> Khusus</span></i> </td>
+                            <td valign="middle" style= "background-color:rgb(230, 127, 127);"><strong>Perlu <br> Perhatian Khusus</strong></td>
                         @else
-                            <td></td>
+                            <td valign="middle"></td>
                         @endif
 
+                        @if ($capaian->indikator->status == "active")
+                            
                         <td align="center">
                             <a href="/menu/capaian/{{ $capaian->id }}/edit" class="btn btn-warning mb-2"><i class="fas fa-fw fa-pen-square"></i></a>
-                            {{-- <form action="/menu/capaian/{{ $capaian->id }}" method="post" class="d-inline">
-                                @method('delete')
-                                @csrf
-                                <button class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin menghapur indikator : {{ $capaian->name }} ?')">
-                                    <i class="fas fa-fw fa-trash"></i>
-                                </button>
-                            </form> --}}
+                         
                         </td>
+                        @elseif ($capaian->indikator->status == "inactive")
+                        <td>Hak Akses Belum Dibuka</td>
+                            
+                        @endif
                     </tr>
-
                 {{-- jika yg login superadmin --}}
-                @elseif (Auth::user()->role_id == 1 )
+                @elseif (Auth::user()->role_id == 1 && $capaian->tahun_id == $tahunSinggle->id )
                     <tr align="center" >
-                        <td>{{ $capaian->indikator->target->tujuan->kode_tujuan }}</td>
+                        <td>{{  $capaian->indikator->target->tujuan->kode_tujuan }}.{{  $capaian->indikator->target->tujuan->name }}</td>
                         <td>{{ $capaian->indikator->target->kode_target }}.{{ $capaian->indikator->target->deskripsi }}</td>
-                         <td align="left">{{ $capaian->indikator->kode_indikator}}.{{ $capaian->indikator->deskripsi }}</td>
+                        <td>{{ $capaian->indikator->kode_indikator}}.{{ $capaian->indikator->deskripsi }}</td>
                         <td>{{ $capaian->user->name }}</td>
                         <td>{{ $capaian->indikator->satuan }}</td>
                         <td>{{ $capaian->baseline }}</td>
@@ -76,17 +65,38 @@
                         <td>{{ $capaian->capaian }}</td>
                         
                         @if ($capaian->status == 'tercapai')
-                            <td valign="middle"><span class="badge badge-pill badge-success">Tercapai</span></td> 
+                            <td valign="middle" style= "background-color:rgb(110, 239, 110);"><strong>Tercapai</strong></td> 
                         @elseif($capaian->status == 'akan_tercapai')
-                            <td valign="middle"><span class="badge badge-pill badge-warning">Akan Tercapai</span></i></td>
+                            <td valign="middle" style= "background-color:rgb(239, 212, 116);"><strong>Akan Tercapai</strong></td>
                         @elseif($capaian->status == 'perlu_perhatian_kusus')
-                             <td valign="middle"><span class="badge badge-pill badge-danger">Perlu Perhatian <br> Khusus</span></i> </td>
+                            <td valign="middle" style= "background-color:rgb(230, 127, 127);"><strong>Perlu <br> Perhatian Khusus</strong></td>
                         @else
-                            <td></td>
+                            <td valign="middle"></td>
+                        @endif
+                    </tr>
+                @elseif(Auth::user()->role_id == 7 && $capaian->tahun_id == $tahunSinggle->id )
+                     <tr align="center" >
+                        <td>{{  $capaian->indikator->target->tujuan->kode_tujuan }}.{{  $capaian->indikator->target->tujuan->name }}</td>
+                        <td>{{ $capaian->indikator->target->kode_target }}.{{ $capaian->indikator->target->deskripsi }}</td>
+                        <td>{{ $capaian->indikator->kode_indikator}}.{{ $capaian->indikator->deskripsi }}</td>
+                        <td>{{ $capaian->user->name }}</td>
+                        <td>{{ $capaian->indikator->satuan }}</td>
+                        <td>{{ $capaian->baseline }}</td>
+                        <td>{{ $capaian->tahun->name }}</td>
+                        <td>{{ $capaian->target_awal }}</td>
+                        <td>{{ $capaian->capaian }}</td>
+                        
+                        @if ($capaian->status == 'tercapai')
+                            <td valign="middle" style= "background-color:rgb(110, 239, 110);"><strong>Tercapai</strong></td> 
+                        @elseif($capaian->status == 'akan_tercapai')
+                            <td valign="middle" style= "background-color:rgb(239, 212, 116);"><strong>Akan Tercapai</strong></td>
+                        @elseif($capaian->status == 'perlu_perhatian_kusus')
+                            <td valign="middle" style= "background-color:rgb(230, 127, 127);"><strong>Perlu <br> Perhatian Khusus</strong></td>
+                        @else
+                            <td valign="middle"></td>
                         @endif
                     </tr>
                 @endif
-            @endif
         @endforeach     
     </tbody>
 </table>

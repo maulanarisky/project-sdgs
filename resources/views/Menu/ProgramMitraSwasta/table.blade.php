@@ -1,7 +1,12 @@
 <table class="table table-bordered" id="example" width="100%" cellspacing="0">
     <thead>
       <tr class="text-center">
-        <th rowspan="2" colspan="4"style="vertical-align: middle" > Indikator | Program | Kegiatan | Output Kegiatan</th>
+        <th rowspan="2" style="vertical-align: middle" > Tujuan </th>
+        <th rowspan="2" style="vertical-align: middle" > Indikator </th>
+        <th rowspan="2" style="vertical-align: middle" >  Program </th>
+        <th rowspan="2" style="vertical-align: middle" >  Kegiatan </th>
+        <th rowspan="2" style="vertical-align: middle" > Output Kegiatan</th>
+        <th rowspan="2" style="vertical-align: middle"> Tahun </th>  
         <th rowspan="2" style="vertical-align: middle"> Satuan </th>  
         <th rowspan="2" style="vertical-align: middle"> Target Tahun {{ $tahunSinggle->name }}</th>
         <th colspan="2">Realisasi Target Tahun {{ $tahunSinggle->name }}</th>
@@ -25,10 +30,12 @@
       @foreach ($output_kegiatans as $output_kegiatan)
         @if ($output_kegiatan->user->id == Auth::user()->id && $output_kegiatan->tahun_id ==  $tahunSinggle->id)
           <tr align="center">
+            <td style="vertical-align: middle">{{ $output_kegiatan->indikator->target->tujuan->kode_tujuan}}. {{ $output_kegiatan->indikator->target->tujuan->name}}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->indikator->kode_indikator}}. {{ $output_kegiatan->indikator->deskripsi}}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->name_program}}.{{ $output_kegiatan->kegiatan->program->name_program}}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->name_kegiatan }}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->name_outputkegiatan }}</td> 
+            <td style="vertical-align: middle">{{ $output_kegiatan->tahun->name }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->satuan }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->target_tahun }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->realisasi_target_sem_1 }}</td>
@@ -53,10 +60,12 @@
           </tr>
         @elseif(Auth::user()->role_id == 1 && $output_kegiatan->tahun_id ==  $tahunSinggle->id)
           <tr align="center">
+            <td style="vertical-align: middle">{{ $output_kegiatan->indikator->target->tujuan->kode_tujuan}}. {{ $output_kegiatan->indikator->target->tujuan->name}}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->indikator->kode_indikator}}. {{ $output_kegiatan->indikator->deskripsi}}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->name_program}}.{{ $output_kegiatan->kegiatan->program->name_program}}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->name_kegiatan }}</td>  
             <td style="vertical-align: middle">{{ $output_kegiatan->name_outputkegiatan }}</td> 
+            <td style="vertical-align: middle">{{ $output_kegiatan->tahun->name }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->satuan }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->target_tahun }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->realisasi_target_sem_1 }}</td>

@@ -17,8 +17,8 @@ class Form1Export implements FromView
 
     public function view(): View
     {
-        return view('menu.capaian.table', [
-            'capaians' => Capaian::all(),
+        return view('Menu.Capaian.table', [
+            'capaians' => Capaian::with('indikator.target.tujuan', 'tahun', 'user')->get(),
             'tahuns' => Tahun::all(),
             'tahunSinggle' => Tahun::findOrFail($this->tahunID),
         ]);

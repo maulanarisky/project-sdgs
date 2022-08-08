@@ -22,7 +22,7 @@ class ProgramMitraSwastaController extends Controller
     {
          return view('Menu.ProgramMitraSwasta.index',[
             'tahunSinggle' => Tahun::findOrFail($tahunID),
-            'output_kegiatans' => ProgramMitraSwasta::with('kegiatan.program', 'user')->get(),
+            'output_kegiatans' => ProgramMitraSwasta::with('kegiatan.program','indikator.target.tujuan' ,'user')->get(),
         ]);
     }
 
@@ -43,7 +43,6 @@ class ProgramMitraSwastaController extends Controller
         $validatedData = $request->validate([
             'user_id' => 'required',
             'tahun_id' => 'required',
-            'tujuan_id' => 'required',
             'indikator_id' => 'required|string',
             // 'program_id' => 'required|string',
             'kegiatan_id'=> 'required|string',
@@ -78,11 +77,11 @@ class ProgramMitraSwastaController extends Controller
             'name_outputkegiatan' => 'required|string',
             'satuan' => 'required|string',
             'target_tahun' => 'required|string',
-            'realisasi_target_sem_1' => 'required|string',
-            'realisasi_target_sem_2' => 'required|string',
+            'realisasi_target_sem_1' => 'string',
+            'realisasi_target_sem_2' => 'string',
             'alokasi_anggaran' => 'required|string',
-            'realisasi_anggaran_sem_1' =>'required|string',
-            'realisasi_anggaran_sem_2' =>'required|string',
+            'realisasi_anggaran_sem_1' =>'string',
+            'realisasi_anggaran_sem_2' =>'string',
             'sumber_pendanaan' => 'required|string',
             'lokasi_pelaksanaan_kegiatan' => 'required|string',
         ]);

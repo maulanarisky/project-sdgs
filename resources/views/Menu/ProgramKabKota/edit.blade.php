@@ -16,6 +16,22 @@
           @method('put')
           @csrf
           <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                  <label for="indikator_id">Indikator TPB</label>
+                  <select class="@error('indikator_id') is-invalid @enderror form-control" name="indikator_id" id="indikator_id" required>
+                        <option value=""> pilih Indikator TPB</option> 
+                      @foreach ($indikators as $indikator)
+                              @if (old('indikator_id', $pkabkota->indikator_id == $indikator->id))
+                                  <option value="{{ $indikator->id }}" selected>{{ $indikator->kode_indikator }}. {{ Str::limit($indikator->deskripsi, 20) }}</option> 
+                              @else
+                                  <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }}.{{ Str::limit($indikator->deskripsi, 50) }}</option>   
+                              @endif
+                      @endforeach
+                  </select>
+                  <x-validation-message name="indikator_id" />
+              </div>
+          </div>
             <div class="col-md-6">     
               <div class="form-group">
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
@@ -26,13 +42,6 @@
               </div>
             </div>
 
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="indikator">indikator</label>
-                <input type="text" class="form-control @error('indikator') is-invalid @enderror" value="{{ $pkabkota->Kabkota->indikator->kode_indikator }}.{{ $pkabkota->Kabkota->indikator->deskripsi }}"name="indikator" readonly/>
-                <x-validation-message name="indikator" />
-              </div>
-            </div>
 
             <div class="col-md-6">
               <div class="form-group">

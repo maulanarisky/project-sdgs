@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('rencana_tindak_lanjuts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('tujuan_id')->constrained('tujuans')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('indikator_id')->constrained('indikators')->onUpdate('cascade')->onDelete('cascade');
             $table->string('kategori');
-            $table->string('deskripsi');
-            $table->string('rtk');
+            $table->text('deskripsi');
+            $table->text('rtk');
             $table->string('pelaksana');
             $table->timestamps();
         });

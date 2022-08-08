@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Export;
 use App\Exports\Form1Export;
 use App\Models\Capaian;
 use App\Models\Indikator;
+use App\Models\SubKegiatan;
 use App\Models\Tahun;
 use App\Models\Target;
 use App\Models\Tujuan;
@@ -16,13 +18,13 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class CapaianController extends Controller
 {
-    public function form1Export($tahunID){
-        return Excel::download(new Form1Export($tahunID), 'form 1.xlsx');
+    public function Export($tahunID)
+    {
+        return Excel::download(new Export($tahunID), 'form 1.xlsx');
     }
-    
     public function index($tahunID)
     {
-        return view('menu.capaian.index', [
+        return view('Menu.Capaian.index', [
             'capaians' => Capaian::with('indikator.target.tujuan', 'tahun', 'user')->get(),
             'tahuns' => Tahun::all(),
             'tahunSinggle' => Tahun::findOrFail($tahunID),
@@ -32,7 +34,7 @@ class CapaianController extends Controller
 
     public function create()
     {
-
+       
     }
 
     public function store(Request $request)
@@ -59,7 +61,7 @@ class CapaianController extends Controller
      */
     public function edit($id)
     {
-        return view('menu.capaian.edit', [
+        return view('Menu.Capaian.edit', [
             'capaian' => Capaian::where('id','=', $id)->first(),
         ]);
     }

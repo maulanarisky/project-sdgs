@@ -103,7 +103,7 @@
                   <div class="form-group">
                     <label for="name">Nama Pelaku Usaha</label>
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                    <input type="text" readonly value="{{ Auth::user()->name }}" class="form-control pt-1 @error('name') is-invalid @enderror" name="name" />
+                    <input type="text" readonly value="{{ Auth::user()->name }}" class="form-control pt-1 @error('name') is-invalid @enderror" />
                     <x-validation-message name="name" />
                   </div>
                 </div>

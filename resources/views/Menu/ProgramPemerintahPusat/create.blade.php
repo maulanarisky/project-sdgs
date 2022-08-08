@@ -30,37 +30,18 @@
                                             </div>
                                          </div>
                                            <div class="col-md-6">     
-                                            <div class="form-group"> 
-                                                <label for="tujuan_id">Pilih tujuan</label>
-                                                <select class="form-control" name="tujuan_id" id="tujuan_id">
-                                                    @foreach ($tujuans as $tujuan)
-                                                        <option value="{{ $tujuan->id }}">{{ $tujuan->kode_tujuan }} {{ $tujuan->name }}</option> 
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                         </div>
-                                           <div class="col-md-6">     
                                             <div class="form-group">
                                                 <label for="indikator_id">Pilih Indikator</label>
                                                 <select class="form-control" name="indikator_id" id="indikator_id">
                                                     @foreach ($indikators as $indikator)
+                                                      @if ($indikator->user_id == Auth::user()->id)
                                                         <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }} {{ $indikator->deskripsi }}</option>
+                                                      @endif
                                                     @endforeach
                                                 </select>
                                             </div>
                                          </div>
-                                           <div class="col-md-6">     
-                                            <div class="form-group">
-                                                <label for="program_id">Pilih Program</label>
-                                                <select class="form-control" name="program_id" id="program_id">
-                                                    @foreach ($programs as $program)
-                                                    @if ($program->user->id == Auth::user()->id)
-                                                        <option value="{{ $program->id }}">{{ $program->kode_program }} {{ $program->name_program }}</option>   
-                                                    @endif
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                         </div>
+                                         
                                            <div class="col-md-6">     
                                             <div class="form-group">
                                                 <label for="kegiatan_id">Pilih Kegiatan</label>

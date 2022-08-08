@@ -16,7 +16,7 @@ class ProgramController extends Controller
     
     public function index()
     {
-        return view('menu.program.index',[
+        return view('Menu.Program.index',[
             'programs' => Program::with('user')->get()
         ]);
     }
@@ -24,7 +24,7 @@ class ProgramController extends Controller
     
     public function create()
     {
-         return view('menu.program.create',[
+         return view('Menu.Program.create',[
             'programs' => Program::with('user')->get()
         ]);
     }
@@ -53,7 +53,7 @@ class ProgramController extends Controller
    
     public function edit($id)
     {
-          return view('menu.program.edit',[
+          return view('Menu.Program.edit',[
             'program' => Program::where('id','=', $id)->first()
 
         ]);

@@ -25,6 +25,18 @@ class ProgramPemerintahDaerah extends Model
     {
         return $this->belongsTo(Tahun::class, 'tahun_id');
     }
+    public function indikator()
+    {
+        return $this->belongsTo(Indikator::class, 'indikator_id');
+    }
+    public function target()
+    {
+        return $this->belongsTo(Target::class, 'target_id');
+    }
+    public function tujuan()
+    {
+        return $this->belongsTo(Tujuan::class, 'tujuan_id');
+    }
 
  
 }

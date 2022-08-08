@@ -22,7 +22,7 @@ class ProgramPemerintahDaerahController extends Controller
     public function index($tahunID)
     {
          return view('Menu.ProgramPemerintahDaerah.index',[
-            'program_pemerintah_daerahs' => ProgramPemerintahDaerah::with('SubKegiatan.Indikator', 'tahun', 'user')->get(),
+            'program_pemerintah_daerahs' => ProgramPemerintahDaerah::with('indikator.target.tujuan', 'tahun', 'user')->get(),
             'tahuns' => Tahun::all(),
             // 'sub_kegiatan' => SubKegiatan::all(),
             'tahunSinggle' => Tahun::findOrFail($tahunID),
@@ -32,28 +32,30 @@ class ProgramPemerintahDaerahController extends Controller
    
     public function create()
     {
-        //  return view('Menu.ProgramPemerintahDaerah.create',[
-        //     'tahuns' => Tahun::all(),
-        //     'kegiatans' =>Kegiatan::with('user')->get(),
-        //     'programs' => Program::with('user')->get(),
-        //     'indikators' => Indikator::all(),
-        // ]);
+         return view('Menu.ProgramPemerintahDaerah.create',[
+            'indikators' => Indikator::all(),
+            'subkegiatans' => SubKegiatan::all()
+        ]);
     }
 
    
     public function store(Request $request)
     {
-        //  $validatedData = $request->validate([
-        //     'user_id' => 'required',
-        //     'tahun_id' => 'required',
-        //     'kegiatan_id'=> 'required|string',
-        //     'kode_subkegiatan' => 'required|string|unique:program_pemerintah_daerahs',
-        //     'name_subkegiatan' => 'required|string'
-        // ]);
+           $tahuns = Tahun::all();
 
-        // ProgramPemerintahDaerah::create($validatedData);
+            
+            foreach($tahuns as $tahun){
+                $validatedCreateCapaian = $request->validate([
+                    'indikator_id' => 'required',
+                    'sub_kegiatan_id' => 'required',
+                    'user_id' => 'required',
+                ]);
 
-        // return redirect('/menu/pemda/7')->with('success', ' Berhasil di <b>Tambahkan</b>');
+                $validatedCreateCapaian['tahun_id'] = $tahun->id;
+                ProgramPemerintahDaerah::create($validatedCreateCapaian);
+            }
+
+        return redirect('/menu/pemda/7')->with('success', ' Berhasil di <b>Tambahkan</b>');
     }
 
  
@@ -77,12 +79,11 @@ class ProgramPemerintahDaerahController extends Controller
             // 'tahun_id' => 'required',
             'sub_kegiatan_id'=> 'required|string',
             'target_tahun' => 'required|string',
-            'realisasi_target_sem_1' => 'required|string',
-            'realisasi_target_sem_2' => 'required|string',
+            'realisasi_target_sem_1' => 'string',
+            'realisasi_target_sem_2' => 'string',
             'alokasi_anggaran' => 'required|string',
-            'realisasi_anggaran_sem_1' =>'required|string',
-            'realisasi_anggaran_sem_2' =>'required|string',
-            'realisasi_anggaran_sem_2' =>'required|string',
+            'realisasi_anggaran_sem_1' =>'string',
+            'realisasi_anggaran_sem_2' =>'string',
             'lokasi_pelaksanaan_kegiatan' => 'required|string',
             'sumber_pendanaan' => 'required|string',
         ]);

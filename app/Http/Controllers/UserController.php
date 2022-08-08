@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('menu.user.index', [
+        return view('Menu.User.index', [
             'users' => User::Where('role_id', '!=', 1)->get(),
             'user_1' => User::Where('role_id', '!=', 1)->get()
         ]);
@@ -19,7 +19,7 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('menu.user.create', [
+        return view('Menu.User.create', [
             'roles' => Role::all()
         ]);
     }
@@ -55,7 +55,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        return view('menu.user.edit', [
+        return view('Menu.User.edit', [
             'user' => User::where('id','=', $id)->first(),
             'roles' => Role::all()
         ]);
@@ -90,7 +90,7 @@ class UserController extends Controller
        
         
         
-         $validateduser['status'] = "active";
+        $validateduser['status'] = "active";
         
         User::where('role_id', '!=', $id)->update($validateduser);
         return redirect('/menu/user')->with('success', 'User Berhasil di <b>Aktifkan Semua</b>');
@@ -99,8 +99,6 @@ class UserController extends Controller
      public function updateinactive($id)
     {
         $userupdate = User::Where('role_id', '!=', $id);
-       
-        
         
          $validateduser['status'] = "inactive";
         
