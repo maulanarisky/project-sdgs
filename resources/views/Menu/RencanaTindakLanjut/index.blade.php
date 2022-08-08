@@ -13,7 +13,6 @@
           <div class="col-9">
             @if (Auth::user()->role_id == 1) 
               <a href="/form5-export" class="btn btn-success">Excel</a>
-              {{-- <a href="#" class="btn btn-danger">PDF</a> --}}
             @else
               <a href="/menu/rtl/create" class="btn btn-success" >Tambah Data</a>
             @endif

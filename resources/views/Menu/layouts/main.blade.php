@@ -19,6 +19,7 @@
       .garis {
         border: 0;
       }
+      
     </style>
 
 

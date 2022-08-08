@@ -27,7 +27,7 @@
                         @foreach ($indikators as $indikator)
                         @if ($indikator->user_id == Auth::user()->id)
                             <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }}.{{ Str::limit($indikator->deskripsi, 50) }}</option>
-                        @elseif (Auth::user()->role_id != 2 )
+                        @elseif (Auth::user()->role_id != 2 &&  Auth::user()->role_id != 3 )
                             <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }}.{{ Str::limit($indikator->deskripsi, 50)}}</option>
                         @endif
                         @endforeach

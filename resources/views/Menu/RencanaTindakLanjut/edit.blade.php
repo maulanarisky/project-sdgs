@@ -33,7 +33,7 @@
                           @else
                               <option value="{{ $indikator->id }}">{{ $indikator->kode_indikator }}.{{ Str::limit($indikator->deskripsi, 50) }}</option>
                           @endif
-                      @elseif (Auth::user()->role_id != 2 )
+                      @elseif (Auth::user()->role_id != 2 &&  Auth::user()->role_id != 3 )
                            @if(old('indikator_id', $rtl->indikator_id) == $indikator->id)    
                               <option value="{{ $indikator->id }}" selected>{{ $indikator->kode_indikator }}.{{ Str::limit($indikator->deskripsi, 50) }}</option>
                           @else
