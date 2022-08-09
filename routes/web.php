@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\Export;
 use App\Models\Target;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -65,7 +66,7 @@ Route::resource('/menu/mitraswasta', ProgramMitraSwastaController::class)->excep
 Route::get('menu/mitraswasta/{tahunID}', [ProgramMitraSwastaController::class,'index']);
 
 Route::resource('/menu/umkm', ProgramPelakuUsahaController::class);
-Route::get('/export/{tahunID}', [CapaianController::class, 'Export']);
+
 
 Route::resource('/menu/subkegiatan', SubKegiatanController::class)->except(['show','edit','updadate','create','store']);
 Route::resource('/menu/kabkota', KabkotaController::class)->except(['show','edit','updadate','create','store']);
@@ -84,19 +85,20 @@ Route::middleware(['superadmin'])->group(function (){
     Route::get('menu/indikator/inactive/{id}', [IndikatorController::class, 'nonform1'])->name('nonform1');
     
     Route::resource('menu/user', UserController ::class);
-
     Route::get('menu/user/active/{id}', [UserController::class, 'updateall'])->name('updateall');
     Route::get('menu/user/inactive/{id}', [UserController::class, 'updateinactive'])->name('updateinall');
-    
-    Route::get('/form2a-export/{tahunID}', [ProgramPemerintahPusatController::class, 'form2aExport']);
-    Route::get('/form2b-export/{tahunID}', [ProgramPemerintahDaerahController::class, 'form2bExport']);
-    Route::get('/form2bkabkota-export/{tahunID}', [ProgramKabKotaController::class, 'form2bkabkotaExport']);
-    Route::get('/form3-export/{tahunID}', [ProgramMitraSwastaController::class, 'form3Export']);
-    Route::get('/form3-export/{tahunID}', [ProgramMitraSwastaController::class, 'form3Export']);
-    Route::get('/form4-export', [ProgramPelakuUsahaController::class, 'form4Export']);
-    
-    Route::get('/form5-export', [RencanaTindakLanjutController::class, 'form5Export']);
 });
+
+// <!-- Export -->
+Route::get('/export/{tahunID}', [CapaianController::class, 'Export']);
+Route::get('/form2a-export/{tahunID}', [ProgramPemerintahPusatController::class, 'form2aExport']);
+Route::get('/form2b-export/{tahunID}', [ProgramPemerintahDaerahController::class, 'form2bExport']);
+Route::get('/form2bkabkota-export/{tahunID}', [ProgramKabKotaController::class, 'form2bkabkotaExport']);
+Route::get('/form3-export/{tahunID}', [ProgramMitraSwastaController::class, 'form3Export']);
+Route::get('/form4-export', [ProgramPelakuUsahaController::class, 'form4Export']);
+Route::get('/form5-export', [RencanaTindakLanjutController::class, 'form5Export']);
+// Route::get('/form3-export/{tahunID}', [ProgramMitraSwastaController::class, 'form3Export']);
+
 
 
 Route::get('menu/pp/download/{id}', [PelaporanPembelajaranController::class, 'download'])->name('download');

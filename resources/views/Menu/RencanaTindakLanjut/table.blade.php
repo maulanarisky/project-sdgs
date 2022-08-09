@@ -42,7 +42,8 @@
         {{-- jika yg login admin --}}
         @elseif( Auth::user()->role_id == 1 )
           <tr>
-            <td>{{ $rtl->indikator->target->tujuan->kode_tujuan }}.{{ $rtl->indikator->target->tujuan->name }}</td>
+           <td>{{ $rtl->indikator->target->tujuan->kode_tujuan }}.{{ $rtl->indikator->target->tujuan->name }}</td>
+            <td>{{ $rtl->indikator->kode_indikator }}.{{ $rtl->indikator->deskripsi }}</td>
             <td>{{ $rtl->kategori }}</td>
             <td>{{ $rtl->deskripsi }}</td>
             <td>{{ $rtl->rtk }}</td>

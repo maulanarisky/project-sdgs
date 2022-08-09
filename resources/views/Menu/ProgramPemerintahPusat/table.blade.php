@@ -46,11 +46,11 @@
                           <td style="vertical-align: middle">{{ $pusat->lokasi_pelaksanaan_kegiatan }}</td>
                           <td style="vertical-align: middle">{{ $pusat->user->name }}</td>
                           <td align="center" style="width: 8rem">
-                            <a href="/menu/pusat/{{ $pusat->id }}/edit" class="btn btn-warning p-2" ><i class="fas fa-fw fa-pen-square"></i></a>
+                            <a href="/menu/pusat/{{ $pusat->id }}/edit" class="btn btn-warning " ><i class="fas fa-fw fa-pen-square"></i></a>
                            <form action="/menu/pusat/{{ $pusat->id }}" method="post" class="d-inline">
                             @method('delete')
                             @csrf
-                            <button class="btn btn-danger p-2 mt-2" onclick="return confirm('Apakah Anda Yakin menghapus  : {{ $pusat->name_rincianoutput }} ?')">
+                            <button class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin menghapus  : {{ $pusat->name_rincianoutput }} ?')">
                             <i class="fas fa-fw fa-trash"></i>
                             </button>
                             </form>

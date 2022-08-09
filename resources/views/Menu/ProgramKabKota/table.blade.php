@@ -53,11 +53,11 @@
                   <td style="vertical-align: middle">{{ $pkk->sumber_pendanaan }}</td>
                   <td style="vertical-align: middle">{{ $pkk->user->name }}</td>
                   <td align="center" style="width: 8rem">
-                    <a href="/menu/pkabkota/{{ $pkk->id }}/edit" class="btn btn-warning p-2" ><i class="fas fa-fw fa-pen-square"></i></a> 
+                    <a href="/menu/pkabkota/{{ $pkk->id }}/edit" class="btn btn-warning" ><i class="fas fa-fw fa-pen-square"></i></a> 
                      <form action="/menu/pkabkota/{{ $pkk->id }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
-                        <button class="btn btn-danger  p-2 mt-2" onclick="return confirm('Apakah Anda Yakin menghapus Program Kab/Kota : {{ $pkk->Kabkota->program_kabkota }} ?')">
+                        <button class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin menghapus Program Kab/Kota : {{ $pkk->Kabkota->program_kabkota }} ?')">
                             <i class="fas fa-fw fa-trash"></i>
                         </button>
                     </form>
