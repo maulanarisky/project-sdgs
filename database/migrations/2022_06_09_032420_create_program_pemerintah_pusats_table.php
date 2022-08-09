@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('tahun_id')->constrained('tahuns')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('indikator_id')->constrained('indikators')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('kegiatan_id')->constrained('kegiatans')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('kode_rincianoutput')->unique()->nullable();
+            $table->string('kode_rincianoutput')->nullable();
             $table->string('name_rincianoutput')->nullable();
             $table->string('satuan')->nullable();
             $table->string('target_tahun')->nullable();

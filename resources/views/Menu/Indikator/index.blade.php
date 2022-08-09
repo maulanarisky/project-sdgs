@@ -9,10 +9,12 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href="/menu/indikator/create" class="btn btn-success">Tambah Data</a>
+                <div class="row">
+                <a href="/menu/indikator/create" class="btn btn-info"><i class="fas fa-fw fa-plus-square"></i><span>Tambah Data</span></a>
                 <div class="col-md text-right">
                  <a href="/menu/indikator/active/{{ Auth::user()->role_id }}" class="btn btn-primary">Aktifkan Form 1</a>
                  <a href="/menu/indikator/inactive/{{ Auth::user()->role_id }}" class="btn btn-danger">NonAktifkan Form 1</a>
+            </div>
             </div>
             </div>
             <div class="card-body">

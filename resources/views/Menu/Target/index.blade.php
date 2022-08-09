@@ -9,7 +9,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href="/menu/target/create" class="btn btn-success">Tambah Data</a>
+                <a href="/menu/target/create" class="btn btn-info"><i class="fas fa-fw fa-plus-square"></i><span>Tambah Data</span></a>
             </div>
             <div class="card-body">
 

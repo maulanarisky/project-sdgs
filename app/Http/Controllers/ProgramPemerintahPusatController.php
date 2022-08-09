@@ -47,7 +47,7 @@ class ProgramPemerintahPusatController extends Controller
             'tahun_id' => 'required',
             'indikator_id' => 'required|string',
             'kegiatan_id'=> 'required|string',
-            'kode_rincianoutput' => 'required|string',
+            'kode_rincianoutput' => '',
             'name_rincianoutput' => 'required|string'
         ]);
 

@@ -16,7 +16,7 @@ class Form2bkabkotaExport implements FromView
     
     public function view(): View
     {
-      return view('Menu.Programkabkota.table',[
+      return view('Menu.ProgramKabKota.table',[
             'program_kab_kotas' => ProgramKabKota::all(),
             'tahunSinggle' => Tahun::findOrFail($this->tahunID),
         ]);

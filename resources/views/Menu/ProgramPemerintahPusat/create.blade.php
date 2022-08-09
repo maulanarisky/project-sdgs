@@ -68,7 +68,7 @@
                                           <div class="col-md-6">
                                             <div class="form-group">
                                               <label for="name_rincianoutput">Nama Rincian Output</label>
-                                              <input type="text" multiple class="form-control pt-1 @error('name_rincianoutput') is-invalid @enderror" id="name_rincianoutput"aria-describedby="name_rincianoutput" name="name_rincianoutput" />
+                                              <input type="text" multiple class="form-control pt-1 @error('name_rincianoutput') is-invalid @enderror" value="{{ old('name_rincianoutput') }}" id="name_rincianoutput"aria-describedby="name_rincianoutput" name="name_rincianoutput" />
                                                 @error('name_rincianoutput')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
