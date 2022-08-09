@@ -16,10 +16,9 @@
 
         <a class="mr-3 float-right btn btn-warning">{{ $tahunSinggle->name }}</a>
 
-        @if (Auth::user()->role_id == 1) 
-          <a href="/form2bkabkota-export/{{  $tahunSinggle->id }}" class="btn btn-success">Excel</a>
-        @else
-          <a href="/menu/pkabkota/create" class="btn btn-success"> Pilih Indikator dan Sub Kegiatan</a>
+        <a href="/form2bkabkota-export/{{  $tahunSinggle->id }}" class="btn btn-success"><i class=" fas fa-fw fa-file-excel" ></i><span>Excel</span></a>
+        @if (Auth::user()->role_id == 6) 
+          <a href="/menu/pkabkota/create" class="btn btn-info"><i class="fas fa-fw fa-plus-square"></i><span>Tambah Indikator Dan Sub Kegiatan</span></a>
         @endif
       </div>
 

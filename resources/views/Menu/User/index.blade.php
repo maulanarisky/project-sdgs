@@ -10,11 +10,11 @@
       <div class="card-header py-3">
         <div class="row">
           <div class="col-md">
-            <a href="/menu/user/create" class="btn btn-success">Tambah Data</a>
+            <a href="/menu/user/create" class="btn btn-info" ><i class="fas fa-fw fa-plus-square"></i><span>Tambah Data</span></a>
           </div>
           <div class="col-md text-right">
             {{-- @if (Auth::user()->role_id != 1 && Auth::user()->status ==  "inactive" ) --}}
-            <a href="/menu/user/active/{{ Auth::user()->role_id }}" class="btn btn-primary">Aktifkan Semua User</a>
+            <a href="/menu/user/active/{{ Auth::user()->role_id }}" class="btn btn-success">Aktifkan Semua User</a>
             {{-- @elseif(Auth::user()->role_id != 1 && Auth::user()->status ==  "active") --}}
             <a href="/menu/user/inactive/{{ Auth::user()->role_id }}" class="btn btn-danger">Non-Aktif Semua User</a>
             {{-- @endif --}}

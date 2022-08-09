@@ -16,10 +16,10 @@
 
         <a class="mr-3 float-right btn btn-warning">{{ $tahunSinggle->name }}</a>
 
-        @if (Auth::user()->role_id == 1) 
-          <a href="/form2b-export/{{  $tahunSinggle->id }}" class="btn btn-success">Excel</a>
-        @else
-          <a href="/menu/pemda/create" class="btn btn-success">Tambah Indikator Dan Sub Kegiatan</a>
+        
+        <a href="/form2b-export/{{  $tahunSinggle->id }}" class="btn btn-success"><i class=" fas fa-fw fa-file-excel" ></i><span>Excel</span></a>
+        @if (Auth::user()->role_id == 2) 
+          <a href="/menu/pemda/create" class="btn btn-info"><i class="fas fa-fw fa-plus-square"></i><span>Tambah Indikator Dan Sub Kegiatan</span></a>
         @endif
       </div>
 
