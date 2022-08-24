@@ -6,7 +6,7 @@
         <th colspan="2"> Identifikasi Masalah </th>
         <th rowspan="2" style="vertical-align: middle"> Rencana Tindak Lanjut </th>
         <th rowspan="2" style="vertical-align: middle"> Institusi Pelaksana Pemerintah <br> / Non Pemerintah </th>
-        @if (Auth::user()->role_id != 1)
+        @if (Auth::user()->role_id != 1 AND Auth::user()->role_id != 7)
           <th rowspan="2" style="vertical-align: middle">Aksi</th>  
         @endif
       </tr>
@@ -49,6 +49,18 @@
             <td>{{ $rtl->rtk }}</td>
             <td>{{ $rtl->pelaksana }}</td>
           </tr>
+        
+        @elseif( Auth::user()->role_id == 7 )
+        @if ($rtl->indikator->tujuan->user_id == Auth::user()->id)
+          <tr>
+           <td>{{ $rtl->indikator->target->tujuan->kode_tujuan }}.{{ $rtl->indikator->target->tujuan->name }}</td>
+            <td>{{ $rtl->indikator->kode_indikator }}.{{ $rtl->indikator->deskripsi }}</td>
+            <td>{{ $rtl->kategori }}</td>
+            <td>{{ $rtl->deskripsi }}</td>
+            <td>{{ $rtl->rtk }}</td>
+            <td>{{ $rtl->pelaksana }}</td>
+          </tr>
+        @endif
         @endif
       @endforeach
     </tbody>

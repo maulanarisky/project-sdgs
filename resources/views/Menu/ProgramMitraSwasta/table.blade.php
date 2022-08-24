@@ -77,6 +77,27 @@
             <td style="vertical-align: middle">{{ $output_kegiatan->sumber_pendanaan }}</td>
             <td style="vertical-align: middle">{{ $output_kegiatan->user->name }}</td>
           </tr>
+          @elseif(Auth::user()->role_id == 7 && $output_kegiatan->tahun_id ==  $tahunSinggle->id)
+          @if($output_kegiatan->indikator->target->tujuan->user_id == Auth::user()->id)
+          <tr align="center">
+            <td style="vertical-align: middle">{{ $output_kegiatan->indikator->target->tujuan->kode_tujuan}}. {{ $output_kegiatan->indikator->target->tujuan->name}}</td>  
+            <td style="vertical-align: middle">{{ $output_kegiatan->indikator->kode_indikator}}. {{ $output_kegiatan->indikator->deskripsi}}</td>  
+            <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->program->name_program}}.{{ $output_kegiatan->kegiatan->program->name_program}}</td>  
+            <td style="vertical-align: middle">{{ $output_kegiatan->kegiatan->name_kegiatan }}</td>  
+            <td style="vertical-align: middle">{{ $output_kegiatan->name_outputkegiatan }}</td> 
+            <td style="vertical-align: middle">{{ $output_kegiatan->tahun->name }}</td>
+            <td style="vertical-align: middle">{{ $output_kegiatan->satuan }}</td>
+            <td style="vertical-align: middle">{{ $output_kegiatan->target_tahun }}</td>
+            <td style="vertical-align: middle">{{ $output_kegiatan->realisasi_target_sem_1 }}</td>
+            <td style="vertical-align: middle">{{ $output_kegiatan->realisasi_target_sem_2 }}</td>
+            <td style="vertical-align: middle">{{ $output_kegiatan->alokasi_anggaran }}</td>
+            <td style="vertical-align: middle">{{ $output_kegiatan->realisasi_anggaran_sem_1 }}</td>
+            <td style="vertical-align: middle">{{ $output_kegiatan->realisasi_anggaran_sem_2 }}</td>    
+            <td style="vertical-align: middle">{{ $output_kegiatan->lokasi_pelaksanaan_kegiatan }}</td> 
+            <td style="vertical-align: middle">{{ $output_kegiatan->sumber_pendanaan }}</td>
+            <td style="vertical-align: middle">{{ $output_kegiatan->user->name }}</td>
+          </tr>
+        @endif
         @endif
       @endforeach
     </tbody>

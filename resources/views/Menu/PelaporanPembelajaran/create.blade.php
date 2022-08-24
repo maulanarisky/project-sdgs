@@ -98,7 +98,7 @@
                         </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="file">File (ex: pdf, doc,docx)</label>
+                            <label for="file">File (ex: pdf, doc,docx), Max File :2MB</label>
                             <input type="file" name="file" class="form-control @error('file') is-invalid @enderror" id="file" aria-describedby="file" value="{{ old('file') }}"/>
                             <x-validation-message name="file" />
                         </div>

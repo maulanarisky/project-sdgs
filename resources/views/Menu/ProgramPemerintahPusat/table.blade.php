@@ -60,7 +60,7 @@
                              <tr>                       
                                <td style="vertical-align: middle">{{ $pusat->indikator->target->tujuan->kode_tujuan }}.{{ $pusat->indikator->target->tujuan->name }}</td>
                                <td style="vertical-align: middle">{{ $pusat->indikator->kode_indikator }}. {{ $pusat->indikator->deskripsi }}</td>
-                          <td style="vertical-align: middle">{{ $pusat->kegiatan->program->kode_program }}.{{ $pusat->kegiatan->program->name_program }}</td>
+                               <td style="vertical-align: middle">{{ $pusat->kegiatan->program->kode_program }}.{{ $pusat->kegiatan->program->name_program }}</td>
                                {{-- <td>{{ $pusat->kegiatan->kode_kegiatan }}</td> --}}
                                <td style="vertical-align: middle">{{ $pusat->kegiatan->id }}.{{ $pusat->kegiatan->name_kegiatan }}</td>
                                <td style="vertical-align: middle">{{ $pusat->kode_rincianoutput }}. {{ $pusat->name_rincianoutput }}</td>
@@ -74,8 +74,30 @@
                                <td style="vertical-align: middle">{{ $pusat->realisasi_anggaran_sem_2 }}</td>
                                <td style="vertical-align: middle">{{ $pusat->lokasi_pelaksanaan_kegiatan }}</td>
                                <td style="vertical-align: middle">{{ $pusat->user->name }}</td>
-                        </tr>
-                        @endif
-                      @endforeach
+                            </tr>
+                            @elseif(Auth::user()->role_id == 7 && $pusat->tahun_id ==  $tahunSinggle->id)
+                            @if ($pusat->indikator->target->tujuan->user_id == Auth::user()->id)
+                                
+                            <tr>                       
+                              <td style="vertical-align: middle">{{ $pusat->indikator->target->tujuan->kode_tujuan }}.{{ $pusat->indikator->target->tujuan->name }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->indikator->kode_indikator }}. {{ $pusat->indikator->deskripsi }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->kegiatan->program->kode_program }}.{{ $pusat->kegiatan->program->name_program }}</td>
+                              {{-- <td>{{ $pusat->kegiatan->kode_kegiatan }}</td> --}}
+                              <td style="vertical-align: middle">{{ $pusat->kegiatan->id }}.{{ $pusat->kegiatan->name_kegiatan }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->kode_rincianoutput }}. {{ $pusat->name_rincianoutput }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->tahun->name }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->satuan }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->target_tahun }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->realisasi_target_sem_1 }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->realisasi_target_sem_2 }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->alokasi_anggaran }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->realisasi_anggaran_sem_1 }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->realisasi_anggaran_sem_2 }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->lokasi_pelaksanaan_kegiatan }}</td>
+                              <td style="vertical-align: middle">{{ $pusat->user->name }}</td>
+                            </tr>
+                            @endif
+                            @endif
+                            @endforeach
                     </tbody>
                   </table>

@@ -70,35 +70,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 1,
             'password' => bcrypt('12341234')
         ]);
-        User::create([
-            'name' => 'Dinas Kehutanan',
-            'email' => 'dishut@gmail.com',
-            'no_wa' => '0909',
-            'role_id' => 2,
-            'password' => bcrypt('12341234')
-        ]);
-        User::create([
-            'name' => 'Pemerintah Pusat',
-            'email' => 'pusat@gmail.com',
-            'no_wa' => '123123',
-            'role_id' => 3,
-            'password' => bcrypt('12341234')
-        ]);
-        User::create([
-            'name' => ' perusahaan A',
-            'email' => 'ngo@gmail.com',
-            'no_wa' => '12312223',
-            'role_id' => 4,
-            'password' => bcrypt('12341234')
-        ]);
-        User::create([
-            'name' => 'Nama Pelau Usaha',
-            'email' => 'pelakuusaha@gmail.com',
-            'no_wa' => '12121232223',
-            'role_id' => 5,
-            'password' => bcrypt('12341234')
-        ]);
-
+       
 
         //table pilar
         Pilar::create([

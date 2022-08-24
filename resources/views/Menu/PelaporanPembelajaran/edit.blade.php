@@ -102,12 +102,18 @@
                         </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="file">File</label>
+                            <label for="file">File (ex: pdf, doc,docx), Max File :2MB</label>
                             <input type="hidden" name="oldFile" value="{{ $pp->file }}">
-                            <input type="file" name="file" class="form-control @error('file') is-invalid @enderror" id="file" aria-describedby="file" value="{{'storage/'. $pp->file }}"/>
+                            {{-- @if ($pp->file)
+                            <input type="file" value="{{ asset('storage/' . $pp->file) }}" name="file">
+                            @else
+                            <input type="file" value="" name="file">
+                            @endif --}}
+                            <input type="file" name="file" class="form-control @error('file') is-invalid @enderror" id="file" aria-describedby="file"/>
                             <x-validation-message name="file" />
                         </div>
                     </div>
+                   
 
                        <div class="row mt-4">
                                 <div class="col">

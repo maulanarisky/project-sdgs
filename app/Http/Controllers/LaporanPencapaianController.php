@@ -74,7 +74,7 @@ class LaporanPencapaianController extends Controller
             'tujuan_id' => 'required',
             'tahun_id' => 'required',
             'name_file' => 'required|string',
-            'file' => 'required|mimes:doc,docx,pdf|max:2048',
+            'file' => 'file|mimes:doc,docx,pdf|max:2048',
         ];
         
         $validatedData = $request->validate($rules);
@@ -83,7 +83,7 @@ class LaporanPencapaianController extends Controller
             if ($request->oldFile) {
                 Storage::delete($request->oldFile);
             }
-            $validatedData['file'] = $request->file('file')->store('img-laporan-pembelajaran');
+            $validatedData['file'] = $request->file('file')->store('file-laporan-pencapaian-tpb');
         }
 
         LaporanPencapaian::where('id', $lp->id)->update($validatedData);

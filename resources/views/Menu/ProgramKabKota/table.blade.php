@@ -40,7 +40,7 @@
 
                   <td style="vertical-align: middle">{{ $pkk->Kabkota->program_kabkota}}</td>
                   <td style="vertical-align: middle">{{ $pkk->Kabkota->kegiatan_kabkota }}</td>
-                  <td style="vertical-align: middle">{{ $pkk->Kabkota->name_subkegiatan_kabkota }}</td>
+                  <td style="vertical-align: middle">{{ $pkk->Kabkota->kode_subkegiatan_kabkota }}.{{ $pkk->Kabkota->name_subkegiatan_kabkota }}</td>
                   <td style="vertical-align: middle">{{ $pkk->tahun->name }}</td>
                   <td style="vertical-align: middle">{{ $pkk->Kabkota->satuan }}</td>
                   <td style="vertical-align: middle">{{ $pkk->target_tahun }}</td>
@@ -76,7 +76,7 @@
                 
                 <td style="vertical-align: middle">{{ $pkk->Kabkota->program_kabkota }}</td>
                 <td style="vertical-align: middle">{{ $pkk->Kabkota->kegiatan_kabkota }}</td>
-                <td style="vertical-align: middle">{{ $pkk->Kabkota->name_subkegiatan_kabkota }}</td>
+                <td style="vertical-align: middle">{{ $pkk->Kabkota->kode_subkegiatan_kabkota }}.{{ $pkk->Kabkota->name_subkegiatan_kabkota }}</td>
                 <td style="vertical-align: middle">{{ $pkk->tahun->name }}</td>
                 <td style="vertical-align: middle">{{ $pkk->Kabkota->satuan }}</td>
                 <td style="vertical-align: middle">{{ $pkk->target_tahun }}</td>
@@ -89,6 +89,34 @@
                 <td style="vertical-align: middle">{{ $pkk->sumber_pendanaan }}</td>
                 <td style="vertical-align: middle">{{ $pkk->user->name }}</td>
               </tr>
+              @elseif(Auth::user()->role_id == 7 && $pkk->tahun_id ==  $tahunSinggle->id)
+              @if ($pkk->indikator->tujuan->user_id == Auth::user()->id)
+                  
+              <tr>           
+                @if ($pkk->indikator_id != '')
+                <td style="vertical-align: middle">{{ $pkk->indikator->tujuan->kode_tujuan }}.{{ $pkk->indikator->tujuan->name }}</td>
+                  <td style="vertical-align: middle">{{ $pkk->indikator->kode_indikator }}.{{ $pkk->indikator->deskripsi }}</td>
+                  @elseif($pkk->indikator_id == '')
+                  <td></td>
+                  <td></td>
+                @endif
+                
+                <td style="vertical-align: middle">{{ $pkk->Kabkota->program_kabkota }}</td>
+                <td style="vertical-align: middle">{{ $pkk->Kabkota->kegiatan_kabkota }}</td>
+                <td style="vertical-align: middle">{{ $pkk->Kabkota->kode_subkegiatan_kabkota }}.{{ $pkk->Kabkota->name_subkegiatan_kabkota }}</td>
+                <td style="vertical-align: middle">{{ $pkk->tahun->name }}</td>
+                <td style="vertical-align: middle">{{ $pkk->Kabkota->satuan }}</td>
+                <td style="vertical-align: middle">{{ $pkk->target_tahun }}</td>
+                <td style="vertical-align: middle">{{ $pkk->realisasi_target_sem_1 }}</td>
+                <td style="vertical-align: middle">{{ $pkk->realisasi_target_sem_2 }}</td>
+                <td style="vertical-align: middle">{{ $pkk->alokasi_anggaran }}</td>
+                <td style="vertical-align: middle">{{ $pkk->realisasi_anggaran_sem_1 }}</td>
+                <td style="vertical-align: middle">{{ $pkk->realisasi_anggaran_sem_2 }}</td>
+                <td style="vertical-align: middle">{{ $pkk->lokasi_pelaksanaan_kegiatan }}</td>
+                <td style="vertical-align: middle">{{ $pkk->sumber_pendanaan }}</td>
+                <td style="vertical-align: middle">{{ $pkk->user->name }}</td>
+              </tr>
+              @endif
               @endif
             @endforeach
           </tbody>

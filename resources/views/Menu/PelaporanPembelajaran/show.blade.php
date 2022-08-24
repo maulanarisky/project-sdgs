@@ -8,14 +8,14 @@
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <a href="/menu/pp/download/{{$pp->id }}" class="btn btn-danger">Download File</a>
-                {{-- <a href="/menu/pp/pdf/{{$pp->id }}" target="_blank" class="btn btn-warning">Export PDF</a> --}}
+                <a href="/menu/pp/print/{{$pp->id }}" target="_blank" class="btn btn-warning">Print</a>
               </div>
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="name">Nama tujuan dalam TPB/SDGs</label>
-                      <input type="text" class="form-control garis" value="{{ $pp->tujuan->name }}" style="background-color: white" readonly />
+                      <input type="text" class="form-control garis" value ="{{$pp->tujuan->name }}" style="background-color: white" readonly />
                     </div>
                   </div>
                   <div class="col-md-6">

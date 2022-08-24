@@ -481,6 +481,68 @@
                 @endif
             @endforeach
         </li>
+        <li class="nav-item  {{ Request::is('menu/pusat*') ? 'active' : '' }}">
+            @foreach ($tahuns as $tahun)
+                    @if (now()->year == $tahun->name)
+                        <a class="nav-link" href="/menu/pusat/{{ $tahun->id }}">
+                            <i class="fas fa-fw fa-book"></i>
+                            <span>FORM 2A</span>
+                        </a>
+                    @endif
+            @endforeach
+        </li>
+
+        <li class="nav-item  {{ Request::is('menu/pemda*') ? 'active' : '' }}">
+            @foreach ($tahuns as $tahun)
+                    @if (now()->year == $tahun->name)
+                        <a class="nav-link" href="/menu/pemda/{{ $tahun->id }}">
+                            <i class="fas fa-fw fa-book"></i>
+                            <span>FORM 2B Provinsi</span>
+                        </a>
+                    @endif
+            @endforeach
+        </li>
+        <li class="nav-item  {{ Request::is('menu/pkabkota*') ? 'active' : '' }}">
+            @foreach ($tahuns as $tahun)
+                    @if (now()->year == $tahun->name)
+                        <a class="nav-link" href="/menu/pkabkota/{{ $tahun->id }}">
+                            <i class="fas fa-fw fa-book"></i>
+                            <span>FORM 2B Kab/kota</span>
+                        </a>
+                    @endif
+            @endforeach
+        </li>
+
+        <li class="nav-item {{ Request::is('menu/mitraswasta*') ? 'active' : '' }}">
+            @foreach ($tahuns as $tahun)
+                    @if (now()->year == $tahun->name)
+                        <a class="nav-link" href="/menu/mitraswasta/{{ $tahun->id }}">
+                            <i class="fas fa-fw fa-book"></i>
+                            <span>FORM 3</span>
+                        </a>
+                    @endif
+            @endforeach
+        </li>
+
+        <li class="nav-item {{ Request::is('menu/umkm*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/umkm">
+                <i class="fas fa-fw fa-book"></i>
+                <span>FORM 4</span>
+            </a>
+        </li>
+        <li class="nav-item {{ Request::is('menu/rtl*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/rtl">
+                <i class="fas fa-fw fa-book"></i>
+                <span>FORM 5</span></a>
+        </li>
+        
+        <!-- Nav Item - pelaporan pembelajaran -->
+        <li class="nav-item {{ Request::is('menu/pp*') ? 'active' : '' }}">
+            <a class="nav-link" href="/menu/pp">
+                <i class="fas fa-fw fa-book"></i>
+                <span>FORM 6</span>
+            </a>
+        </li>
 
      <hr class="mt-2 sidebar-divider d-none d-md-block">
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-muted">

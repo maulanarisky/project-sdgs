@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-9">
             <a href="/form5-export" class="btn btn-success"><i class=" fas fa-fw fa-file-excel" ></i><span>Excel</span></a>
-            @if (Auth::user()->role_id != 1) 
+            @if (Auth::user()->role_id != 1 AND Auth::user()->role_id != 7) 
             <a href="/menu/rtl/create" class="btn btn-info" ><i class="fas fa-fw fa-plus-square"></i><span>Tambah Data</span></a>
             @endif
           </div>

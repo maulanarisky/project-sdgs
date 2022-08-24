@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\Form6Export;
 use App\Models\PelaporanPembelajaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\UpdatePelaporanPembelajaranRequest;
 use App\Models\Tujuan;
-use Barryvdh\DomPDF\PDF;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PelaporanPembelajaranController extends Controller
 {
+    public function form6Export(){
+        return Excel::download(new Form6Export, 'form 6.xlsx');
+    }
    
     public function index()
     {
          return view('Menu.PelaporanPembelajaran.index', [
-             'pelaporan_pembelajarans' => PelaporanPembelajaran::with('user')->get()
+             'pelaporan_pembelajarans' => PelaporanPembelajaran::with('tujuan','user')->get()
          ]);
     }
 
@@ -90,7 +93,7 @@ class PelaporanPembelajaranController extends Controller
             'tantangan' => 'required',
             'pembelajaran' => 'required',
             'peluang_replikasi' => 'required',
-            'file' => 'required|mimes:doc,docx,pdf|max:2048',
+            'file' => 'file|mimes:doc,docx,pdf|max:2048',
         ];
         
         $validatedData = $request->validate($rules);
@@ -99,7 +102,7 @@ class PelaporanPembelajaranController extends Controller
             if ($request->oldFile) {
                 Storage::delete($request->oldFile);
             }
-            $validatedData['file'] = $request->file('file')->store('img-laporan-pembelajaran');
+            $validatedData['file'] = $request->file('file')->store('file-laporan-pembelajaran');
         }
 
         PelaporanPembelajaran::where('id', $pp->id)->update($validatedData);
@@ -124,12 +127,12 @@ class PelaporanPembelajaranController extends Controller
         return response()->download($pathToFile);
        
     }
-    // public function cetak($id)
-    // {
-    //     return view('Menu.PelaporanPembelajaran.pdf', [
-    //         'pp' => PelaporanPembelajaran::findOrFail($id)
-    //     ]);
-    // }
+    public function print($id)
+    {
+        return view('Menu.PelaporanPembelajaran.print', [
+            'pp' => PelaporanPembelajaran::findOrFail($id)
+        ]);
+    }
 
   
 } 

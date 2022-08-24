@@ -71,7 +71,7 @@ class ProgramPelakuUsahaController extends Controller
         $validatedData = $request->validate([
             'user_id' => 'required',
             'indikator_id' => 'required|string',
-            'kode_pojk' => 'required|string',
+            'kode_pojk' => 'string',
             'kegiatan_pojk' => 'required|string',
             'no_urut' => 'required',
             'kegiatan' => 'required|string',

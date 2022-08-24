@@ -64,12 +64,10 @@
               <tr>                       
                 <td style="vertical-align: middle">{{ $pemda->indikator->tujuan->kode_tujuan }}.{{ $pemda->indikator->tujuan->name }}</td>
                 <td style="vertical-align: middle">{{ $pemda->indikator->kode_indikator }}.{{ $pemda->indikator->deskripsi }}</td>
-              
                 <td style="vertical-align: middle">{{ $pemda->subkegiatan->program }}</td>
                 <td style="vertical-align: middle">{{ $pemda->subkegiatan->kegiatan }}</td>
                 <td style="vertical-align: middle">{{ $pemda->subkegiatan->name_sub_kegiatan }}</td>
                 <td style="vertical-align: middle">{{ $pemda->subkegiatan->satuan }}</td>
-                
                 <td style="vertical-align: middle">{{ $pemda->tahun->name }}</td>
                 <td style="vertical-align: middle">{{ $pemda->target_tahun }}</td>
                 <td style="vertical-align: middle">{{ $pemda->realisasi_target_sem_1 }}</td>
@@ -81,6 +79,27 @@
                 <td style="vertical-align: middle">{{ $pemda->sumber_pendanaan }}</td>
                 <td style="vertical-align: middle">{{ $pemda->user->name }}</td>
               </tr>
+              @elseif(Auth::user()->role_id == 7 && $pemda->tahun_id ==  $tahunSinggle->id)
+              @if($pemda->indikator->tujuan->user_id == Auth::user()->id)
+              <tr>                       
+                <td style="vertical-align: middle">{{ $pemda->indikator->tujuan->kode_tujuan }}.{{ $pemda->indikator->tujuan->name }}</td>
+                <td style="vertical-align: middle">{{ $pemda->indikator->kode_indikator }}.{{ $pemda->indikator->deskripsi }}</td>
+                <td style="vertical-align: middle">{{ $pemda->subkegiatan->program }}</td>
+                <td style="vertical-align: middle">{{ $pemda->subkegiatan->kegiatan }}</td>
+                <td style="vertical-align: middle">{{ $pemda->subkegiatan->name_sub_kegiatan }}</td>
+                <td style="vertical-align: middle">{{ $pemda->subkegiatan->satuan }}</td>
+                <td style="vertical-align: middle">{{ $pemda->tahun->name }}</td>
+                <td style="vertical-align: middle">{{ $pemda->target_tahun }}</td>
+                <td style="vertical-align: middle">{{ $pemda->realisasi_target_sem_1 }}</td>
+                <td style="vertical-align: middle">{{ $pemda->realisasi_target_sem_2 }}</td>
+                <td style="vertical-align: middle">{{ $pemda->alokasi_anggaran }}</td>
+                <td style="vertical-align: middle">{{ $pemda->realisasi_anggaran_sem_1 }}</td>
+                <td style="vertical-align: middle">{{ $pemda->realisasi_anggaran_sem_2 }}</td>
+                <td style="vertical-align: middle">{{ $pemda->lokasi_pelaksanaan_kegiatan }}</td>
+                <td style="vertical-align: middle">{{ $pemda->sumber_pendanaan }}</td>
+                <td style="vertical-align: middle">{{ $pemda->user->name }}</td>
+              </tr>
+              @endif
               @endif
             @endforeach
           </tbody>

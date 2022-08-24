@@ -1,3 +1,4 @@
+<link href="/css/sb-admin-2.min.css" rel="stylesheet">
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">

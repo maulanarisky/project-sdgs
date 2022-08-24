@@ -69,6 +69,21 @@
             <td>{{ $umkm->capaian }}</td>
             <td>{{ $umkm->user->name }}</td>
           </tr>
+          @elseif (Auth::user()->role_id == 7 )
+          <tr align="center">                       
+            <td>{{ $umkm->kode_pojk}}</td>
+            <td>{{ $umkm->kegiatan_pojk}}</td>
+            <td>{{ $umkm->indikator->kode_indikator }}</td>
+            <td>{{ $umkm->indikator->deskripsi }}</td>
+            <td>{{ $umkm->no_urut }}</td>
+            <td>{{ $umkm->kegiatan }}</td>
+            <td>{{ $umkm->indikator_capaian }}</td>
+            <td>{{ $umkm->satuan }}</td>
+            <td>{{ $umkm->waktu }} tahun</td>
+            <td>{{ $umkm->target }}</td>
+            <td>{{ $umkm->capaian }}</td>
+            <td>{{ $umkm->user->name }}</td>
+          </tr>
         @endif
       @endforeach
     </tbody>

@@ -26,7 +26,7 @@ use App\Http\Controllers\PelaporanPembelajaranController;
 use App\Http\Controllers\ProgramKabKotaController;
 use App\Http\Controllers\ProgramPemerintahPusatController;
 use App\Http\Controllers\ProgramPemerintahDaerahController;
-
+use App\Models\PelaporanPembelajaran;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,12 +97,13 @@ Route::get('/form2bkabkota-export/{tahunID}', [ProgramKabKotaController::class, 
 Route::get('/form3-export/{tahunID}', [ProgramMitraSwastaController::class, 'form3Export']);
 Route::get('/form4-export', [ProgramPelakuUsahaController::class, 'form4Export']);
 Route::get('/form5-export', [RencanaTindakLanjutController::class, 'form5Export']);
+Route::get('/form6-export', [PelaporanPembelajaranController::class, 'form6Export']);
 // Route::get('/form3-export/{tahunID}', [ProgramMitraSwastaController::class, 'form3Export']);
 
 
 
 Route::get('menu/pp/download/{id}', [PelaporanPembelajaranController::class, 'download'])->name('download');
-// Route::get('menu/pp/pdf/{id}', [PelaporanPembelajaranController::class, 'cetak'])->name('cetak');
+Route::get('menu/pp/print/{id}', [PelaporanPembelajaranController::class, 'print'])->name('print');
 
 
 

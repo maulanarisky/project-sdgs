@@ -59,8 +59,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                            {{-- <input type="hidden" name="oldFile" value="{{ $lp->file }}"> --}}
-                                            <label for="file">File</label>
+                                        <label for="file">File</label>
+                                            <input type="hidden" name="oldFile" value="{{ $lp->file }}">
                                             <input type="file" name="file" id="file"value="{{asset('storage/' . $lp->file) }}" class="form-control @error('file') is-invalid @enderror"  aria-describedby=""/>
                                             <x-validation-message name="file" />
                                     </div>
